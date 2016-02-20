@@ -1,5 +1,5 @@
-# Computer-Manufacturer-And-Retail
-System Analysis and Design - Team 9 Project 2016
+# DCM Computing
+System Analysis and Design Project 2016 - Team 9
 
 Team Members:
 	Cian Prendergast 
