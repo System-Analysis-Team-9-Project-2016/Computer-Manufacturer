@@ -1,4 +1,4 @@
-# Computer-Manufacturer
+# Computer-Manufacturer-And-Retail
 System Analysis and Design - Team 9 Project 2016
 
 Team Members:
