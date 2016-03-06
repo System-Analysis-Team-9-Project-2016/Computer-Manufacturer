@@ -22,8 +22,8 @@ public class testOrder {
 		String productIdString = "";
 
 		for (int i = 0; i < productIds.length; i++) {
-			if (productIds.length - 1 == i) {	productIdString += productIds[i];	}
-			else {	productIdString += productIds[i] + ", ";	}
+			if (productIds.length - 1 == i) productIdString += productIds[i];
+			else productIdString += productIds[i] + ", ";
 		}
 		return productIdString;
 	}
