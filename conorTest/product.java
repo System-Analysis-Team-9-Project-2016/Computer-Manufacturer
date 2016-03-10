@@ -24,7 +24,7 @@ public class product {
      * @param name the name of the product.
      * @param price the price for which this Product should be sold.
      */
-    public product(String PID, String name, int stock, double price, boolean isActive, boolean isProductDiscount) {
+    public product(String PID, String name, int stock, double price) {
         this.PID = PID; //Generate new Id function should be used here
         this.name = name;
         this.stock = stock;
@@ -82,28 +82,22 @@ public class product {
     public void setPrice(double newPrice) {
         this.price = newPrice;
     }
-    /**
-     * Get the active state of this Product.
-     *
-     * @return the active state of this Product.
-     */
-    public boolean getIsActive() {
-        return isActive;
+    
+    public void setProductActive()
+    {
+	    this.isActive = true;
     }
-    public void setIsActive(boolean isItActive) {
-        this.isActive =  isItActive;
+   	
+    public void setProductDiscount() {
+        this.isProductDiscount =  true;
     }
     
-    /**
-     * Get the discount state of this Product.
-     *
-     * @return the discount state of this Product.
-     */
-    public boolean getIsProductDiscount() {
-        return isProductDiscount;
-    }
-    public void setIsProductDiscount(boolean productDiscount) {
-        this.isProductDiscount =  productDiscount;
+    public String getProductStatus()
+    {
+	    String statusString = "";
+	    if(true == isActive)			statusString = "Product is avilable";
+	    else if(true == isProductDiscount)	statusString = "Product is on sale";
+	    return statusString;
     }
     
 
