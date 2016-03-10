@@ -5,11 +5,11 @@ import java.util.*;
  * This class models a Product that can be sold in
  * the on-line e-commerce system example.
  */
-public class Product {
-    private PID;
-    private string Name;
+public class product {
+    private String PID;
+    private String name;
     private boolean isActive;
-    private date LaunchDate;
+    private Date launchDate;
     private double price;
 
     /**
@@ -19,14 +19,14 @@ public class Product {
      * @param PID the productId of the product.
      * @param isActive states wether the product is active or not.
      * @param name the name of the product.
-     * @param launchDate the launchdate of this product
+     * @param launchDate the launchDate of this product
      * @param price the price for which this Product should be sold.
      */
-    public Product(string name, boolean launchDate, double price, boolean isActive) {
-        this.PID = generateNewID();
+    public product(String name, Date launchDate, double price, boolean isActive) {
+        this.PID = "1234567890"; //Generate new Id function should be used here
         this.name = name;
-        this.launchdate = launchdate;
-        this.price = price
+        this.launchDate = launchDate;
+        this.price = price;
         this.isActive = isActive;
 
     }
@@ -36,11 +36,11 @@ public class Product {
      *
      * @return the name of this Product.
      */
-    public string getName() {
+    public String getName() {
         return name;
     }
-    public void setName(string name) {
-        this.name =  name;
+    public void setName(String newName) {
+        name =  newName;
     }
 
     /**
@@ -53,7 +53,7 @@ public class Product {
     }
 
     public void setPrice(double newPrice) {
-        price = newPrice;
+        this.price = newPrice;
     }
     /**
      * Get the active state of this Product.
@@ -67,15 +67,15 @@ public class Product {
         this.isActive =  isItActive;
     }
     /**
-     * Get the launchdate of this Product.
+     * Get the launchDate of this Product.
      *
-     * @return the launchdate of this Product.
+     * @return the launchDate of this Product.
      */
-    public date getLaunchDate() {
+    public Date getlaunchDate() {
         return launchDate;
     }
-    public void setLaunchDate(date launchDate) {
-        this.launchdate =  launchDate;
+    public void setlaunchDate(Date launchDate) {
+        this.launchDate =  launchDate;
     }
 
     /**
@@ -86,6 +86,6 @@ public class Product {
      * @return a String describing this Product.
      */
     public String getProductDetails() {
-        return "Product Name: " + this.name +"\nPrice: " + this.price + "\nLaunchDate" + LaunchDate;
+        return "Product Name: " + this.name +"\nPrice: " + this.price + "\nlaunchDate" + launchDate;
     }
 }
