@@ -46,6 +46,7 @@ public class Order {
 // OrderDeatil Methods
 	public String getOrderDetails() {
 		String orderInfo = orderDetail.getOrderDetails() +
+				"\nCustomer: " + customerName +
 				"\n" + getOrderStatus() +
 				"\nDate Order Created: " + dateOrderCreated;
 		if (dateOrderShipped != null) orderInfo += "\nDate Order Shipped: " + dateOrderShipped;
