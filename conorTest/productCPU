@@ -3,32 +3,6 @@ public class productCPU
 	private double clockRate;
 	private String core;
 	
-	public static void main(String[] args)
-	{
-		product product1 = new product("123456789", "CPU Name", 50, 100.0);
-		
-		product1.setProductDiscount();
-		
-		System.out.println("\n\tProduct Details");
-		System.out.println("--------------------------------------");
-		System.out.println("Product ID is: \t\t" + product1.getPID());
-		System.out.println("Name: \t\t\t" + product1.getName());
-		System.out.println("Quantity: \t\t" + product1.getStock());
-		System.out.println("Price: \t\t\t" + product1.getPrice());
-		System.out.println(product1.getProductStatus());
-		
-		product1.setProductActive();
-		
-		System.out.println("\n\n\tProduct Details");
-		System.out.println("--------------------------------------");
-		System.out.println("Product ID is: \t\t" + product1.getPID());
-		System.out.println("Name: \t\t\t" + product1.getName());
-		System.out.println("Quantity: \t\t" + product1.getStock());
-		System.out.println("Price: \t\t\t" + product1.getPrice());
-		System.out.println(product1.getProductStatus());
-		
-	}
-	
 	productCPU(double clockRate, String core)
 	{
 		this.clockRate = clockRate;
