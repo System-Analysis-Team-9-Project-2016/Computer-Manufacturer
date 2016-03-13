@@ -41,10 +41,7 @@ public class Product {
     public int getProductId() {
         return productId;
     }
-    public void setProductId(int newProductId) {
-        productId =  newProductId;
-    }
-
+  
     /**
      * Get the productName of this Product.
      *
@@ -53,9 +50,7 @@ public class Product {
     public String getProductName() {
         return productName;
     }
-    public void setProductName(String newProductName) {
-        productName =  newProductName;
-    }
+   
     
     /**
      * Get the stock of this Product.
@@ -97,17 +92,5 @@ public class Product {
 	    if(true == isActive)			statusString = "Product is available";
 	    else if(true == isProductDiscount)	statusString = "Product is on sale";
 	    return statusString;
-    }
-    
-
-    /**
-     * Get a String that describes this Product. Note that
-     * this method overrides the toString method inherited
-     * from Object.
-     *
-     * @return a String describing this Product.
-     */
-    public String getProductDetails() {
-        return "Product Name: " + this.productName +"\nPrice: " + this.unitCost + "\nStock: " + this.stock;
     }
 }
