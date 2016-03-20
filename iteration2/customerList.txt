@@ -1,0 +1,5 @@
+1,Conor Duggan,conor@ul.ie,password,123456789
+2,Cian Prendergast,cian@ul.ie,password,123456789
+3,Daniel O'Connor,daniel@ul.ie,password,123456789
+4,Darren Stack,darren@ul.ie,password,123456789
+5,Michael Lucas,michael@ul.ie,password,123456789
