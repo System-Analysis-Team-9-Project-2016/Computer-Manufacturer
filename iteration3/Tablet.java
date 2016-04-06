@@ -3,10 +3,11 @@ public class Tablet extends ComputerSystem {
     private int screenSize;
     private int screenRez;
     private boolean attachableKeyboard;
+    private double weight;
 
 
-    public Tablet(int productId, String productName, int stock, double unitCost, boolean isActive, boolean isProductDiscount, CPU systemCPU, GPU systemGPU, RAM systemRam, Motherboard systemMotherboard, String OS, boolean stylus, int screenSize, int screenRez, boolean attachableKeyboard, double weight) {
-        super(productId, productName, stock, unitCost, isActive, isProductDiscount, systemCPU, systemGPU, systemRam, systemMotherboard, OS);
+    public Tablet(int productId, String productName, int stock, double unitCost, boolean isActive, boolean isProductDiscount, String OS, boolean stylus, int screenSize, int screenRez, boolean attachableKeyboard, double weight) {
+        super(productId, productName, stock, unitCost, isActive, isProductDiscount, OS);
         this.stylus = stylus;
         this.screenSize = screenSize;
         this.screenRez = screenRez;
@@ -14,9 +15,9 @@ public class Tablet extends ComputerSystem {
         this.weight = weight;
     }
 
-    public String toString() {
-        return super.getProductName();
-    }
+//    public String toString() {
+//        return super.getProductName();
+//    }
 
     public boolean isStylus() {
         return stylus;
@@ -48,5 +49,11 @@ public class Tablet extends ComputerSystem {
 
     public void setScreenSize(int screenSize) {
         this.screenSize = screenSize;
+    }
+    public double getWeight() {
+    	return weight;
+    }
+    public void setWeight(double weight) {
+    	this.weight = weight;
     }
 }

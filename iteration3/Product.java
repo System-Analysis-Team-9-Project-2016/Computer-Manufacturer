@@ -5,13 +5,17 @@ import java.util.*;
  * This class models a Product that can be sold in
  * the on-line e-commerce system example.
  */
-public class Product {
+public abstract class Product implements Component{
+	
+    private ArrayList<Component> a = new ArrayList<Component>();
+    
     private int productId;
     private String productName;
     private boolean isActive;
     private boolean isProductDiscount;
     private double unitCost;
     private int stock;
+    
 
     /**
      * Construct a new product using the provided item
@@ -87,8 +91,9 @@ public class Product {
 	    this.isActive = true;
     }
    	
-    public void setProductDiscount() {
+    public void setProductDiscount(double unitCost) {
         this.isProductDiscount =  true;
+        this.unitCost = unitCost;
     }
     
     public String getProductStatus()
@@ -108,6 +113,21 @@ public class Product {
      * @return a String describing this Product.
      */
     public String getProductDetails() {
-        return "Product Name: " + this.productName +"\nPrice: " + this.unitCost + "\nStock: " + this.stock;
+        return "\nProduct ID: " + this.productId + "\nProduct Name: " + this.productName +"\nPrice: " + this.unitCost + "\nStock: " + this.stock + "\n";
+    }
+    
+    public void addProduct(Component component) {
+    	a.add(component);
+    }
+    public ArrayList<Component> getComponents() {
+    	return a;
+    }
+
+    public void removeProduct(Component component) {
+    	a.remove(component);
+    }
+    
+    public Component getChildatIndex(int i) {
+    	return a.get(i);
     }
 }
