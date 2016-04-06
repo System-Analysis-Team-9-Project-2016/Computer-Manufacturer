@@ -10,11 +10,6 @@ public class CPU extends Product {
         this.OperatingFrequency = operatingFrequency;
     }
 
-    public String toString() {
-
-        return super.getProductName();
-    }
-
     public String getSeries() {
         return series;
     }
