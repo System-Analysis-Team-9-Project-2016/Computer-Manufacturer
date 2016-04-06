@@ -41,11 +41,10 @@ public class AddNewProduct {
 	}
 	
 	public void addProduct(String details) throws IOException{
-		File file = new File("productList.txt");
-		FileWriter writer = new FileWriter(file , true);
-		PrintWriter out = new PrintWriter(writer);
-		out.println(maxID + "," + name + "," + cost + ","+ stock  + ",true,false," + details);
-		out.close();
+		int newid = maxID + 1;
+		String result = newid + "," + name + "," + cost + ","+ stock  + ",true,false," + details;
+		DBHelper d = new DBHelper();
+		d.writeProductToFile(result);
 	}
 	
 	
