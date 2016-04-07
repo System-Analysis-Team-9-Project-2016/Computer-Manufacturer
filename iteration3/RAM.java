@@ -12,12 +12,6 @@ public class RAM extends Product {
         this.casLatency = casLatency;
     }
 
-
-
-    public String toString() {
-        return super.getProductName();
-    }
-
     public String getType() {
         return type;
     }
