@@ -10,12 +10,6 @@ public class MemoryDrives extends Product {
         this.RPM = RPM;
     }
 
-
-
-    public String toString() {
-        return super.getProductName();
-    }
-
     public boolean isDesktopType() {
         return desktopType;
     }
