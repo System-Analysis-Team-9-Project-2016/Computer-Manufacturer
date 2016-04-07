@@ -1,0 +1,5 @@
+1,Conor,Duggan,Limerick,conor@ul.ie,password,123456789
+2,Cian,Prendergast,Limerick,cian@ul.ie,password,123456789
+3,Daniel,O'Connor,Limerick,daniel@ul.ie,password,123456789
+4,Darren,Stack,Limerick,darren@ul.ie,password,123456789
+5,Michael,Lucas,Limerick,michael@ul.ie,password,123456789
