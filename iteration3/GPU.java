@@ -13,12 +13,6 @@ public class GPU extends Product {
         this.displayPorts = displayPorts;
     }
 
-
-
-    public String toString() {
-        return super.getProductName();
-    }
-
     public String getMemory() {
         return memory;
     }
