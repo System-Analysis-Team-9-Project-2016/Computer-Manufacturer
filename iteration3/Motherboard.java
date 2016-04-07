@@ -15,11 +15,6 @@ public class Motherboard extends Product {
     }
 
 
-
-    public String toString() {
-        return super.getProductName();
-    }
-
     public String getCpuSocketType() {
         return cpuSocketType;
     }
