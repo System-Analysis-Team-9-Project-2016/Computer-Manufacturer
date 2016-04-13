@@ -17,6 +17,7 @@ public class Order {
 	private String customerName;
 	private String dateOrderCreated;
 	private String dateOrderShipped;
+	private ArrayList<Product> orderProducts;
 
 	private boolean isNewOrder;
 	private boolean isProcessedOrder;
@@ -34,6 +35,7 @@ public class Order {
 		Date date = new Date();
 		this.dateOrderCreated = date.toString();
 		this.isNewOrder = true;
+		this.orderProducts = orderProducts;
 	}
 
 // ShippingInfo Methods
@@ -120,5 +122,13 @@ public class Order {
 		if (true == isProcessedOrder) 	orderStatusString = "Order is being processed!";
 		if (true == isCancelledOrder) 	orderStatusString = "Order has been cancelled!";
 		return orderStatusString;
+	}
+	
+	public ArrayList<Product> getProducts() {
+		return orderProducts;
+	}
+	
+	public void setProducts(ArrayList<Product> orderProducts) {
+		this.orderProducts = orderProducts;
 	}
 }
