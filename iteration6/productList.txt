@@ -1,0 +1,4 @@
+101,CPU,20,99.99,true,false
+102,RAM,35,79.95,true,true
+103,GPU,18,57.5,true,false
+104,MON,30,79.99,true,true
