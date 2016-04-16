@@ -10,7 +10,7 @@ import BusinessLayer.Subject;
  * This class models a Product that can be sold in
  * the on-line e-commerce system example.
  */
-public class Product implements Subject  {
+//import BusinessLayer.ProductClasses.Component;
     
     private int productId;
     private String productName;
@@ -40,6 +40,15 @@ public class Product implements Subject  {
         this.isProductDiscount = isProductDiscount;
         observers = new ArrayList<Observer>();
     }
+	public void addProduct(Component component) {
+    }
+    public ArrayList<Component> getComponents() {
+    }
+
+    public void removeProduct(Component component) {
+    }
+    
+    public Component getChildatIndex(int i) {
     
     /**
      * Get the ID of this Product.
