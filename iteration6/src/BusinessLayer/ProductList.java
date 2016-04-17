@@ -1,8 +1,8 @@
 package BusinessLayer;
 
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import BusinessLayer.CustomerClasses.Customer;
 import BusinessLayer.OrderClasses.Order;
@@ -12,7 +12,7 @@ import UserInterfaceLayer.CartUI;
 
 public class ProductList implements Observer {
 
-	public ProductList(ArrayList<Product> boughtbought, Customer customer) throws FileNotFoundException {
+	public ProductList(ArrayList<Product> boughtbought, Customer customer) throws IOException {
 		
 		// Order(int orderId, int customerId, String customerName, int shippingId, ArrayList<Product> orderProducts)
 		
@@ -22,14 +22,14 @@ public class ProductList implements Observer {
 		int shippingId = orderId;
 		
 		Order customerOrder = new Order(orderId, customerId, customerName, shippingId, boughtbought);
-		
 		@SuppressWarnings("unused")
 		CartUI createNewCartUi = new CartUI(customerOrder,customer);
 	}
 	
 	public ProductList(){
+		
+	}
 
-	}		 
 	@Override
 	public void Update(Product p) throws IOException {
 		ArrayList<Product> x = DataControl.getAllProductsFromFile();
@@ -40,7 +40,7 @@ public class ProductList implements Observer {
 			}
 		}
 		DataControl.rewriteProductFile(x);
-
-
+		
+		
 	}
 }
