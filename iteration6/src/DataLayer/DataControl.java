@@ -11,6 +11,7 @@ import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import BusinessLayer.OrderClasses.GroupDiscount;
 import BusinessLayer.ProductClasses.Product;
 
 public class DataControl {
@@ -19,6 +20,7 @@ public class DataControl {
 	public static final String adminFileName = "adminList.txt";
 	public static final String productFileName = "productList.txt";
 	public static final String ordersFileName = "ordersList.txt";
+	public static final String groupDiscountsFileName = "groupDiscountList.txt";
 
 //########################################################################################################################################
 //	General Methods
@@ -191,7 +193,7 @@ public class DataControl {
 	}
 	
 	public static void rewriteProductFile(ArrayList<Product> products) throws IOException{
-		File file = new File(productFileName);
+		File file = new File("productList.txt");
 		FileWriter writer = new FileWriter(file);
 		PrintWriter out = new PrintWriter(writer);
 		Product p;
@@ -217,5 +219,47 @@ public class DataControl {
 		catch (IOException e) {
 		    //exception handling left as an exercise for the reader
 		}
+	}
+	
+	public static void writeNewDiscountToFile(ArrayList<Integer> added , double discount) throws FileNotFoundException {
+		int nextAvailableDiscountId = checkNextAvailableId(groupDiscountsFileName);
+		String IDs = "";
+		for(int i =0;i < added.size();i++)
+			IDs += added.get(i) + ",";
+		String lineToAppend = "\n" + nextAvailableDiscountId + "," + added.size() + "," + IDs  + discount;
+		try {
+		    Files.write(Paths.get(groupDiscountsFileName), lineToAppend.getBytes(), StandardOpenOption.APPEND);
+		}
+		catch (IOException e) {
+		    //exception handling left as an exercise for the reader
+		}
+	}
+	
+	public static ArrayList<GroupDiscount> getAllGroupDiscountsFromFile() throws FileNotFoundException {
+		
+		
+		ArrayList<GroupDiscount> allDiscountsInFile = new ArrayList<GroupDiscount>();
+		
+		File searchTextFile = new File(groupDiscountsFileName);
+		Scanner lineIn = new Scanner(searchTextFile);
+		int prices;
+		int i;
+		while (lineIn.hasNextLine()) {
+			String aLineFromFile = lineIn.nextLine();
+			String [] splitLineFromFile = aLineFromFile.split(",");
+			if (splitLineFromFile.length > 0) {
+				ArrayList<Integer> productsInDiscount = new ArrayList<Integer>();
+				prices = Integer.parseInt(splitLineFromFile[1]);
+				for( i = 0; i< prices;i++){
+					productsInDiscount.add(Integer.parseInt(splitLineFromFile[2 + i]));
+				}
+					
+				GroupDiscount lineDiscount = new GroupDiscount(Integer.parseInt(splitLineFromFile[0]), productsInDiscount, Integer.parseInt(splitLineFromFile[i]));
+				allDiscountsInFile.add(lineDiscount);
+			}
+		}
+		lineIn.close();
+		
+		return allDiscountsInFile;
 	}
 }
