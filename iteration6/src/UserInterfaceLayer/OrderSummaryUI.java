@@ -1,8 +1,5 @@
 package UserInterfaceLayer;
 
-import BusinessLayer.CustomerClasses.Customer;
-import BusinessLayer.OrderClasses.Order;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
@@ -56,8 +53,8 @@ System.out.println("[debug] : ****** Starting OrderSummaryUI Class ******");
         cartUiFrame.pack();
         cartUiFrame.setLocationByPlatform(true);
         cartUiFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        cartUiFrame.setSize(400, 400);
-		cartUiFrame.setResizable(false);
+        //cartUiFrame.setSize(400, 400);
+		//cartUiFrame.setResizable(true);
 		cartUiFrame.setLocationRelativeTo(null);
         cartUiFrame.setVisible(true);
 	}	

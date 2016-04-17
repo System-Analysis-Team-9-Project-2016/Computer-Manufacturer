@@ -2,6 +2,7 @@ package BusinessLayer;
 
 import java.io.FileNotFoundException;
 
+import BusinessLayer.OrderClasses.*;
 import BusinessLayer.CustomerClasses.Customer;
 import DataLayer.DataControl;
 import BusinessLayer.OrderClasses.Order;
@@ -23,7 +24,15 @@ public class OrderSummary {
 		// Reduce the stock amount of the products the customer is buying
 		DataControl.reduceProductOrderStock(userOrder.getOrderProductIds());
 
-		String postOrderDetails = userOrder.getPostOrderDetails();	
+		// Use Decorator Design pattern for printing receipt
+		Receipt headerReceipt = new HeaderReceipt(new BasicReceipt());
+		String postOrderDetails = headerReceipt.printReceipt();
+		
+		postOrderDetails += userOrder.getPostOrderDetails();	
+		
+		Receipt shippingReceipt = new ShippingReceipt(new BasicReceipt());
+		postOrderDetails += shippingReceipt.printReceipt();
+		
 		OrderSummaryUI createNewOrderSummaryUI = new OrderSummaryUI(postOrderDetails);
 
 	}	

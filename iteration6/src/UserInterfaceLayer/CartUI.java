@@ -50,7 +50,8 @@ public class CartUI extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 				try {
 					ProductListUI p = new ProductListUI(currentCustomer);
-				} catch (IOException e1) {
+				} 
+				catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
@@ -72,15 +73,9 @@ public class CartUI extends JPanel{
 
 
 		cartUiFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		//String[] orderProductNames = userOrder.getOrderProductNames();
-		//JList list = new JList(orderProductNames);
-		//list.setSelectedIndex(1);
-		//list.setMinimumSize(new Dimension(700, 500));
-		//System.out.println(list.getSelectedValue());
-		//cartUiFrame.add(new JScrollPane(list));
 
-		JLabel uiNotReadyLabel = new JLabel();
-		//uiNotReadyLabel.setText("This UI is under construction. You will be able to review your Ordered products here.");
+		JLabel addShippingCostLabel = new JLabel();
+		addShippingCostLabel.setText("<html><br><b>There is a \u20ac5.00 shipping cost that will be added to your order.</b><br><br></html>");
 
 		JButton purchaseButton = new JButton("Proceed to Details");
 		purchaseButton.addActionListener(new ActionListener() {
@@ -97,7 +92,7 @@ public class CartUI extends JPanel{
 
 		JPanel controls = new JPanel(new FlowLayout(FlowLayout.CENTER,5,2));
 
-		controls.add(uiNotReadyLabel);
+		controls.add(addShippingCostLabel);
 		controls.add(pane, BorderLayout.NORTH);
 		controls.add(addButton, BorderLayout.WEST);
 		controls.add(removeButton, BorderLayout.EAST);

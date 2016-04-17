@@ -14,7 +14,9 @@ public class OrderDetail {
 		this.orderId = orderId;
 		this.orderProducts = orderProducts;
 		for (int i = 0; i < orderProducts.size(); i++)
-			totalCost += orderProducts.get(i).getUnitCost();
+			this.totalCost += orderProducts.get(i).getUnitCost();
+		// Add shipping cost
+		this.totalCost += 5.0;
 	}
 
 	public int [] getOrderProductIds() {
