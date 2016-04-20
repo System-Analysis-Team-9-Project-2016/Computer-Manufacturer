@@ -186,8 +186,13 @@ public class ProductListUI extends JFrame {
 		    @Override
 		    public void actionPerformed(ActionEvent evt) {
 		    	System.out.println("[info]  : ------ Create PC button clicked (ProductListUI Customer) ------");
-		    	
 		    	// Create Laptop code called.
+				try {
+					CreateLaptop createLaptop = new CreateLaptop(customer);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 		    }
 		});
 		m.add(createLaptopB);

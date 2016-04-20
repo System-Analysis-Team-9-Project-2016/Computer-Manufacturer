@@ -26,6 +26,8 @@ public class ProductList implements Observer {
 		CartUI createNewCartUi = new CartUI(customerOrder,customer);
 	}
 	
+	
+	
 	public ProductList(){
 		
 	}
