@@ -19,6 +19,7 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+import BusinessLayer.ProductList;
 import BusinessLayer.CustomerClasses.Customer;
 import BusinessLayer.OrderClasses.Order;
 import BusinessLayer.ProductClasses.Product;
@@ -36,11 +37,15 @@ public class CreatePCUI extends JPanel{
 	private DefaultListModel<String> modelChosen;
 	private Desktop currentDesk= new Desktop(1234, "Boaty McBoatFace", 1, 0.0, true, false, "Windows", true);
 	private int q = 0;
+	JPanel topPanel = new JPanel();
+	JPanel bottomPanel = new JPanel();
 	JPanel m = new JPanel();
 	JPanel p = new JPanel();
 	JFrame CreatePCUiFrame = new JFrame("Create PC modal:");
+	JLabel currentLabel = new JLabel("Add a component to the list");
 	private boolean chooseArrayMade = false;
 	private boolean chosenArrayMade = false;
+	private boolean backButtonClicked = false;
 
 	public CreatePCUI(Customer currentCustomer) {
 		System.out.println("[debug] : ****** Starting CreatePCUI Class  ******");
@@ -51,7 +56,7 @@ public class CreatePCUI extends JPanel{
 		
 		JFrame CreatePCUiFrame = new JFrame("Create PC modal:");
 		CreatePCUiFrame.setBackground(new Color(0,100,200));
-		CreatePCUiFrame.setLayout(new BorderLayout(5,5));
+		CreatePCUiFrame.setLayout(new BorderLayout(200,200));
 		JLabel productsListJLabel = new JLabel("Products");
 		CreatePCUiFrame.add(productsListJLabel, BorderLayout.NORTH);
 		productsListJLabel.setFont(new Font("Dialog",Font.BOLD,20));
@@ -66,45 +71,95 @@ public class CreatePCUI extends JPanel{
 			e.printStackTrace();
 		}
 		
-		populateArrayOfProducts();
+		
 		
 		
 		JButton addBtn = new JButton("Add");
+		JButton backBtn = new JButton("Back");
+		JButton buyBtn = new JButton("Buy");
+		bottomPanel.setVisible(false);
+		bottomPanel.add(buyBtn);
+		buyBtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent evt) {
+				System.out.println("[info]  : ------ Buy button clicked (CreatePCUI Customer) ------");
+				try {
+					ProductList createNewProductList = new ProductList(currentDesk.getComponents(), currentCustomer);
+				} 
+				catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
+		
+		
+		
 		addBtn.addActionListener(new ActionListener() {
-		    @Override
-		    public void actionPerformed(ActionEvent evt) {
-		    	System.out.println("[info]  : ------ Add button clicked (CreatePCUI Customer) ------");
-		    	
-		    	int indexOfSelectedComponents = choices.getSelectedIndex();
-		    	System.out.println(indexOfSelectedComponents);
-		    	if (indexOfSelectedComponents == -1){
-		    		indexOfSelectedComponents = 0;
-		    	}
-		    	String part ="";
+			@Override
+			public void actionPerformed(ActionEvent evt) {
+				System.out.println("[info]  : ------ Add button clicked (CreatePCUI Customer) ------");
+
+				int indexOfSelectedComponents = choices.getSelectedIndex();
+				System.out.println(indexOfSelectedComponents);
+				if (indexOfSelectedComponents == -1){
+					indexOfSelectedComponents = 0;
+				}
+				System.out.println(q);
+				String part ="";
 				switch(q) {
-				case 0 : part = "CPU"; break;
-				case 1 : part = "RAM"; break;
+				case 0 : part = "MOT"; break;
+				case 1 : part = "CPU"; break;
 				case 2 : part = "GPU"; break;
-				case 3 : part = "MON"; break;
+				case 3 : part = "RAM"; break;
+				case 4 : part = "MEM"; break;
+				case 5 : part = "MON"; break;
+				case 6 : part = "KEY"; break;
+				case 7 : part = "MOU"; break;
+				case 8 : part = "SPE"; break;
 				}
 				int y =0;
 				int u = 0;
-		    	while (y < productsInFile.size() && u <=indexOfSelectedComponents) {
 
-		    		System.out.println("**************");
-		    		Product someProduct = productsInFile.get(y);
-		    		if(someProduct.getProductName().equals(part)) {
-						  u++;
-		    		}
-		    		y++;
-		    		
-		    	}
-		    	currentDesk.addProduct(productsInFile.get(y+u-2));
-		    	q++;
-		    	populateArrayOfProducts();
-		    }
+				while (y < productsInFile.size() && u <=indexOfSelectedComponents) {
+
+					System.out.println("**************");
+					Component someProduct = productsInFile.get(y);
+					if(someProduct.getProductName().substring(0, Math.min(someProduct.getProductName().length(), 3)).equals(part)) {
+						u++;
+					}
+					y++;
+
+				}
+				currentDesk.addProduct(productsInFile.get(y+u-2));
+				q++;
+				populateArrayOfProducts();
+			}
 		});
 		m.add(addBtn);
+		populateArrayOfProducts();
+		backBtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent evt) {
+				System.out.println("[info]  : ------ Back button clicked (CreatePCUI Customer) ------");
+				if(chosenArrayMade){
+					currentDesk.getComponents().remove(currentDesk.getComponents().size() - 1);
+					if ( q >= 8) {
+						m.add(addBtn);
+						m.add(choices);
+						currentLabel.setVisible(true);
+					}
+					q--;
+					System.out.println("BACK " +q );
+					backButtonClicked = true;
+					populateArrayOfProducts();
+					backButtonClicked = false;
+				}
+			}
+		});
+		
+		p.add(backBtn);
+		
 		
 		
 
@@ -112,6 +167,7 @@ public class CreatePCUI extends JPanel{
 	public void populateArrayOfProducts() {
 		if (choices != null ) {
 			choices.removeAll();
+			
 		}
 		if(chosen != null) {
 			chosen.removeAll();
@@ -123,49 +179,90 @@ public class CreatePCUI extends JPanel{
 			model.removeAllElements();
 		}
 		String part ="";
-		switch(q) {
-		case 0 : part = "CPU"; break;
-		case 1 : part = "RAM"; break;
-		case 2 : part = "GPU"; break;
-		case 3 : part = "MON"; break;
-		}
-		for(int i = 0; i < productsInFile.size(); i++){
-			   Product someProduct = productsInFile.get(i);
-			   if(someProduct.getProductName().equals(part)) {
-				   model.addElement(someProduct.getProductUIDetails());
-			   }
-			   choices = new JList(model);
+		boolean endOfFileReached = false;
+		while (model.isEmpty() && !endOfFileReached)
+		{
+			switch(q) {
+			case 0 : part = "MOT"; break;
+			case 1 : part = "CPU"; break;
+			case 2 : part = "GPU"; break;
+			case 3 : part = "RAM"; break;
+			case 4 : part = "MEM"; break;
+			case 5 : part = "MON"; break;
+			case 6 : part = "KEY"; break;
+			case 7 : part = "MOU"; break;
+			case 8 : part = "SPE"; break;
+			}
+			for(int i = 0; i < productsInFile.size(); i++){
+				Product someProduct = productsInFile.get(i);
+				if(someProduct.getProductName().equals(part)) {
+					model.addElement(someProduct.getProductUIDetails());
+				}
+				choices = new JList(model);
+			}
+			if (model.isEmpty()) {
+				if (backButtonClicked == true)
+				{
+					q--;
+					bottomPanel.setVisible(false);;
+					
+				}
+				else {
+					if(q > 8) {
+						endOfFileReached = true;
+						m.removeAll();
+						currentLabel.setVisible(false);
+						bottomPanel.setVisible(true);
+						
+					}
+					System.out.println(q);
+					q++;
+				}
+			}
+
 		}
 		if (choices != null && !chooseArrayMade)
 		{
 			m.add(choices);
 			chooseArrayMade = true;
 		}
+		String labelPart ="";
+		switch(part) {
+		case "MOT" : labelPart = "Motherboard"; break;
+		case "CPU" : labelPart = "CPU"; break;
+		case "GPU" : labelPart = "GPU"; break;
+		case "RAM" : labelPart = "RAM"; break;
+		case "MEM" : labelPart = "Memory Drive"; break;
+		case "MON" : labelPart = "Monitor"; break;
+		case "KEY" : labelPart = "Keyboard"; break;
+		case "MOU" : labelPart = "Mouse"; break;
+		case "SPE" : labelPart = "Speaker System"; break;
+		}
+		currentLabel.setText("Please pick a " + labelPart + " for your PC" );
+		
+		
 		int i = 0;
-		ArrayList<Component> chosenComps= currentDesk.getComponents(); 
-		Iterator<Component> it = chosenComps.iterator();
-		System.out.println("Hi");
+		ArrayList<Product> chosenComps= currentDesk.getComponents(); 
+		Iterator<Product> it = chosenComps.iterator();
 		while (it.hasNext()){
-			System.out.println("Hello");
 			i++;
-			System.out.println("Here!!!!");
-			Component someComp = it.next();
+			Product someComp = it.next();
 			System.out.println(someComp.getProductName());
-			modelChosen.addElement(someComp.getProductName());
+			modelChosen.addElement(someComp.getProductUIDetails());
 			chosen = new JList(modelChosen);
 			
 		}
 		
-		
-		System.out.println("Made it to chosen");
 		if (chosen != null && !chosenArrayMade){
 			p.add(chosen);
 			chosenArrayMade = true;
 		}
-		
+		topPanel.add(currentLabel);
+		CreatePCUiFrame.add(bottomPanel, BorderLayout.SOUTH);
+		CreatePCUiFrame.add(topPanel, BorderLayout.NORTH);
 		CreatePCUiFrame.add(m, BorderLayout.WEST);
 		CreatePCUiFrame.add(p, BorderLayout.EAST);
-		CreatePCUiFrame.setSize(400, 500);
+		CreatePCUiFrame.setSize(800, 500);
 		CreatePCUiFrame.setVisible(true);
 	}
 }

@@ -4,13 +4,13 @@ import java.util.ArrayList;
 
 public interface Component {
 
-    public void addProduct(Component component);
+    public void addProduct(Product component);
 
-    public ArrayList<Component> getComponents();
+    public ArrayList<Product> getComponents();
 
-    public void removeProduct(Component component);
+    public void removeProduct(Product component);
     
-    public Component getChildatIndex(int i); 
+    public Product getChildatIndex(int i); 
     
     public int getProductId();
     
