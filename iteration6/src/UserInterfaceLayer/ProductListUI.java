@@ -74,9 +74,28 @@ public class ProductListUI extends JFrame {
 		    	System.exit(0);
 		    }
 		});
+   		JButton addNewGroupDiscount = new JButton("Add New Group Discount");
+   		addNewGroupDiscount.addActionListener(new ActionListener() {
+   		    @Override
+   		    public void actionPerformed(ActionEvent evt) {
+   		    	System.out.println("[info]  : ------ Add New Group Discount button clicked (ProductListUI Admin) ------");
+
+   		    	ProductListUiFrame.setVisible(false);
+   		    	ProductListUiFrame.dispose();
+   		        try {
+   		        	AddNewGroupDiscountUI add = new AddNewGroupDiscountUI(admin);
+   		    		add.display();
+   				} 
+   		        catch (IOException e) {
+   					// TODO Auto-generated catch block
+   					e.printStackTrace();
+   					}
+   		    	}
+   			});
 
    		JPanel controls = new JPanel(new FlowLayout(FlowLayout.CENTER,5,2));
    		controls.setBorder(new TitledBorder("You are logged in as an Admin user"));
+   		controls.add(addNewGroupDiscount);
    		controls.add(addNewProductDiscount);
    		controls.add(addNewProductButton);
       	controls.add(quitButton);
@@ -152,6 +171,12 @@ public class ProductListUI extends JFrame {
 		    	System.out.println("[info]  : ------ Create PC button clicked (ProductListUI Customer) ------");
 		    	
 		    	// Create PC code called.
+				try {
+					CreatePC createPC = new CreatePC(customer);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 		    }
 		});
 		m.add(createPcB);
@@ -178,7 +203,7 @@ public class ProductListUI extends JFrame {
 				try {
 					ProductList createNewProductList = new ProductList(boughtbought, customer);
 				} 
-				catch (FileNotFoundException e) {
+				catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
@@ -215,3 +240,4 @@ public class ProductListUI extends JFrame {
 			System.out.println(boughtbought.get(i).getProductDetails());
 	}
 }
+

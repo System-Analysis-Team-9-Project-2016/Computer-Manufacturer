@@ -10,8 +10,8 @@ import BusinessLayer.Subject;
  * This class models a Product that can be sold in
  * the on-line e-commerce system example.
  */
-//import BusinessLayer.ProductClasses.Component;
-    
+
+public class Product implements Component, Subject {
     private int productId;
     private String productName;
     private boolean isActive;
@@ -19,6 +19,7 @@ import BusinessLayer.Subject;
     private double unitCost;
     private int stock;
     private ArrayList<Observer> observers;
+    private ArrayList<Component> components;
 
     /**
      * Construct a new product using the provided item
@@ -39,16 +40,24 @@ import BusinessLayer.Subject;
         this.isActive = isActive;
         this.isProductDiscount = isProductDiscount;
         observers = new ArrayList<Observer>();
+        components = new ArrayList<Component>();
     }
-	public void addProduct(Component component) {
+    
+    public void addProduct(Component component) {
+    	components.add(component);
     }
+    
     public ArrayList<Component> getComponents() {
+        return components;
     }
 
     public void removeProduct(Component component) {
+    	components.remove(component);
     }
     
     public Component getChildatIndex(int i) {
+        return components.get(i);
+    }
     
     /**
      * Get the ID of this Product.
@@ -101,9 +110,9 @@ import BusinessLayer.Subject;
     
     public void setProductActive()
     {
-	    this.isActive = true;
+        this.isActive = true;
     }
-   	
+    
     public void setProductDiscount(double unitCost) {
         this.isProductDiscount =  true;
         this.unitCost = unitCost;
@@ -111,10 +120,10 @@ import BusinessLayer.Subject;
     
     public String getProductStatus()
     {
-	    String statusString = "";
-	    if(true == isActive)			statusString = "Product is available";
-	    else if(true == isProductDiscount)	statusString = "Product is on sale";
-	    return statusString;
+        String statusString = "";
+        if(true == isActive)            statusString = "Product is available";
+        else if(true == isProductDiscount)  statusString = "Product is on sale";
+        return statusString;
     }
     
 
@@ -130,34 +139,34 @@ import BusinessLayer.Subject;
     }
     
     public String getProductUIDetails(){
-    	return  this.productName + "  \u20ac" + this.unitCost + "  " + this.stock;
+        return  this.productName + "  \u20ac" + this.unitCost + "  " + this.stock;
     }
     public String toString(){
-    	return "" + this.productId + "," + this.productName +","  + this.stock + "," + this.unitCost + "," + this.isActive + "," 
-    			+ this.isProductDiscount;
+        return "" + this.productId + "," + this.productName +","  + this.stock + "," + this.unitCost + "," + this.isActive + "," 
+                + this.isProductDiscount;
 
 
     }
     
     @Override
     public void registerObserver(Observer o) {
-    	observers.add(o);
+        observers.add(o);
 
     }
 
     @Override
     public void notifyObservers() throws IOException {
-    	Observer o;
-    	try {
-    		for(int i = 0; i < observers.size();i++ )
-    		{
-    			o = observers.get(i);
-    			o.Update(this);
-    		}
-    	} catch (Exception e) {
-    		// TODO Auto-generated catch block
-    		e.printStackTrace();
-    	}
+        Observer o;
+        try {
+            for(int i = 0; i < observers.size();i++ )
+            {
+                o = observers.get(i);
+                o.Update(this);
+            }
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
 
     }
 }
