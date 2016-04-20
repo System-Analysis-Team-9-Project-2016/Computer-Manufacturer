@@ -1,8 +1,11 @@
 package BusinessLayer.OrderClasses;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import BusinessLayer.ProductClasses.Product;
+import DataLayer.DataControl;
 
 public class OrderDetail {
 	
@@ -10,11 +13,25 @@ public class OrderDetail {
 	private ArrayList<Product> orderProducts;
 	private double totalCost;
 
-	OrderDetail (int orderId, ArrayList<Product> orderProducts) {
+	OrderDetail (int orderId, ArrayList<Product> orderProducts) throws IOException {
 		this.orderId = orderId;
 		this.orderProducts = orderProducts;
 		for (int i = 0; i < orderProducts.size(); i++)
-			totalCost += orderProducts.get(i).getUnitCost();
+			this.totalCost += orderProducts.get(i).getUnitCost();
+		// Add shipping cost
+		ArrayList<GroupDiscount> groupDiscounts = DataControl.getAllGroupDiscountsFromFile();
+		double maxDiscount = 0;
+		GroupDiscount g;
+		for(int j = 0;j < groupDiscounts.size();j++){
+			g = groupDiscounts.get(j);
+			if(g.areProductsValid(orderProducts)){
+				if(g.getDiscount() > maxDiscount)
+					maxDiscount = g.getDiscount();
+				//System.out.println("Found Discount");
+			}
+		}
+		totalCost = totalCost * (1 - (maxDiscount / 100));
+		this.totalCost += 5.0;
 	}
 
 	public int [] getOrderProductIds() {
@@ -69,3 +86,5 @@ public class OrderDetail {
 			totalCost += orderProducts.get(i).getUnitCost();
 	}
 }
+
+

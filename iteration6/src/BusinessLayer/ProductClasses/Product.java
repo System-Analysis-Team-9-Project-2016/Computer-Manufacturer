@@ -12,6 +12,7 @@ import BusinessLayer.Subject;
  */
 
 public class Product implements Component, Subject {
+
     private int productId;
     private String productName;
     private boolean isActive;
@@ -49,6 +50,7 @@ public class Product implements Component, Subject {
     
     public ArrayList<Component> getComponents() {
         return components;
+
     }
 
     public void removeProduct(Component component) {

@@ -1,5 +1,6 @@
 package BusinessLayer.OrderClasses;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -22,7 +23,7 @@ public class Order {
 	private boolean isProcessedOrder;
 	private boolean isCancelledOrder;
 	
-	public Order(int orderId, int customerId, String customerName, int shippingId, ArrayList<Product> orderProducts) {
+	public Order(int orderId, int customerId, String customerName, int shippingId, ArrayList<Product> orderProducts) throws IOException {
 
 		this.orderDetail = new OrderDetail(orderId, orderProducts);
 		this.shippingInfo = new ShippingInfo(shippingId);
