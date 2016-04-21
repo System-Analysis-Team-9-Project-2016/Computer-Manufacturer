@@ -17,7 +17,7 @@ public class Product implements Component, Subject {
     private String productName;
     private boolean isActive;
     private boolean isProductDiscount;
-    private double unitCost;
+    protected double unitCost;
     private int stock;
     private ArrayList<Observer> observers;
     private ArrayList<Product> components;

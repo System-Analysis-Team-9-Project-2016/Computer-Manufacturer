@@ -19,5 +19,13 @@ public class Desktop extends ComputerSystem {
   public void setGamingSystem(boolean gamingSystem) {
       this.gamingSystem = gamingSystem;
   }
+  
+  public double getUnitCost() {
+		  for(int i = 0; i<this.getComponents().size();i++) {
+			  unitCost = unitCost + this.getComponents().get(i).unitCost;
+		  }
+	  }
+	  return unitCost;
+  }
 
 }

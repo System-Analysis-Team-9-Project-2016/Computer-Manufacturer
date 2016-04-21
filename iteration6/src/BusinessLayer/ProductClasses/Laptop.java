@@ -46,4 +46,12 @@ public class Laptop extends ComputerSystem {
     public void setScreenSize(int screenSize) {
         this.screenSize = screenSize;
     }
+    
+    public double getUnitCost() {
+  		  for(int i = 0; i<this.getComponents().size();i++) {
+  			  unitCost = unitCost + this.getComponents().get(i).unitCost;
+  		  }
+  	  }
+  	  return unitCost;
+    }
 }
