@@ -2,17 +2,10 @@ package BusinessLayer.ProductClasses;
 
 public class ComputerSystem extends Product {
 
-    //private CPU systemCPU;
-    //private GPU systemGPU;
-    //private Motherboard systemMotherboard;
-    //private RAM systemRam;
     private String OS;
 
     public ComputerSystem(int productId, String productName, int stock, double unitCost, boolean isActive, boolean isProductDiscount, String OS) {
         super(productId, productName, stock, unitCost, isActive, isProductDiscount);
-        //this.systemCPU = systemCPU;
-        //this.systemGPU = systemGPU;
-        //this.systemMotherboard = systemMotherboard;
         this.OS = OS;
     }
 
@@ -31,33 +24,6 @@ public class ComputerSystem extends Product {
     }
     */
 
-//   public void setSystemCPU(CPU systemCPU) {
-//        this.systemCPU = systemCPU;
-//    }
-//
-//    public GPU getSystemGPU() {
-//        return systemGPU;
-//    }
-//
-//    public void setSystemGPU(GPU systemGPU) {
-//        this.systemGPU = systemGPU;
-//    }
-//
-//    public Motherboard getSystemMotherboard() {
-//        return systemMotherboard;
-//    }
-
-//    public void setSystemMotherboard(Motherboard systemMotherboard) {
-//        this.systemMotherboard = systemMotherboard;
-//    }
-//
-//    public RAM getSystemRam() {
-//        return systemRam;
-//    }
-//
-//    public void setSystemRam(RAM systemRam) {
-//        this.systemRam = systemRam;
-//    }
 
     public String getOS() {
         return OS;
