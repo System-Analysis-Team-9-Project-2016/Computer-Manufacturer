@@ -205,6 +205,78 @@ public class DataControl {
 		out.close();
 		
 	}
+	
+	public static void factoryDesignPatternSearch() throws FileNotFoundException {
+		File searchTextFile = new File(productFileName);
+		ArrayList<Product> allFileProducts = new ArrayList<Product>();
+		Scanner lineIn = new Scanner(searchTextFile); 
+		productFactoryDesign productFactory = new productFactoryDesign();
+		while(lineIn.hasNextLine()){
+			String aLineFromFile = lineIn.nextLine();
+			String[] splitLineFromFile = aLineFromFile.split(",");
+			switch(splitLineFromFile[1]){
+			case "CPU":
+				CPU cCPU = productFactory.getCPU(Integer.parseInt(splitLineFromFile[0]), splitLineFromFile[1], Integer.parseInt(splitLineFromFile[2]), Double.parseDouble(splitLineFromFile[3]), Boolean.parseBoolean(splitLineFromFile[4]), Boolean.parseBoolean(splitLineFromFile[5]), 
+						splitLineFromFile[6], splitLineFromFile[7], Double.parseDouble(splitLineFromFile[8]));
+				allFileProducts.add(cCPU);
+				break;
+			case "RAM":
+				RAM cRAM = productFactory.getRAM(Integer.parseInt(splitLineFromFile[0]), splitLineFromFile[1], Integer.parseInt(splitLineFromFile[2]), Double.parseDouble(splitLineFromFile[3]), Boolean.parseBoolean(splitLineFromFile[4]), Boolean.parseBoolean(splitLineFromFile[5])
+						,splitLineFromFile[6], splitLineFromFile[7], Double.parseDouble(splitLineFromFile[8]));
+				allFileProducts.add(cRAM);
+				break;
+			case "GPU:":
+				GPU cGPU = productFactory.getGPU(Integer.parseInt(splitLineFromFile[0]), splitLineFromFile[1], Integer.parseInt(splitLineFromFile[2]), Double.parseDouble(splitLineFromFile[3]), Boolean.parseBoolean(splitLineFromFile[4]), Boolean.parseBoolean(splitLineFromFile[5])
+						,splitLineFromFile[6], Boolean.parseBoolean(splitLineFromFile[7]), Integer.parseInt(splitLineFromFile[8]));
+				allFileProducts.add(cGPU);
+				break;		
+			case "Keyboard":
+				Keyboard cKeyboard = productFactory.getKeyboard(Integer.parseInt(splitLineFromFile[0]), splitLineFromFile[1], Integer.parseInt(splitLineFromFile[2]), Double.parseDouble(splitLineFromFile[3]), Boolean.parseBoolean(splitLineFromFile[4]), Boolean.parseBoolean(splitLineFromFile[5])
+						, splitLineFromFile[6], Boolean.parseBoolean(splitLineFromFile[7]));
+				allFileProducts.add(cKeyboard);
+				break;
+			case "MemoryDrives":
+				MemoryDrives cMemory = productFactory.getMemory(Integer.parseInt(splitLineFromFile[0]), splitLineFromFile[1], Integer.parseInt(splitLineFromFile[2]), Double.parseDouble(splitLineFromFile[3]), Boolean.parseBoolean(splitLineFromFile[4]), Boolean.parseBoolean(splitLineFromFile[5])
+						, Boolean.parseBoolean(splitLineFromFile[6]), Integer.parseInt(splitLineFromFile[7]), splitLineFromFile[8]);
+				allFileProducts.add(cMemory);
+				break;
+			case "Monitor":
+				Monitor cMonitor = productFactory.getMonitor(Integer.parseInt(splitLineFromFile[0]), splitLineFromFile[1], Integer.parseInt(splitLineFromFile[2]), Double.parseDouble(splitLineFromFile[3]), Boolean.parseBoolean(splitLineFromFile[4]), Boolean.parseBoolean(splitLineFromFile[5])
+						,splitLineFromFile[6], Boolean.parseBoolean(splitLineFromFile[7]), Boolean.parseBoolean(splitLineFromFile[8]));
+				allFileProducts.add(cMonitor);
+				break;
+			case "Mouse":
+				Mouse cMouse = productFactory.getMouse(Integer.parseInt(splitLineFromFile[0]), splitLineFromFile[1], Integer.parseInt(splitLineFromFile[2]), Double.parseDouble(splitLineFromFile[3]), Boolean.parseBoolean(splitLineFromFile[4]), Boolean.parseBoolean(splitLineFromFile[5])
+						,Integer.parseInt(splitLineFromFile[6]), Boolean.parseBoolean(splitLineFromFile[7]), Boolean.parseBoolean(splitLineFromFile[8]));
+				allFileProducts.add(cMouse);
+				break;
+			case "Speaker":
+				Speaker cSpeaker = productFactory.getSpeaker(Integer.parseInt(splitLineFromFile[0]), splitLineFromFile[1], Integer.parseInt(splitLineFromFile[2]), Double.parseDouble(splitLineFromFile[3]), Boolean.parseBoolean(splitLineFromFile[4]), Boolean.parseBoolean(splitLineFromFile[5])
+						,Integer.parseInt(splitLineFromFile[6]), Boolean.parseBoolean(splitLineFromFile[7]), Boolean.parseBoolean(splitLineFromFile[8]), Integer.parseInt(splitLineFromFile[9]));
+				allFileProducts.add(cSpeaker);
+				break;
+			case "Laptop":
+				Laptop cLaptop = productFactory.getLaptop(Integer.parseInt(splitLineFromFile[0]), splitLineFromFile[1], Integer.parseInt(splitLineFromFile[2]), Double.parseDouble(splitLineFromFile[3]), Boolean.parseBoolean(splitLineFromFile[4]), Boolean.parseBoolean(splitLineFromFile[5])
+						, splitLineFromFile[6], Boolean.parseBoolean(splitLineFromFile[7]), Integer.parseInt(splitLineFromFile[8]), Integer.parseInt(splitLineFromFile[9]), Double.parseDouble(splitLineFromFile[10]));
+				allFileProducts.add(cLaptop);
+				break;
+			case "Tablet":
+				Tablet cTablet = productFactory.getTablet(Integer.parseInt(splitLineFromFile[0]), splitLineFromFile[1], Integer.parseInt(splitLineFromFile[2]), Double.parseDouble(splitLineFromFile[3]), Boolean.parseBoolean(splitLineFromFile[4]), Boolean.parseBoolean(splitLineFromFile[5])
+						, splitLineFromFile[6], Boolean.parseBoolean(splitLineFromFile[7]), Integer.parseInt(splitLineFromFile[8]), Integer.parseInt(splitLineFromFile[9]), Boolean.parseBoolean(splitLineFromFile[10]), Double.parseDouble(splitLineFromFile[11]));
+				allFileProducts.add(cTablet);
+				break;
+			case "Desktop":
+				Desktop cDesktop = productFactory.getDesktop(Integer.parseInt(splitLineFromFile[0]), splitLineFromFile[1], Integer.parseInt(splitLineFromFile[2]), Double.parseDouble(splitLineFromFile[3]), Boolean.parseBoolean(splitLineFromFile[4]), Boolean.parseBoolean(splitLineFromFile[5])
+						, splitLineFromFile[6], Boolean.parseBoolean(splitLineFromFile[7]));
+				allFileProducts.add(cDesktop);
+				break;
+			}
+			//Product factoryProduct = p.getComponent(splitLineFromFile[1]);
+			//allFileProducts.add(factoryProduct);
+
+		}
+		lineIn.close();
+	}
 
 //########################################################################################################################################
 //ordersList.txt Methods
