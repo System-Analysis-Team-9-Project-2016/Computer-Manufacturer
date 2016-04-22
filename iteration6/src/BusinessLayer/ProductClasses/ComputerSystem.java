@@ -1,28 +1,37 @@
 package BusinessLayer.ProductClasses;
 
-public class ComputerSystem extends Product {
+import java.util.ArrayList;
+
+public class ComputerSystem extends Product implements System{
 
     private String OS;
+
+    private ArrayList<Product> components;
 
     public ComputerSystem(int productId, String productName, int stock, double unitCost, boolean isActive, boolean isProductDiscount, String OS) {
         super(productId, productName, stock, unitCost, isActive, isProductDiscount);
         this.OS = OS;
+        components = new ArrayList<Product>();
     }
 
 
-    /**
-    public static void main(String[] args) {
-        CPU compCPU = new CPU(1, "BIGCPU", 11, 1100.23, true, false, "7 Series", "BIGSOCKET", 3.7);
-        ComputerSystem me = new ComputerSystem(1, "Hello", 11, 11.23, true, false, compCPU, "Titan", "Windows 7");
-        System.out.println("Your name is " + compCPU.getProductName());
-        System.out.println("My name is " + me);
+    public void addProduct(Product component) {
+    	components.add(component);
     }
-     */
+    
+    public ArrayList<Product> getComponents() {
+        return components;
 
-    /**public CPU getSystemCPU() {
-        return systemCPU;
     }
-    */
+
+    public void removeProduct(Product component) {
+    	components.remove(component);
+    }
+    
+    public Product getChildatIndex(int i) {
+        return components.get(i);
+    }
+    
 
 
     public String getOS() {

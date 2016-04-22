@@ -48,6 +48,7 @@ public class Laptop extends ComputerSystem {
     }
     
     public double getUnitCost() {
+  	  if(!this.getComponents().isEmpty()){
   		  for(int i = 0; i<this.getComponents().size();i++) {
   			  unitCost = unitCost + this.getComponents().get(i).unitCost;
   		  }

@@ -20,7 +20,6 @@ public class Product implements Component, Subject {
     protected double unitCost;
     private int stock;
     private ArrayList<Observer> observers;
-    private ArrayList<Product> components;
 
     /**
      * Construct a new product using the provided item
@@ -41,24 +40,6 @@ public class Product implements Component, Subject {
         this.isActive = isActive;
         this.isProductDiscount = isProductDiscount;
         observers = new ArrayList<Observer>();
-        components = new ArrayList<Product>();
-    }
-    
-    public void addProduct(Product component) {
-    	components.add(component);
-    }
-    
-    public ArrayList<Product> getComponents() {
-        return components;
-
-    }
-
-    public void removeProduct(Product component) {
-    	components.remove(component);
-    }
-    
-    public Product getChildatIndex(int i) {
-        return components.get(i);
     }
     
     /**

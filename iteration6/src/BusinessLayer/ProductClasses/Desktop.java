@@ -21,9 +21,10 @@ public class Desktop extends ComputerSystem {
   }
   
   public double getUnitCost() {
-		  for(int i = 0; i<this.getComponents().size();i++) {
-			  unitCost = unitCost + this.getComponents().get(i).unitCost;
-		  }
+		  if(!this.getComponents().isEmpty()){
+  		  for(int i = 0; i<this.getComponents().size();i++) {
+  			  unitCost = unitCost + this.getComponents().get(i).unitCost;
+  		  }
 	  }
 	  return unitCost;
   }
