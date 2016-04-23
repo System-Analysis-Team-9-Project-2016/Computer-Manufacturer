@@ -13,5 +13,5 @@
 113,Motherboard,28,84.99,true,false,LGA,A Series,Standard-ATX,DDR3
 114,Motherboard,34,82.49,true,false,PGA,B Series,Standard-ATX,DDR2
 115,Mouse,124,11.99,true,false,12000,true,true
-116,Speakers,432,28.99,true,false,20,true,false,true
-117,Speakers,97,49.95,true,false,100,true,true,true
+116,Speaker,432,28.99,true,false,20,true,false,true
+117,Speaker,97,49.95,true,false,100,true,true,true
