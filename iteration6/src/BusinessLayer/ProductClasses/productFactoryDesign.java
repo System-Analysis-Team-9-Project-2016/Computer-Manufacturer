@@ -45,6 +45,10 @@ public class productFactoryDesign {
 	public Desktop getDesktop(int productId, String productName, int stock, double unitCost, boolean isActive, boolean isProductDiscount, String OS, boolean gamingSystem){
 		return new Desktop(productId, productName, stock, unitCost, isActive, isProductDiscount, OS, gamingSystem);
 	}
+	
+	public Motherboard getMotherboard(int productId, String productName, int stock, double unitCost, boolean isActive, boolean isProductDiscount, String cpuSocketType, String series, String formFactor, String memoryStandard){
+		return new Motherboard(productId, productName, stock, unitCost, isActive, isProductDiscount, cpuSocketType, series, formFactor, memoryStandard);
+	}
 }
 
 	/*public Product getComponent(String productType){
