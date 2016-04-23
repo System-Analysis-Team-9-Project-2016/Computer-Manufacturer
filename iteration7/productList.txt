@@ -15,3 +15,4 @@
 115,Mouse,124,11.99,true,false,12000,true,true
 116,Speaker,432,28.99,true,false,20,true,false,2
 117,Speaker,97,49.95,true,false,100,true,true,2
+118,Monitor,80,479.99,true,false,1920,false,true

@@ -22,7 +22,7 @@ public class AddNewProduct {
 		cost = inCost;
 		stock = inStock;
 		
-		return inName.substring(0, 3).toUpperCase();
+		return this.name;
 		
 	}
 	
