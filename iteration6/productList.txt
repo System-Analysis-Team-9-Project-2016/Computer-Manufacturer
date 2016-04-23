@@ -7,8 +7,8 @@
 107,RAM,25,72.95,true,false,DDR2,Quad Channel,10.0
 108,GPU,53,49.99,true,false,4GB,true,4
 109,Keyboard,22,14.49,true,false,Cherry MX Blue,true
-110,MemoryDrive,89,67.99,true,false,false,1000,5400RPM
-111,MemoryDrive,47,79.95,true,false,false,1000,7200RPM
+110,MemoryDrives,89,67.99,true,false,false,1000,5400RPM
+111,MemoryDrives,47,79.95,true,false,false,1000,7200RPM
 112,Monitor,32,279.99,true,false,1080,false,true
 113,Motherboard,28,84.99,true,false,LGA,A Series,Standard-ATX,DDR3
 114,Motherboard,34,82.49,true,false,PGA,B Series,Standard-ATX,DDR2
