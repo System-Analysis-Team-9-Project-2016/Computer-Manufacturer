@@ -52,4 +52,9 @@ public class Motherboard extends Product {
     public String getSpecs() {
     	return "CPU Socket Type: " + cpuSocketType + " Series: " + series + " Form Factor: "  + formFactor + " Memory Standard: " + memoryStandard;
     }
+    
+    public String toString() {
+    	return super.toString() + "," + this.cpuSocketType + "," + this.series + "," + this.formFactor + "," + this.memoryStandard;
+    }
+
 }

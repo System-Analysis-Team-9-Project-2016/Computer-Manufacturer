@@ -39,4 +39,8 @@ public class CPU extends Product {
     public String getSpecs() {
     	return "Series: " + series + " Socket Type: " + CPUSocketType + " Operating Frequency: "  + OperatingFrequency;
     }
+    
+    public String toString(){
+            return super.toString() + "," + this.series + "," + this.CPUSocketType +","  + this.OperatingFrequency;
+    }
 }

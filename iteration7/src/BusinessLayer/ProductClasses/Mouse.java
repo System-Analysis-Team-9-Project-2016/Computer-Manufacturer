@@ -12,8 +12,7 @@ public class Mouse extends Product {
     }
 
     public String toString() {
-
-        return super.getProductName();
+    	return super.toString() + "," + this.dpi + "," + this.programmableButtons + "," + this.dpiSwitching;
     }
 
     public int getDpi() {

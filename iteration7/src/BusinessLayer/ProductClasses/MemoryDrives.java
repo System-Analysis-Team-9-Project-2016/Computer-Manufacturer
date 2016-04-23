@@ -36,6 +36,10 @@ public class MemoryDrives extends Product {
         this.RPM = RPM;
     }
     
+    public String toString() {
+    	return super.toString() + "," + this.desktopType + "," + this.driveCapacity + "," + this.RPM;
+    }
+    
     public String getSpecs() {
     	return "Type: " + desktopType + " Capacity: " + driveCapacity + " RPM: "  + RPM;
     }

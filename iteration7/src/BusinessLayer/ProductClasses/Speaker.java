@@ -16,8 +16,7 @@ public class Speaker extends Product {
     }
 
     public String toString() {
-
-        return super.getProductName();
+    	return super.toString() + "," + this.watts + "," + this.desktopControls + "," + this.subwoofer + "," + this.satelliteSpeakers;
     }
 
     public int getWatts() {
@@ -55,4 +54,6 @@ public class Speaker extends Product {
     public String getSpecs() {
     	return "Watts: " + watts + " Desktop Controls: " + desktopControls + " SubWoofer: "  + subwoofer + " Satellite Speakers: " + satelliteSpeakers;
     }
+    
+    
 }
