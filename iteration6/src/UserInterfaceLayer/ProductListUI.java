@@ -197,6 +197,41 @@ public class ProductListUI extends JFrame {
 		});
 		m.add(createLaptopB);
 		
+		JButton createComment = new JButton("Add Comment");
+		createComment.addActionListener(new ActionListener() {
+		    @Override
+		    public void actionPerformed(ActionEvent evt) {
+		    	System.out.println("[info]  : ------ Add Comment button clicked (ProductListUI Customer) ------");
+				try {
+					AddNewCommentUI addComment = new AddNewCommentUI(customer);
+					addComment.display();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		    }
+		});
+		m.add(createComment);
+		
+		JButton getComments = new JButton("Look at Comments");
+		getComments.addActionListener(new ActionListener() {
+		    @Override
+		    public void actionPerformed(ActionEvent evt) {
+		    	System.out.println("[info]  : ------ Get Comments button clicked (ProductListUI Customer) ------");
+				try {
+					GetCommentsUI getComment = new GetCommentsUI();
+					int selected = choices.getSelectedIndex();
+					productsAddedToCart = new ArrayList<Product>(DataControl.getAllProductsFromFile());
+					Product p = productsAddedToCart.get(selected);
+					getComment.display(p);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		    }
+		});
+		m.add(getComments);
+		
 		JPanel p = new JPanel();
 		
 		JButton cartB = new JButton("Check Out");
@@ -245,4 +280,9 @@ public class ProductListUI extends JFrame {
 			System.out.println(boughtbought.get(i).getProductDetails());
 	}
 }
+
+
+
+
+
 
