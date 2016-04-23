@@ -327,6 +327,7 @@ public class AddNewProductUI {
 	    		result = "," +  text0.getText();
 	    		result += "," +  text1.getText();
 	    		result += "," +  text2.getText();
+	    		result += "," +  text3.getText();
 	    		try{
 	    			 a.addProduct(result);
 	    			 averageFrame.setVisible(false);
