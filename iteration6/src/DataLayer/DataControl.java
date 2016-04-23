@@ -227,7 +227,7 @@ public class DataControl {
 						,splitLineFromFile[6], splitLineFromFile[7], Double.parseDouble(splitLineFromFile[8]));
 				allFileProducts.add(cRAM);
 				break;
-			case "GPU:":
+			case "GPU":
 				GPU cGPU = productFactory.getGPU(Integer.parseInt(splitLineFromFile[0]), splitLineFromFile[1], Integer.parseInt(splitLineFromFile[2]), Double.parseDouble(splitLineFromFile[3]), Boolean.parseBoolean(splitLineFromFile[4]), Boolean.parseBoolean(splitLineFromFile[5])
 						,splitLineFromFile[6], Boolean.parseBoolean(splitLineFromFile[7]), Integer.parseInt(splitLineFromFile[8]));
 				allFileProducts.add(cGPU);
