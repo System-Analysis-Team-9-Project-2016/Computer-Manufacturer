@@ -1,8 +1,8 @@
 package BusinessLayer.OrderClasses;
 
-public class ReceiptDecorator implements Receipt {
+abstract public class ReceiptDecorator extends Receipt {
 
-	protected Receipt receipt;
+	private Receipt receipt;
 	
 	public ReceiptDecorator(Receipt receipt) {
 		this.receipt = receipt;
@@ -10,6 +10,7 @@ public class ReceiptDecorator implements Receipt {
 	
 	@Override
 	public String printReceipt() {
-		return "test";
+		if (receipt != null) return receipt.printReceipt(); 
+		return null;
 	}
 }

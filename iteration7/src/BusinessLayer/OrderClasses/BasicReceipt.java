@@ -1,9 +1,9 @@
 package BusinessLayer.OrderClasses;
 
-public class BasicReceipt implements Receipt {
+public class BasicReceipt extends Receipt {
 
 	@Override
 	public String printReceipt() {
-		return "Basic Receipt";
+		return "Note: ";
 	}
 }

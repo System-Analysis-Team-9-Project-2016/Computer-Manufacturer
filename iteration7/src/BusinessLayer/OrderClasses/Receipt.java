@@ -1,6 +1,6 @@
 package BusinessLayer.OrderClasses;
 
-public interface Receipt {
+abstract public class Receipt {
 	
-	public String printReceipt();
+	abstract public String printReceipt();
 }

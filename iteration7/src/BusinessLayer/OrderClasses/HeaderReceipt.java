@@ -8,6 +8,6 @@ public class HeaderReceipt extends ReceiptDecorator {
 
 	@Override
 	public String printReceipt() {
-		return "<br>DCM Computing<br>Thank you for shopping with us!<br>Please do so again.<br><br>";
+		return super.printReceipt() + "<br>DCM Computing<br>";
 	}
 }
