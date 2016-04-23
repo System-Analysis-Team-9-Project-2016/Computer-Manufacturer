@@ -130,4 +130,8 @@ public class Order {
 		if (true == isCancelledOrder) 	orderStatusString = "Order has been cancelled!";
 		return orderStatusString;
 	}
+
+	public int getCustomerID() {
+		return this.customerId;
+	}
 }
