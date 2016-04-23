@@ -162,9 +162,9 @@ public class DataControl {
 		return isProductNotPresent;
 	}
 	
-	public static void writeNewProductToFile(String name, double cost, int stock, boolean isActive, boolean isDiscount) throws FileNotFoundException {
+	public static void writeNewProductToFile(String name, double cost, int stock, boolean isActive, boolean isDiscount, String details) throws FileNotFoundException {
 		int nextAvailableProductId = checkNextAvailableId(productFileName);
-		String lineToAppend = "\n" + nextAvailableProductId + "," + name + "," + stock + "," + cost + "," + isActive + "," + isDiscount;
+		String lineToAppend = "\n" + nextAvailableProductId + "," + name + "," + stock + "," + cost + "," + isActive + "," + isDiscount + details;
 		try {
 		    Files.write(Paths.get(productFileName), lineToAppend.getBytes(), StandardOpenOption.APPEND);
 		}

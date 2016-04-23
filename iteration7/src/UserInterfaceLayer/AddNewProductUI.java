@@ -141,7 +141,7 @@ public class AddNewProductUI {
 	    	@Override
 	    	public void actionPerformed(ActionEvent e){
 	    		String result;
-	    		result = text0.getText();
+	    		result = "," +  text0.getText();
 	    		result += "," +  text1.getText();
 	    		result += "," +  text2.getText();
 	    		try{

@@ -38,8 +38,8 @@ public class BusinessLayerDataControl extends DataControl {
 		return DataControl.isProductNotAlreadyPresent(productName);
 	}
 	
-	public static void writeNewProductToFile(String name, double cost, int stock, boolean isActive, boolean isDiscount) throws FileNotFoundException {
-		DataControl.writeNewProductToFile(name, cost, stock, isActive, isDiscount);
+	public static void writeNewProductToFile(String name, double cost, int stock, boolean isActive, boolean isDiscount, String details) throws FileNotFoundException {
+		DataControl.writeNewProductToFile(name, cost, stock, isActive, isDiscount, details);
 	}
 	
 	public static void reduceProductOrderStock(int [] orderProductIds) throws FileNotFoundException {

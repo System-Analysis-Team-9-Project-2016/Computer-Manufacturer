@@ -27,7 +27,7 @@ public class AddNewProduct {
 	}
 	
 	public void addProduct(String details) throws IOException{
-		BusinessLayerDataControl.writeNewProductToFile(name, cost, stock, true, false);
+		BusinessLayerDataControl.writeNewProductToFile(name, cost, stock, true, false, details);
 	}
 	
 	
