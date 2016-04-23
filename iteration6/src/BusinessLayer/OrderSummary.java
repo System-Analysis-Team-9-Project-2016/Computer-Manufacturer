@@ -1,17 +1,20 @@
 package BusinessLayer;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.ArrayList;
 
 import BusinessLayer.OrderClasses.*;
 import BusinessLayer.CustomerClasses.Customer;
 import DataLayer.DataControl;
 import BusinessLayer.OrderClasses.Order;
+import BusinessLayer.ProductClasses.Product;
 import UserInterfaceLayer.OrderSummaryUI;
 
 public class OrderSummary {
 
 	@SuppressWarnings("unused")
-	public OrderSummary(Order userOrder, Customer currentCustomer) throws FileNotFoundException {
+	public OrderSummary(Order userOrder, Customer currentCustomer) throws IOException {
 		System.out.println("[debug] : ****** Entering OrderSummary Class ******");
 		
 		// Write the new order to ordersList.txt
@@ -23,6 +26,23 @@ public class OrderSummary {
 		
 		// Reduce the stock amount of the products the customer is buying
 		DataControl.reduceProductOrderStock(userOrder.getOrderProductIds());
+		int[] orderProductIDs = userOrder.getOrderProductIds();
+		ArrayList<Product> myProducts = new ArrayList<Product>();
+		ArrayList<Product> allProducts = DataControl.getAllProductsFromFile();
+		for(int i = 0; i < orderProductIDs.length;i++){
+			for(int j = 0;j < allProducts.size(); j++){
+				if(orderProductIDs[i] == allProducts.get(j).getProductId()){
+					myProducts.add(allProducts.get(j));
+
+				}			
+			}
+		}
+		ProductList listOfProducts = new ProductList();
+		for(int i =0; i < myProducts.size();i++){
+			myProducts.get(i).registerObserver(listOfProducts);
+			myProducts.get(i).setStock(myProducts.get(i).getStock() - 1);
+			myProducts.get(i).notifyObservers();		
+		}
 
 		// Use Decorator Design pattern for printing receipt
 		Receipt headerReceipt = new HeaderReceipt(new BasicReceipt());
