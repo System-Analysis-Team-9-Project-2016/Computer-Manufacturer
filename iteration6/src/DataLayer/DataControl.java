@@ -208,7 +208,7 @@ public class DataControl {
 		
 	}
 	
-	public static void factoryDesignPatternSearch() throws FileNotFoundException {
+	public static ArrayList<Product> factoryDesignPatternSearch() throws FileNotFoundException {
 		File searchTextFile = new File(productFileName);
 		ArrayList<Product> allFileProducts = new ArrayList<Product>();
 		Scanner lineIn = new Scanner(searchTextFile); 
@@ -273,11 +273,9 @@ public class DataControl {
 				allFileProducts.add(cDesktop);
 				break;
 			}
-			//Product factoryProduct = p.getComponent(splitLineFromFile[1]);
-			//allFileProducts.add(factoryProduct);
-
 		}
 		lineIn.close();
+		return allFileProducts;
 	}
 	
 	public static void writeNewCommentToFile(int customerId, String comment ,String customerName) throws FileNotFoundException {
