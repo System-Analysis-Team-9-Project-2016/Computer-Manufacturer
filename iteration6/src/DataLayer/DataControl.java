@@ -272,6 +272,11 @@ public class DataControl {
 						, splitLineFromFile[6], Boolean.parseBoolean(splitLineFromFile[7]));
 				allFileProducts.add(cDesktop);
 				break;
+			case "Motherboard":
+				Motherboard cMotherboard = productFactory.getMotherboard(Integer.parseInt(splitLineFromFile[0]), splitLineFromFile[1], Integer.parseInt(splitLineFromFile[2]), Double.parseDouble(splitLineFromFile[3]), Boolean.parseBoolean(splitLineFromFile[4]), Boolean.parseBoolean(splitLineFromFile[5])
+						, splitLineFromFile[6], splitLineFromFile[7], splitLineFromFile[8], splitLineFromFile[9]);
+				allFileProducts.add(cMotherboard);
+				break;
 			}
 		}
 		lineIn.close();
