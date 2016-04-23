@@ -45,7 +45,7 @@ public class OrderSummary {
 		}
 */
 		// Use Decorator Design pattern for printing receipt
-		Receipt headerReceipt = new HeaderReceipt(new BasicReceipt());
+		Receipt headerReceipt = new ThankYouReceipt(new HeaderReceipt(new BasicReceipt()));
 		String postOrderDetails = headerReceipt.printReceipt();
 		
 		postOrderDetails += userOrder.getPostOrderDetails();	

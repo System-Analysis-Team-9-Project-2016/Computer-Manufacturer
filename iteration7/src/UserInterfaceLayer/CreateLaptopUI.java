@@ -42,7 +42,7 @@ public class CreateLaptopUI extends JPanel{
 	JPanel bottomPanel = new JPanel();
 	JPanel m = new JPanel();
 	JPanel p = new JPanel();
-	JFrame CreateLaptopUiFrame = new JFrame("Create laptop modal:");
+	JFrame CreateLaptopUiFrame = new JFrame("Create laptop model:");
 	JLabel currentLabel = new JLabel("Add a component to the list");
 	private boolean chooseArrayMade = false;
 	private boolean chosenArrayMade = false;
@@ -85,6 +85,7 @@ public class CreateLaptopUI extends JPanel{
 			public void actionPerformed(ActionEvent evt) {
 				System.out.println("[info]  : ------ Buy button clicked (CreateLaptopUI Customer) ------");
 				try {
+					CreateLaptopUiFrame.setVisible(false);
 					ProductList createNewProductList = new ProductList(currentDesk.getComponents(), currentCustomer);
 				} 
 				catch (IOException e) {
@@ -109,11 +110,11 @@ public class CreateLaptopUI extends JPanel{
 				System.out.println(q);
 				String part ="";
 				switch(q) {
-				case 0 : part = "MOT"; break;
+				case 0 : part = "Motherboard"; break;
 				case 1 : part = "CPU"; break;
 				case 2 : part = "GPU"; break;
 				case 3 : part = "RAM"; break;
-				case 4 : part = "MEM"; break;
+				case 4 : part = "MemoryDrives"; break;
 				}
 				int y =0;
 				int u = 0;
@@ -180,11 +181,11 @@ public class CreateLaptopUI extends JPanel{
 		while (model.isEmpty() && !endOfFileReached)
 		{
 			switch(q) {
-			case 0 : part = "MOT"; break;
+			case 0 : part = "Motherboard"; break;
 			case 1 : part = "CPU"; break;
 			case 2 : part = "GPU"; break;
 			case 3 : part = "RAM"; break;
-			case 4 : part = "MEM"; break;
+			case 4 : part = "MemoryDrives"; break;
 			}
 			for(int i = 0; i < productsInFile.size(); i++){
 				Product someProduct = productsInFile.get(i);
@@ -221,11 +222,11 @@ public class CreateLaptopUI extends JPanel{
 		}
 		String labelPart ="";
 		switch(part) {
-		case "MOT" : labelPart = "Motherboard"; break;
+		case "Motherboard" : labelPart = "Motherboard"; break;
 		case "CPU" : labelPart = "CPU"; break;
 		case "GPU" : labelPart = "GPU"; break;
 		case "RAM" : labelPart = "RAM"; break;
-		case "MEM" : labelPart = "Memory Drive"; break;
+		case "MemoryDrives" : labelPart = "MemoryDrives"; break;
 		}
 		currentLabel.setText("Please pick a " + labelPart + " for your Laptop" );
 		

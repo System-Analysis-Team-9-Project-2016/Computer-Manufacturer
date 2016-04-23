@@ -48,7 +48,7 @@ public class GPU extends Product {
     }
     
     public String toString(){
-        return super.toString() + "," + this.memory + "," + this.virtualRealityReady +","  + this.displayPorts;
+    	 return super.toString() + "," + this.memory + "," + this.virtualRealityReady +","  + this.displayPorts;
     }
     
     public String getSpecs() {

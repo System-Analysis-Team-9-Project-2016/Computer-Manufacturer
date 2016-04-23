@@ -54,6 +54,4 @@ public class Speaker extends Product {
     public String getSpecs() {
     	return "Watts: " + watts + " Desktop Controls: " + desktopControls + " SubWoofer: "  + subwoofer + " Satellite Speakers: " + satelliteSpeakers;
     }
-    
-    
 }

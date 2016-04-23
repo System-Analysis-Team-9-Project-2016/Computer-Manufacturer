@@ -33,5 +33,4 @@ public class Keyboard extends Product {
     public String getSpecs() {
     	return "Key Switch Type: " + keySwitchType + " Backlit: " + backlit;
     }
-    
 }

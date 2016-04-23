@@ -43,6 +43,6 @@ public class RAM extends Product {
     }
     
     public String toString() {
-    	return super.toString() + "," + this.type + "," + this.multiChannel + "," + this.casLatency;
+    	 return super.toString() + "," + this.type + "," + this.multiChannel + "," + this.casLatency;
     }
 }

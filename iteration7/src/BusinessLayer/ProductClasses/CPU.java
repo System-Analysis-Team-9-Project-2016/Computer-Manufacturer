@@ -41,6 +41,6 @@ public class CPU extends Product {
     }
     
     public String toString(){
-            return super.toString() + "," + this.series + "," + this.CPUSocketType +","  + this.OperatingFrequency;
+    	 return super.toString() + "," + this.series + "," + this.CPUSocketType +","  + this.OperatingFrequency;
     }
 }

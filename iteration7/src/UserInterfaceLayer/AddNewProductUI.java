@@ -78,11 +78,12 @@ public class AddNewProductUI {
 	    		stock = Integer.parseInt( text2.getText());
 	    		try{
 	    		if(a.validateProduct(name))
+	    	        averageFrame.setVisible(false);
 	    			switch( a.process(name , cost , stock)){
 	    			case "CPU": displayAddCPU(a);break;
-	    			case "MON": displayAddMonitor(a);break;
+	    			case "Monitor": displayAddMonitor(a);break;
 	    			case "RAM": displayAddRam(a);break;
-	    			case "MTR": displayAddMotherboard(a);break;
+	    			case "Motherboard": displayAddMotherboard(a);break;
 	    			};
 	    		}
 	    		catch(IOException ex){
@@ -107,7 +108,6 @@ public class AddNewProductUI {
         averageFrame.setLocationByPlatform(true);
         averageFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         averageFrame.setVisible(true);
-        
 		
 	}
 	
@@ -147,7 +147,6 @@ public class AddNewProductUI {
 	    		try{
 	    			 a.addProduct(result);
 	    			 averageFrame.setVisible(false);
-	    			 ProductListUI createNewProductListUI = new ProductListUI(adminUser);
 	    		}
 	    		catch(IOException ex){
 	    			
@@ -208,7 +207,6 @@ public class AddNewProductUI {
 	    		try{
 	    			 a.addProduct(result);
 	    			 averageFrame.setVisible(false);
-	    			 ProductListUI createNewProductListUI = new ProductListUI(adminUser);
 	    		}
 	    		catch(IOException ex){
 	    			
@@ -268,7 +266,6 @@ public class AddNewProductUI {
 	    		try{
 	    			 a.addProduct(result);
 	    			 averageFrame.setVisible(false);
-	    			 ProductListUI createNewProductListUI = new ProductListUI(adminUser);
 	    		}
 	    		catch(IOException ex){
 	    			
@@ -333,7 +330,6 @@ public class AddNewProductUI {
 	    		try{
 	    			 a.addProduct(result);
 	    			 averageFrame.setVisible(false);
-	    			 ProductListUI createNewProductListUI = new ProductListUI(adminUser);
 	    		}
 	    		catch(IOException ex){
 	    			

@@ -91,7 +91,6 @@ public class AddNewGroupDiscountUI {
 						double discount = Double.parseDouble(text1.getText());
 						a.newGroupDiscount(added, discount);
 						averageFrame.setVisible(false);
-						ProductListUI createNewProductListUI = new ProductListUI(admin);
 					} catch (FileNotFoundException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();

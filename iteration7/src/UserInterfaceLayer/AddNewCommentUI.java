@@ -63,7 +63,8 @@ public class AddNewCommentUI {
    		fieldPanel.add(text1);
    		
    		
-   		
+
+        JFrame averageFrame = new JFrame("Comment Page");
    		
    		JPanel m = new JPanel();
 		model = new DefaultListModel<String>();
@@ -88,6 +89,7 @@ public class AddNewCommentUI {
 				Product p = customerProduct.get(selected);
 				try {
 					a.addComment(text1.getText(), p.getProductId() , c.getFirstName() + " " + c.getSurname());
+					averageFrame.setVisible(false);
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -113,7 +115,6 @@ public class AddNewCommentUI {
 		gui.add(m, BorderLayout.WEST);
 		m.setFont(new Font("Courier",Font.BOLD,14));
 
-        JFrame averageFrame = new JFrame("Comment Page");
         averageFrame.setContentPane(gui);
         averageFrame.pack();
         averageFrame.setLocationByPlatform(true);

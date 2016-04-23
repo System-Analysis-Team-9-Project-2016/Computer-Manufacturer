@@ -34,8 +34,6 @@ public class ProductListUI extends JFrame {
 		    public void actionPerformed(ActionEvent evt) {
 		    	System.out.println("[info]  : ------ Add New Product button clicked (ProductListUI Admin) ------");
 
-		    	ProductListUiFrame.setVisible(false);
-		    	ProductListUiFrame.dispose();
 		        try {
 		        	AddNewProductUI add = new AddNewProductUI(admin);
 		    		add.display();
@@ -53,8 +51,6 @@ public class ProductListUI extends JFrame {
 		    public void actionPerformed(ActionEvent evt) {
 		    	System.out.println("[info]  : ------ Add New Product Discount button clicked (ProductListUI Admin) ------");
 
-		    	ProductListUiFrame.setVisible(false);
-		    	ProductListUiFrame.dispose();
 		        try {
 		        	ApplyDiscountUI add = new ApplyDiscountUI(admin);
 				} 
@@ -69,8 +65,6 @@ public class ProductListUI extends JFrame {
 		    @Override
 		    public void actionPerformed(ActionEvent evt) {
 		    	System.out.println("[info]  : ------ Quit button clicked (ProductListUI Admin) ------");
-		    	ProductListUiFrame.setVisible(false);
-		    	ProductListUiFrame.dispose();
 		    	System.exit(0);
 		    }
 		});
@@ -80,8 +74,6 @@ public class ProductListUI extends JFrame {
    		    public void actionPerformed(ActionEvent evt) {
    		    	System.out.println("[info]  : ------ Add New Group Discount button clicked (ProductListUI Admin) ------");
 
-   		    	ProductListUiFrame.setVisible(false);
-   		    	ProductListUiFrame.dispose();
    		        try {
    		        	AddNewGroupDiscountUI add = new AddNewGroupDiscountUI(admin);
    				} 

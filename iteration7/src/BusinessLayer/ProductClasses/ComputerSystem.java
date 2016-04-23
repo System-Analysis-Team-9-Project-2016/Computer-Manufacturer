@@ -33,9 +33,8 @@ public class ComputerSystem extends Product implements System{
     }
     
     public String toString(){
-    	return super.toString() + "," + OS;
+    	 return super.toString() + "," + OS;
     }
-
 
     public String getOS() {
         return OS;

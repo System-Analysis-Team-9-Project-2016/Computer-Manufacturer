@@ -42,7 +42,7 @@ public class CreatePCUI extends JPanel{
 	JPanel bottomPanel = new JPanel();
 	JPanel m = new JPanel();
 	JPanel p = new JPanel();
-	JFrame CreatePCUiFrame = new JFrame("Create PC modal:");
+	JFrame CreatePCUiFrame = new JFrame("Create PC model:");
 	JLabel currentLabel = new JLabel("Add a component to the list");
 	private boolean chooseArrayMade = false;
 	private boolean chosenArrayMade = false;
@@ -55,7 +55,7 @@ public class CreatePCUI extends JPanel{
 		// ************ 	Start JFrame stuff
 		// ************************************************************************************************************************
 		
-		JFrame CreatePCUiFrame = new JFrame("Create PC modal:");
+		JFrame CreatePCUiFrame = new JFrame("Create PC modwl:");
 		CreatePCUiFrame.setBackground(new Color(0,100,200));
 		CreatePCUiFrame.setLayout(new BorderLayout(200,200));
 		JLabel productsListJLabel = new JLabel("Products");
@@ -85,6 +85,7 @@ public class CreatePCUI extends JPanel{
 			public void actionPerformed(ActionEvent evt) {
 				System.out.println("[info]  : ------ Buy button clicked (CreatePCUI Customer) ------");
 				try {
+					CreatePCUiFrame.setVisible(false);
 					ProductList createNewProductList = new ProductList(currentDesk.getComponents(), currentCustomer);
 				} 
 				catch (IOException e) {
@@ -109,15 +110,15 @@ public class CreatePCUI extends JPanel{
 				System.out.println(q);
 				String part ="";
 				switch(q) {
-				case 0 : part = "MOT"; break;
+				case 0 : part = "Motherboard"; break;
 				case 1 : part = "CPU"; break;
 				case 2 : part = "GPU"; break;
 				case 3 : part = "RAM"; break;
-				case 4 : part = "MEM"; break;
-				case 5 : part = "MON"; break;
-				case 6 : part = "KEY"; break;
-				case 7 : part = "MOU"; break;
-				case 8 : part = "SPE"; break;
+				case 4 : part = "MemoryDrives"; break;
+				case 5 : part = "Monitor"; break;
+				case 6 : part = "Keyboard"; break;
+				case 7 : part = "Mouse"; break;
+				case 8 : part = "Speaker"; break;
 				}
 				int y =0;
 				int u = 0;
@@ -184,15 +185,15 @@ public class CreatePCUI extends JPanel{
 		while (model.isEmpty() && !endOfFileReached)
 		{
 			switch(q) {
-			case 0 : part = "MOT"; break;
+			case 0 : part = "Motherboard"; break;
 			case 1 : part = "CPU"; break;
 			case 2 : part = "GPU"; break;
 			case 3 : part = "RAM"; break;
-			case 4 : part = "MEM"; break;
-			case 5 : part = "MON"; break;
-			case 6 : part = "KEY"; break;
-			case 7 : part = "MOU"; break;
-			case 8 : part = "SPE"; break;
+			case 4 : part = "MemoryDrives"; break;
+			case 5 : part = "Monitor"; break;
+			case 6 : part = "Keyboard"; break;
+			case 7 : part = "Mouse"; break;
+			case 8 : part = "Speaker"; break;
 			}
 			for(int i = 0; i < productsInFile.size(); i++){
 				Product someProduct = productsInFile.get(i);
@@ -229,15 +230,15 @@ public class CreatePCUI extends JPanel{
 		}
 		String labelPart ="";
 		switch(part) {
-		case "MOT" : labelPart = "Motherboard"; break;
+		case "Motherboard" : labelPart = "Motherboard"; break;
 		case "CPU" : labelPart = "CPU"; break;
 		case "GPU" : labelPart = "GPU"; break;
 		case "RAM" : labelPart = "RAM"; break;
-		case "MEM" : labelPart = "Memory Drive"; break;
-		case "MON" : labelPart = "Monitor"; break;
-		case "KEY" : labelPart = "Keyboard"; break;
-		case "MOU" : labelPart = "Mouse"; break;
-		case "SPE" : labelPart = "Speaker System"; break;
+		case "MemoryDrives" : labelPart = "MemoryDrives"; break;
+		case "Monitor" : labelPart = "Monitor"; break;
+		case "Keyboard" : labelPart = "Keyboard"; break;
+		case "Mouse" : labelPart = "Mouse"; break;
+		case "Speaker" : labelPart = "Speaker"; break;
 		}
 		currentLabel.setText("Please pick a " + labelPart + " for your PC" );
 		

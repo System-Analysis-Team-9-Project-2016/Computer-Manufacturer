@@ -54,7 +54,6 @@ public class Motherboard extends Product {
     }
     
     public String toString() {
-    	return super.toString() + "," + this.cpuSocketType + "," + this.series + "," + this.formFactor + "," + this.memoryStandard;
+    	 return super.toString() + "," + this.cpuSocketType + "," + this.series + "," + this.formFactor + "," + this.memoryStandard;
     }
-
 }
