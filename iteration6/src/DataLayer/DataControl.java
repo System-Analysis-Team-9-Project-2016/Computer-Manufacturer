@@ -12,11 +12,13 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import BusinessLayer.OrderClasses.GroupDiscount;
+import BusinessLayer.OrderClasses.Order;
 import BusinessLayer.ProductClasses.Product;
 
 public class DataControl {
 	
 	public static final String customerFileName = "customerList.txt";
+	public static final String commentsFileName = "commentsList.txt";
 	public static final String adminFileName = "adminList.txt";
 	public static final String productFileName = "productList.txt";
 	public static final String ordersFileName = "ordersList.txt";
@@ -277,6 +279,41 @@ public class DataControl {
 		}
 		lineIn.close();
 	}
+	
+	public static void writeNewCommentToFile(int customerId, String comment ,String customerName) throws FileNotFoundException {
+		int nextAvailableProductId = checkNextAvailableId(commentsFileName);
+		String lineToAppend = "\n" + nextAvailableProductId + "," + customerId + "," + comment + "," + customerName;
+		try {
+		    Files.write(Paths.get(commentsFileName), lineToAppend.getBytes(), StandardOpenOption.APPEND);
+		}
+		catch (IOException e) {
+		    //exception handling left as an exercise for the reader
+		}
+	}
+	
+	public static ArrayList<String> getComments(int productID) throws IOException{
+		
+		ArrayList<String> commentsInFile = new ArrayList<String>();
+		
+		File searchTextFile = new File(commentsFileName);
+		Scanner lineIn = new Scanner(searchTextFile);
+		String comment;
+		while (lineIn.hasNextLine()) {
+			String aLineFromFile = lineIn.nextLine();
+			String [] splitLineFromFile = aLineFromFile.split(",");
+			if (splitLineFromFile.length > 0) {
+				if(Integer.parseInt(splitLineFromFile[1]) == productID){
+					comment = splitLineFromFile[2];
+					comment += "\n-" + splitLineFromFile[3];
+					commentsInFile.add(comment);
+				}
+			}
+		}
+		lineIn.close();
+		
+		return commentsInFile;
+		
+	}
 
 //########################################################################################################################################
 //ordersList.txt Methods
@@ -326,7 +363,7 @@ public class DataControl {
 					productsInDiscount.add(Integer.parseInt(splitLineFromFile[2 + i]));
 				}
 					
-				GroupDiscount lineDiscount = new GroupDiscount(Integer.parseInt(splitLineFromFile[0]), productsInDiscount, Integer.parseInt(splitLineFromFile[i]));
+				GroupDiscount lineDiscount = new GroupDiscount(Integer.parseInt(splitLineFromFile[0]), productsInDiscount, Double.parseDouble(splitLineFromFile[i+2]));
 				allDiscountsInFile.add(lineDiscount);
 			}
 		}
@@ -334,4 +371,40 @@ public class DataControl {
 		
 		return allDiscountsInFile;
 	}
+	
+	public static ArrayList<Order> getAllOrdersFromFile() throws IOException {
+		
+		
+		ArrayList<Order> allOrdersInFile = new ArrayList<Order>();
+		
+		File searchTextFile = new File(ordersFileName);
+		Scanner lineIn = new Scanner(searchTextFile);
+		int prices;
+		int i;
+		while (lineIn.hasNextLine()) {
+			String aLineFromFile = lineIn.nextLine();
+			String [] splitLineFromFile = aLineFromFile.split(",");
+			if (splitLineFromFile.length > 0) {
+				ArrayList<Product> productsInOrder = new ArrayList<Product>();
+				int orderID = Integer.parseInt(splitLineFromFile[0]);
+				int shippingID = Integer.parseInt(splitLineFromFile[1]);
+				int customerID = Integer.parseInt(splitLineFromFile[2]);
+				String customerName = splitLineFromFile[3];
+				String[] orderProducts = splitLineFromFile[4].split(" ");
+				for( i = 0; i< orderProducts.length;i++){
+					productsInOrder.add(new Product(Integer.parseInt(orderProducts[i]) , "" , 0 , 0 ,true , false));
+				}
+					
+				Order lineOrder = new Order(orderID, customerID, customerName , shippingID , productsInOrder);
+				allOrdersInFile.add(lineOrder);
+			}
+		}
+		lineIn.close();
+		
+		return allOrdersInFile;
+	}
+
 }
+
+
+
