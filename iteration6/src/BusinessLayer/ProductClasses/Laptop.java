@@ -14,6 +14,10 @@ public class Laptop extends ComputerSystem {
         this.screenRez = screenRez;
         this.weight = weight;
     }
+    
+    public String toString() {
+    	return super.toString() + "," + this.gamingLaptop + "," + this.screenSize + "," + this.screenRez + "," + this.weight;
+    }
 
     public boolean isGamingLaptop() {
         return gamingLaptop;

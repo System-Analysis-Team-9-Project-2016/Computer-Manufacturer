@@ -41,4 +41,8 @@ public class RAM extends Product {
     public String getSpecs() {
     	return "Type: " + type + " Multi Channel: " + multiChannel + " CAS latency: "  + casLatency;
     }
+    
+    public String toString() {
+    	return super.toString() + "," + this.type + "," + this.multiChannel + "," + this.casLatency;
+    }
 }

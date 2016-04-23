@@ -47,6 +47,10 @@ public class GPU extends Product {
         this.virtualRealityReady = virtualRealityReady;
     }
     
+    public String toString(){
+        return super.toString() + "," + this.memory + "," + this.virtualRealityReady +","  + this.displayPorts;
+    }
+    
     public String getSpecs() {
     	return "Memory: " + memory + " VR Ready: " + virtualRealityReady + " Display Ports: "  + displayPorts + " Resolution: " + maxResolution;
     }

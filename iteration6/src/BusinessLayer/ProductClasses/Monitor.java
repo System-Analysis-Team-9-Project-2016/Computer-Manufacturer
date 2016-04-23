@@ -13,8 +13,7 @@ public class Monitor extends Product {
     }
 
     public String toString() {
-
-        return super.getProductName();
+        	return super.toString() + "," + this.screenResolution + "," + this.curved + "," + this.is3d;
     }
 
     public String getScreenResolution() {

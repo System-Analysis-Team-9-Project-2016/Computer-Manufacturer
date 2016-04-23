@@ -21,6 +21,10 @@ public class Tablet extends ComputerSystem {
 //        return super.getProductName();
 //    }
 
+    public String toString() {
+    	return super.toString() + "," + this.stylus + "," + this.screenSize + "," + this.screenRez + "," + this.attachableKeyboard
+    			+ "," +  this.weight;
+    }
     public boolean isStylus() {
         return stylus;
     }
@@ -58,4 +62,5 @@ public class Tablet extends ComputerSystem {
     public void setWeight(double weight) {
     	this.weight = weight;
     }
+    
 }

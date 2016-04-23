@@ -11,8 +11,7 @@ public class Keyboard extends Product {
     }
 
     public String toString() {
-
-        return super.getProductName();
+    	return super.toString() + "," + this.keySwitchType + "," + this.backlit;
     }
 
     public String getKeySwitchType() {
@@ -34,4 +33,5 @@ public class Keyboard extends Product {
     public String getSpecs() {
     	return "Key Switch Type: " + keySwitchType + " Backlit: " + backlit;
     }
+    
 }

@@ -10,7 +10,10 @@ public class Desktop extends ComputerSystem {
 
       this.gamingSystem = gamingSystem;
   }
-
+  
+  public String toString() {
+  	return super.toString() + "," + this.gamingSystem;
+  }
 
   public boolean isGamingSystem() {
       return gamingSystem;
