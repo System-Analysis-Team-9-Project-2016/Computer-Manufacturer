@@ -19,6 +19,7 @@ public class LoginUI extends JFrame implements ActionListener
    	JPanel inputControls;
    	JPanel labelPanel = new JPanel(new GridLayout(0,1,3,3));
     JPanel fieldPanel = new JPanel(new GridLayout(0,1,3,3));
+    JFrame averageFrame;
 
    	public LoginUI() {
    		System.out.println("[debug] : ****** Entering LoginUI Class ******");
@@ -58,7 +59,7 @@ public class LoginUI extends JFrame implements ActionListener
         gui.add(inputControls, BorderLayout.CENTER);
         gui.add(controls, BorderLayout.SOUTH);
 
-        JFrame averageFrame = new JFrame("Login Page");
+        averageFrame = new JFrame("Login Page");
         averageFrame.setContentPane(gui);
         averageFrame.pack();
         averageFrame.setLocationByPlatform(true);
@@ -90,6 +91,7 @@ public class LoginUI extends JFrame implements ActionListener
       {
           text1.setText("");
           text2.setText("");
+          averageFrame.setVisible(false);
           RegisterUI frame=new RegisterUI();
           frame.setSize(300,600);
           frame.setVisible(false);
