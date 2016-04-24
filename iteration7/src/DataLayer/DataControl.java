@@ -35,8 +35,8 @@ public class DataControl implements DatabaseInterface {
 	public  final String adminFileName = "adminList.txt";
 	public  final String productFileName = "productList.txt";
 	public  final String ordersFileName = "ordersList.txt";
+	public  final String discountsFileName = "discountList.txt";
 	public  final String groupDiscountsFileName = "groupDiscountList.txt";
-
 //########################################################################################################################################
 //	General Methods
 //########################################################################################################################################
@@ -308,6 +308,65 @@ public class DataControl implements DatabaseInterface {
 		
 		return commentsInFile;
 	}
+	
+	public double getDiscount(int productID) throws IOException{
+		
+		File searchTextFile = new File(discountsFileName);
+		Scanner lineIn = new Scanner(searchTextFile);
+		while (lineIn.hasNextLine()) {
+			String aLineFromFile = lineIn.nextLine();
+			String [] splitLineFromFile = aLineFromFile.split(",");
+			if (splitLineFromFile.length > 0) {
+				if(Integer.parseInt(splitLineFromFile[0]) == productID){
+					return Double.parseDouble(splitLineFromFile[1]);
+				}
+			}
+		}
+		lineIn.close();
+		
+		return 0;
+	}
+	
+	public void addDiscount(int productID , double discount) throws IOException{
+
+	File searchTextFile = new File(discountsFileName);
+	Scanner lineIn = new Scanner(searchTextFile);
+	boolean found = false;
+	ArrayList<String> newFile = new ArrayList<String>();
+	while (lineIn.hasNextLine()) {
+		String aLineFromFile = lineIn.nextLine();
+		String [] splitLineFromFile = aLineFromFile.split(",");
+		if (splitLineFromFile.length > 0) {
+			if(Integer.parseInt(splitLineFromFile[0]) == productID){
+				newFile.add(productID + "," + discount);
+				found = true;
+			}
+			else
+				newFile.add(aLineFromFile);
+		}
+	}
+
+	if(found){
+		FileWriter writer = new FileWriter(searchTextFile);
+		PrintWriter out = new PrintWriter(writer);
+		for(int i =0; i < newFile.size();i++){
+			out.println(newFile.get(i));
+		}
+		out.close();
+	}
+	else{
+		String lineToAppend = "\n" + productID + "," + discount;
+		try {
+		    Files.write(Paths.get(discountsFileName), lineToAppend.getBytes(), StandardOpenOption.APPEND);
+		}
+		catch (IOException e) {
+		    //exception handling left as an exercise for the reader
+		}
+	}
+
+	lineIn.close();
+
+	}
 
 //########################################################################################################################################
 //ordersList.txt Methods
@@ -394,3 +453,6 @@ public class DataControl implements DatabaseInterface {
 		return allOrdersInFile;
 	}
 }
+
+
+

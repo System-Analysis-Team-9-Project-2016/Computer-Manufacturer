@@ -23,6 +23,8 @@ public interface DatabaseInterface {
 	public void rewriteProductFile(ArrayList<Product> products) throws IOException;
 	public void writeNewCommentToFile(int customerId, String comment ,String customerName) throws FileNotFoundException;
 	public ArrayList<String> getComments(int productID) throws IOException;
+	public double getDiscount(int productID) throws IOException;
+	public void addDiscount(int productID , double discount) throws IOException;
 	public ArrayList<Order> getAllOrdersFromFile() throws IOException;
 	public void writeNewOrderToFile(int orderId, int customerId, String customerName, String orderProductIds) throws FileNotFoundException;
 	public void writeNewDiscountToFile(ArrayList<Integer> added , double discount) throws FileNotFoundException;
