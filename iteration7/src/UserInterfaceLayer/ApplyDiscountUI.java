@@ -20,8 +20,8 @@ public class ApplyDiscountUI extends JFrame{
 	private ArrayList<Product> productsAddedToCart;
 	private DefaultListModel<String> model;
 
-	public ApplyDiscountUI(Admin admin) throws FileNotFoundException{
-		JButton SUBMIT;
+	public ApplyDiscountUI(final Admin admin) throws FileNotFoundException{
+		JButton SUBMIT , REMOVE;
 		JPanel panel;
 		JLabel label0 , label1;
 		final JTextField  text1;
@@ -35,7 +35,7 @@ public class ApplyDiscountUI extends JFrame{
 		inputControls.add(labelPanel, BorderLayout.WEST);
 		inputControls.add(fieldPanel, BorderLayout.CENTER);
 
-		JFrame averageFrame = new JFrame("Discount Page");
+		final JFrame averageFrame = new JFrame("Discount Page");
 
 		label1 = new JLabel();
 		label1.setText("Please enter your discount");
@@ -49,6 +49,7 @@ public class ApplyDiscountUI extends JFrame{
 
 		JPanel m = new JPanel();
 		model = new DefaultListModel<String>();
+
 
 		for(int i = 0; i < productsInFile.size(); i++){
 			Product someProduct = productsInFile.get(i);
@@ -78,14 +79,40 @@ public class ApplyDiscountUI extends JFrame{
 		});
 
 		SUBMIT.setActionCommand("1");
+		
+		REMOVE=new JButton("Remove");
+
+		REMOVE.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				ApplyDiscount edit;
+				try {
+					Product p = productsInFile.get(choices.getSelectedIndex());
+					edit = new ApplyDiscount(p);
+					edit.removeDiscount(p);
+					averageFrame.setVisible(false);
+					ProductListUI frame = new ProductListUI(admin);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+
+			}
+		});
+
+		SUBMIT.setActionCommand("1");
 
 		JPanel controls = new JPanel(new FlowLayout(FlowLayout.CENTER,5,2));
 		controls.add(SUBMIT);
+		controls.add(REMOVE);
+
 
 		JPanel gui = new JPanel(new BorderLayout(10,10));
 		gui.setBorder(new TitledBorder("Edit Discount"));
 		gui.add(inputControls, BorderLayout.CENTER);
 		gui.add(controls, BorderLayout.SOUTH);
+
+
 
 		m.add(choices);
 		gui.add(m, BorderLayout.WEST);
