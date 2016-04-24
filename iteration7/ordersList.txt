@@ -28,3 +28,8 @@
 29,29,1,Conor Duggan,104 108 106 
 30,30,1,Conor Duggan,116 104 108 106 116 116 116 116 116 
 31,31,1,Conor Duggan,109 
+32,32,1,Conor Duggan,103 
+33,33,1,Conor Duggan,119 104 108 106 119 
+34,34,1,Conor Duggan,104 
+35,35,1,Conor Duggan,109 
+36,36,1,Conor Duggan,119 104 108 106 119 119 119 119 119 
