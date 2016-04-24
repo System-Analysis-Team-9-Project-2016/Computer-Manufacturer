@@ -17,41 +17,36 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 
-import BusinessLayer.BusinessLayerDataControl;
-import BusinessLayer.ProductList;
+import BusinessLayer.CreateLaptop;
 import BusinessLayer.CustomerClasses.Customer;
 import BusinessLayer.ProductClasses.Product;
-import BusinessLayer.ProductClasses.Laptop;
-import BusinessLayer.ProductClasses.Component;
 
 @SuppressWarnings("serial")
 public class CreateLaptopUI extends JPanel{
 	
 	private JList listOfChoices;
 	private JList listOfChosenProducts;
-	private ArrayList<Product> productsInFile;
 	private DefaultListModel<String> model;
 	private DefaultListModel<String> modelChosen;
-	private Laptop currentLaptop= new Laptop(1234, "Boaty McBoatFace", 1, 0.0, true, false, "Windows", true, 17, 4000, 1000);
-	private int q = 0;
+
 	JPanel topPanel = new JPanel();
 	JPanel bottomPanel = new JPanel();
 	JPanel m = new JPanel();
 	JPanel p = new JPanel();
-	JFrame CreateLaptopUiFrame = new JFrame("Create PC model:");
+	JFrame CreateLaptopUiFrame = new JFrame("Create Laptop modal:");
 	JLabel currentLabel = new JLabel("Add a component to the list");
 	private boolean chooseArrayMade = false;
 	private boolean chosenArrayMade = false;
-	private boolean backButtonClicked = false;
+	private CreateLaptop viewController;
 
-	public CreateLaptopUI(Customer currentCustomer) {
+	public CreateLaptopUI(Customer currentCustomer) throws IOException {
 		System.out.println("[debug] : ****** Starting CreateLaptopUI Class  ******");
 
 		// ************************************************************************************************************************
 		// ************ 	Start JFrame stuff
 		// ************************************************************************************************************************
 		
-		JFrame CreateLaptopUiFrame = new JFrame("Create Laptop model:");
+		JFrame CreateLaptopUiFrame = new JFrame("Create Laptop modal:");
 		CreateLaptopUiFrame.setBackground(new Color(0,100,200));
 		CreateLaptopUiFrame.setLayout(new BorderLayout(200,200));
 		JLabel productsListJLabel = new JLabel("Products");
@@ -59,15 +54,7 @@ public class CreateLaptopUI extends JPanel{
 		productsListJLabel.setFont(new Font("Dialog",Font.BOLD,20));
 		model = new DefaultListModel<String>();
 		modelChosen = new DefaultListModel<String>();
-
-		
-		try {
-			BusinessLayerDataControl dataControl = new BusinessLayerDataControl();
-			productsInFile = dataControl.factoryDesignPatternSearch();
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		viewController = new CreateLaptop(currentCustomer);
 		
 		
 		
@@ -80,14 +67,7 @@ public class CreateLaptopUI extends JPanel{
 		buyBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent evt) {
-				System.out.println("[info]  : ------ Buy button clicked (CreatePCUI Customer) ------");
-				try {
-					ProductList createNewProductList = new ProductList(currentLaptop.getComponents(), currentCustomer);
-				} 
-				catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				viewController.buyButtonClicked();
 			}
 		});
 		
@@ -96,38 +76,7 @@ public class CreateLaptopUI extends JPanel{
 		addBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent evt) {
-				System.out.println("[info]  : ------ Add button clicked (CreateLaptopUI Customer) ------");
-
-				
-				System.out.println(q);
-				String part ="";
-				switch(q) {
-				case 0 : part = "Motherboard"; break;
-				case 1 : part = "CPU"; break;
-				case 2 : part = "GPU"; break;
-				case 3 : part = "RAM"; break;
-				case 4 : part = "MemoryDrives"; break;
-				}
-				int y =0;
-				int u = 0;
-				
-				int indexOfSelectedComponents = listOfChoices.getSelectedIndex();
-				if (indexOfSelectedComponents == -1){
-					indexOfSelectedComponents = 0;
-				}
-				System.out.println(indexOfSelectedComponents);
-				
-				while (y < productsInFile.size() && u <=indexOfSelectedComponents) {
-
-					System.out.println("y"+y);
-					Component someProduct = productsInFile.get(y);
-					if(someProduct.getProductName().equals(part)) {
-						u++;
-					}
-					y++;
-				}
-				currentLaptop.addProduct(productsInFile.get(y-1));
-				q++;
+				viewController.addButtonClicked(listOfChoices.getSelectedIndex());
 				populateArrayOfProducts();
 			}
 		});
@@ -137,22 +86,19 @@ public class CreateLaptopUI extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent evt) {
 				System.out.println("[info]  : ------ Back button clicked (CreateLaptopUI Customer) ------");
-				if(chosenArrayMade){
-					currentLaptop.getComponents().remove(currentLaptop.getComponents().size() - 1);
-					if ( q > 8) {
+				viewController.backBtnClicked();
+				if(viewController.chosenArrayMade){
+					if ( viewController.indexThroughComponentsToChoose >= 8) {
 						m.add(addBtn);
 						m.add(listOfChoices);
 						currentLabel.setVisible(true);
 					}
-					q--;
-					System.out.println("BACK " +q );
-					backButtonClicked = true;
-					populateArrayOfProducts();
-					backButtonClicked = false;
 				}
+				populateArrayOfProducts();
+				viewController.backButtonClicked = false;
 			}
 		});
-		
+
 		p.add(backBtn);
 		
 		
@@ -179,37 +125,37 @@ public class CreateLaptopUI extends JPanel{
 		boolean endOfFileReached = false;
 		while (model.isEmpty() && !endOfFileReached)
 		{
-			switch(q) {
+			switch(viewController.indexThroughComponentsToChoose) {
 			case 0 : part = "Motherboard"; break;
 			case 1 : part = "CPU"; break;
 			case 2 : part = "GPU"; break;
 			case 3 : part = "RAM"; break;
-			case 4 : part = "MemoryDrives"; break;
+			case 4 : part = "MememoryDrives"; break;
 			}
-			for(int i = 0; i < productsInFile.size(); i++){
-				Product someProduct = productsInFile.get(i);
+			for(int i = 0; i < viewController.getProductsInFile().size(); i++){
+				Product someProduct = viewController.getProductsInFile().get(i);
 				if(someProduct.getProductName().equals(part)) {
 					model.addElement(someProduct.getProductUIDetails());
 				}
 				listOfChoices = new JList(model);
 			}
 			if (model.isEmpty()) {
-				if (backButtonClicked == true)
+				if (viewController.backButtonClicked == true)
 				{
-					q--;
+					viewController.indexThroughComponentsToChoose--;
 					bottomPanel.setVisible(false);;
 					
 				}
 				else {
-					if(q > 8) {
+					if(viewController.indexThroughComponentsToChoose > 8) {
 						endOfFileReached = true;
 						m.removeAll();
 						currentLabel.setVisible(false);
 						bottomPanel.setVisible(true);
 						
 					}
-					System.out.println(q);
-					q++;
+					System.out.println(viewController.indexThroughComponentsToChoose);
+					viewController.indexThroughComponentsToChoose++;
 				}
 			}
 
@@ -219,22 +165,13 @@ public class CreateLaptopUI extends JPanel{
 			m.add(listOfChoices);
 			chooseArrayMade = true;
 		}
-		String labelPart ="";
-		switch(part) {
-		case "Motherboard" : labelPart = "Motherboard"; break;
-		case "CPU" : labelPart = "CPU"; break;
-		case "GPU" : labelPart = "GPU"; break;
-		case "RAM" : labelPart = "RAM"; break;
-		case "MemoryDrives" : labelPart = "Memory Drive"; break;
-		}
-		currentLabel.setText("Please pick a " + labelPart + " for your PC" );
+		String labelPart = viewController.getlabel(part);
+		currentLabel.setText("Please pick a " + labelPart + " for your Laptop" );
 		
 		
-		int i = 0;
-		ArrayList<Product> chosenComps= currentLaptop.getComponents(); 
+		ArrayList<Product> chosenComps= viewController.getListOfComponents(); 
 		Iterator<Product> it = chosenComps.iterator();
 		while (it.hasNext()){
-			i++;
 			Product someComp = it.next();
 			System.out.println(someComp.getProductName());
 			modelChosen.addElement(someComp.getProductUIDetails());
