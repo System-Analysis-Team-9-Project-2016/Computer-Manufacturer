@@ -14,7 +14,8 @@ public class AddNewProduct {
 
 		boolean valid = true;
 		valid = BusinessLayerDataControl.isProductNotAlreadyPresent(name);
-		return valid;
+		//return valid; -> Overriding return boolean as we are allowing products with the same name
+		return true;
 	}
 	
 	public String process(String inName , double inCost , int inStock) throws IOException{
@@ -22,7 +23,7 @@ public class AddNewProduct {
 		cost = inCost;
 		stock = inStock;
 		
-		return this.name;
+		return inName;
 		
 	}
 	

@@ -16,3 +16,5 @@
 116,Speaker,432,28.99,true,false,20,true,false,2
 117,Speaker,97,49.95,true,false,100,true,true,2
 118,Monitor,80,479.99,true,false,1920,false,true
+119,Motherboard,102,129.99,true,false,LGA,A Series,Standard-ATX,DDR3
+120,Monitor,90,239.99,true,false,1920,true,true

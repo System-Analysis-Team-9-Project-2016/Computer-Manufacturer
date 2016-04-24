@@ -54,7 +54,7 @@ public class AddNewProductUI {
    		text1 = new JTextField(15);
    		text2 = new JTextField(15);
 
-        JFrame averageFrame = new JFrame("New Product Page");
+        JFrame averageFrameMain = new JFrame("New Product Page");
    		
    		labelPanel.add(label0);
    		labelPanel.add(label1);
@@ -69,6 +69,7 @@ public class AddNewProductUI {
 	    SUBMIT.addActionListener(new ActionListener(){
 	    	@Override
 	    	public void actionPerformed(ActionEvent e){
+	    		System.out.println("[info]  : ------ Submit button clicked (AddNewProductUI Admin) ------");
 	    		AddNewProduct a = new AddNewProduct();
 	    		String name;
 	    		double cost;
@@ -76,9 +77,9 @@ public class AddNewProductUI {
 	    		name = text0.getText();
 	    		cost = Double.parseDouble(text1.getText());
 	    		stock = Integer.parseInt( text2.getText());
+	    		averageFrameMain.setVisible(false);
 	    		try{
 	    		if(a.validateProduct(name))
-	    	        averageFrame.setVisible(false);
 	    			switch( a.process(name , cost , stock)){
 	    			case "CPU": displayAddCPU(a);break;
 	    			case "Monitor": displayAddMonitor(a);break;
@@ -103,16 +104,15 @@ public class AddNewProductUI {
         gui.add(inputControls, BorderLayout.CENTER);
         gui.add(controls, BorderLayout.SOUTH);
 
-        averageFrame.setContentPane(gui);
-        averageFrame.pack();
-        averageFrame.setLocationByPlatform(true);
-        averageFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        averageFrame.setVisible(true);
+        averageFrameMain.setContentPane(gui);
+        averageFrameMain.pack();
+        averageFrameMain.setLocationByPlatform(true);
+        averageFrameMain.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        averageFrameMain.setVisible(true);
 		
 	}
 	
 	public void displayAddCPU(final AddNewProduct a){
-	  	
 	  	
     	
     	label0 = new JLabel();
