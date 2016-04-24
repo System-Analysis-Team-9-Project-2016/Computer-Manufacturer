@@ -32,7 +32,7 @@ public class CreateLaptopUI extends JPanel{
 	private ArrayList<Product> productsInFile;
 	private DefaultListModel<String> model;
 	private DefaultListModel<String> modelChosen;
-	private Laptop currentLaptop= new Laptop(1234, "Boaty McBoatFace", 1, 0.0, true, false, "Windows", String OS, true, 17, 4000, 1000);
+	private Laptop currentLaptop= new Laptop(1234, "Boaty McBoatFace", 1, 0.0, true, false, "Windows", true, 17, 4000, 1000);
 	private int q = 0;
 	JPanel topPanel = new JPanel();
 	JPanel bottomPanel = new JPanel();
@@ -234,7 +234,7 @@ public class CreateLaptopUI extends JPanel{
 		
 		
 		int i = 0;
-		ArrayList<Product> chosenComps= currentDesk.getComponents(); 
+		ArrayList<Product> chosenComps= currentLaptop.getComponents(); 
 		Iterator<Product> it = chosenComps.iterator();
 		while (it.hasNext()){
 			i++;
@@ -250,10 +250,10 @@ public class CreateLaptopUI extends JPanel{
 			chosenArrayMade = true;
 		}
 		topPanel.add(currentLabel);
-		CreateLaptopUIFrame.add(bottomPanel, BorderLayout.SOUTH);
-		CreateLaptopUIFrame.add(topPanel, BorderLayout.NORTH);
-		CreateLaptopUIFrame.add(m, BorderLayout.WEST);
-		CreateLaptopUIFrame.add(p, BorderLayout.EAST);
+		CreateLaptopUiFrame.add(bottomPanel, BorderLayout.SOUTH);
+		CreateLaptopUiFrame.add(topPanel, BorderLayout.NORTH);
+		CreateLaptopUiFrame.add(m, BorderLayout.WEST);
+		CreateLaptopUiFrame.add(p, BorderLayout.EAST);
 		CreateLaptopUiFrame.setSize(800, 500);
 		CreateLaptopUiFrame.setVisible(true);
 	}
