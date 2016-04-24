@@ -196,10 +196,13 @@ public class ProductListUI extends JFrame {
 				try {
 					GetCommentsUI getComment = new GetCommentsUI();
 					int selected = choices.getSelectedIndex();
+					
+					if(choices.getSelectedIndex() > 0){
 					BusinessLayerDataControl dataControl = new BusinessLayerDataControl();
 					productsAddedToCart = new ArrayList<Product>(dataControl.factoryDesignPatternSearch());
 					Product p = productsAddedToCart.get(selected);
 					getComment.display(p);
+					}
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
