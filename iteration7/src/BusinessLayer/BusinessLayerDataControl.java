@@ -80,5 +80,17 @@ public class BusinessLayerDataControl implements DatabaseInterface {
 	
 	public ArrayList<GroupDiscount> getAllGroupDiscountsFromFile() throws FileNotFoundException {
 		return dataControl.getAllGroupDiscountsFromFile();
+	}
+	
+	public void addDiscount(int productId, double discount) throws IOException {
+		dataControl.addDiscount(productId, discount);
+		
+	}
+
+	public double getDiscount(int productId) throws IOException {
+		return dataControl.getDiscount(productId);
 	}	
+
 }
+
+
