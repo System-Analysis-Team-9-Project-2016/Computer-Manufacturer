@@ -23,7 +23,7 @@ public class AddNewProduct {
 		cost = inCost;
 		stock = inStock;
 		
-		return inName;
+		return this.name;
 		
 	}
 	
