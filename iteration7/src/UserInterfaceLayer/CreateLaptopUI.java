@@ -183,7 +183,7 @@ public class CreatePCUI extends JPanel{
 			case 1 : part = "CPU"; break;
 			case 2 : part = "GPU"; break;
 			case 3 : part = "RAM"; break;
-			case 4 : part = "MememoryDrives"; break;
+			case 4 : part = "MemoryDrives"; break;
 			case 5 : part = "Monitor"; break;
 			case 6 : part = "Keyboard"; break;
 			case 7 : part = "Mouse"; break;
