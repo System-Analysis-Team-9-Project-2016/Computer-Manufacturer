@@ -32,6 +32,4 @@ public class AddNewProduct {
 		BusinessLayerDataControl dataControl = new BusinessLayerDataControl();
 		dataControl.writeNewProductToFile(name, cost, stock, true, false, details);
 	}
-	
-	
 }

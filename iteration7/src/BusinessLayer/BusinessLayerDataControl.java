@@ -18,6 +18,10 @@ public class BusinessLayerDataControl implements DatabaseInterface {
 		return dataControl.checkNextAvailableId(filename);
 	}
 	
+	public boolean checkProductStock(int productId) throws FileNotFoundException {
+		return dataControl.checkProductStock(productId);
+	}
+	
 	public String [] checkAdminLogIn(String email, String password) throws FileNotFoundException {
 		return dataControl.checkAdminLogIn(email, password);
 	}
@@ -65,6 +69,14 @@ public class BusinessLayerDataControl implements DatabaseInterface {
 	public ArrayList<String> getComments(int productID) throws IOException {
 		return dataControl.getComments(productID);
 	}
+
+	public void addDiscount(int productId, double discount) throws IOException {
+		dataControl.addDiscount(productId, discount);
+	}
+
+	public double getDiscount(int productId) throws IOException {
+		return dataControl.getDiscount(productId);
+ 	}
 	
 	public ArrayList<Order> getAllOrdersFromFile() throws IOException {
 		return dataControl.getAllOrdersFromFile();
@@ -80,17 +92,5 @@ public class BusinessLayerDataControl implements DatabaseInterface {
 	
 	public ArrayList<GroupDiscount> getAllGroupDiscountsFromFile() throws FileNotFoundException {
 		return dataControl.getAllGroupDiscountsFromFile();
-	}
-	
-	public void addDiscount(int productId, double discount) throws IOException {
-		dataControl.addDiscount(productId, discount);
-		
-	}
-
-	public double getDiscount(int productId) throws IOException {
-		return dataControl.getDiscount(productId);
 	}	
-
 }
-
-

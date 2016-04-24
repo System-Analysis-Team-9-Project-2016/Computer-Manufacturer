@@ -17,13 +17,10 @@ public class ApplyDiscount {
 	public void applyDiscount(Product p, double discount) throws IOException {
 		p.setProductDiscount(discount);
 		p.notifyObservers();
-
 	}
 	
 	public void removeDiscount(Product p) throws IOException {
 		p.removeDiscount();
-		p.notifyObservers();
-		
+		p.notifyObservers();	
 	}
-
 }

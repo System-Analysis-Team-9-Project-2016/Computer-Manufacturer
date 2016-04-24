@@ -11,6 +11,7 @@ import BusinessLayer.ProductClasses.Product;
 public interface DatabaseInterface {
 	
 	public int checkNextAvailableId(String filename) throws FileNotFoundException;
+	public boolean checkProductStock(int productId) throws FileNotFoundException;
 	public String [] checkAdminLogIn(String email, String password) throws FileNotFoundException;
 	public String [] checkCustomerLogIn(String email, String password) throws FileNotFoundException;
 	public void addCustomerToTextFile(int id, String firstName, String surname, String address, String email, String password, String creditCardNumber) throws IOException;

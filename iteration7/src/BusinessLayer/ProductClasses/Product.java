@@ -8,8 +8,7 @@ import BusinessLayer.BusinessLayerDataControl;
 import BusinessLayer.Observer;
 import BusinessLayer.Subject;
 
-/**
- * This class models a Product that can be sold in
+/* This class models a Product that can be sold in
  * the on-line e-commerce system example.
  */
 
@@ -178,7 +177,3 @@ public class Product implements Component, Subject {
         }
     }
 }
-
-
-
-
