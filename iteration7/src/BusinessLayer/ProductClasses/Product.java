@@ -1,8 +1,10 @@
 package BusinessLayer.ProductClasses;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
+import BusinessLayer.BusinessLayerDataControl;
 import BusinessLayer.Observer;
 import BusinessLayer.Subject;
 
@@ -84,23 +86,43 @@ public class Product implements Component, Subject {
      * @return the inventory number of this Product.
      */
     public double getUnitCost() {
-        return unitCost;
+    	if(isProductDiscount){
+    		try {
+    			return unitCost * (1 - (getDiscount() / 100));
+    		} catch (IOException e) {
+    			// TODO Auto-generated catch block
+    			return unitCost;
+    		}
+    	}
+    	else{
+    		return unitCost;
+    	}
     }
 
     public void setUnitCost(double newUnitCost) {
         this.unitCost= newUnitCost;
     }
-    
+
     public void setProductActive()
     {
         this.isActive = true;
     }
-    
-    public void setProductDiscount(double unitCost) {
+
+    public void setProductDiscount(double discount) {
         this.isProductDiscount =  true;
-        this.unitCost = unitCost;
+        try {
+        	BusinessLayerDataControl dataControl = new BusinessLayerDataControl();
+    		dataControl.addDiscount(productId, discount);
+    	} catch (IOException e) {
+    		// TODO Auto-generated catch block
+    		e.printStackTrace();
+    	}
     }
-    
+
+    public void removeDiscount(){
+    	this.isProductDiscount = false;
+    }
+
     public String getProductStatus()
     {
         String statusString = "";
@@ -108,7 +130,12 @@ public class Product implements Component, Subject {
         else if(true == isProductDiscount)  statusString = "Product is on sale";
         return statusString;
     }
-    
+
+    public double getDiscount() throws IOException{
+    	BusinessLayerDataControl dataControl = new BusinessLayerDataControl();
+    	return dataControl.getDiscount(productId);
+    }
+
     /**
      * Get a String that describes this Product. Note that
      * this method overrides the toString method inherited
@@ -117,18 +144,19 @@ public class Product implements Component, Subject {
      * @return a String describing this Product.
      */
     public String getProductDetails() {
-        return "\nProduct ID: " + this.productId + "\nProduct Name: " + this.productName +"\nPrice: " + this.unitCost + "\nStock: " + this.stock + "\n";
+        return "\nProduct ID: " + this.productId + "\nProduct Name: " + this.productName +"\nPrice: " + getUnitCost() + "\nStock: " + this.stock + "\n";
     }
-    
+
     public String getProductUIDetails(){
-        return  this.productName + "  \u20ac" + this.unitCost + "  " + this.stock;
+        return  this.productName + "  \u20ac" + new DecimalFormat("##.##").format(getUnitCost()) + "  " + this.stock;
     }
-    
     public String toString(){
         return "" + this.productId + "," + this.productName +","  + this.stock + "," + this.unitCost + "," + this.isActive + "," 
                 + this.isProductDiscount;
+
+
     }
-    
+
     @Override
     public void registerObserver(Observer o) {
         observers.add(o);
@@ -150,3 +178,7 @@ public class Product implements Component, Subject {
         }
     }
 }
+
+
+
+
