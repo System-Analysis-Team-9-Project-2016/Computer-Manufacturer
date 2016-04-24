@@ -25,37 +25,37 @@ import BusinessLayer.ProductClasses.Laptop;
 import BusinessLayer.ProductClasses.Component;
 
 @SuppressWarnings("serial")
-public class CreatePCUI extends JPanel{
+public class CreateLaptopUI extends JPanel{
 	
 	private JList listOfChoices;
 	private JList listOfChosenProducts;
 	private ArrayList<Product> productsInFile;
 	private DefaultListModel<String> model;
 	private DefaultListModel<String> modelChosen;
-	private Desktop currentDesk= new Laptop(1234, "Boaty McBoatFace", 1, 0.0, true, false, "Windows", String OS, true, 17, 4000, 1000);
+	private Laptop currentLaptop= new Laptop(1234, "Boaty McBoatFace", 1, 0.0, true, false, "Windows", String OS, true, 17, 4000, 1000);
 	private int q = 0;
 	JPanel topPanel = new JPanel();
 	JPanel bottomPanel = new JPanel();
 	JPanel m = new JPanel();
 	JPanel p = new JPanel();
-	JFrame CreatePCUiFrame = new JFrame("Create PC modal:");
+	JFrame CreateLaptopUiFrame = new JFrame("Create PC modal:");
 	JLabel currentLabel = new JLabel("Add a component to the list");
 	private boolean chooseArrayMade = false;
 	private boolean chosenArrayMade = false;
 	private boolean backButtonClicked = false;
 
-	public CreatePCUI(Customer currentCustomer) {
-		System.out.println("[debug] : ****** Starting CreatePCUI Class  ******");
+	public CreateLaptopUI(Customer currentCustomer) {
+		System.out.println("[debug] : ****** Starting CreateLaptopUI Class  ******");
 
 		// ************************************************************************************************************************
 		// ************ 	Start JFrame stuff
 		// ************************************************************************************************************************
 		
-		JFrame CreatePCUiFrame = new JFrame("Create PC modal:");
-		CreatePCUiFrame.setBackground(new Color(0,100,200));
-		CreatePCUiFrame.setLayout(new BorderLayout(200,200));
+		JFrame CreateLaptopUiFrame = new JFrame("Create Laptop modal:");
+		CreateLaptopUiFrame.setBackground(new Color(0,100,200));
+		CreateLaptopUiFrame.setLayout(new BorderLayout(200,200));
 		JLabel productsListJLabel = new JLabel("Products");
-		CreatePCUiFrame.add(productsListJLabel, BorderLayout.NORTH);
+		CreateLaptopUiFrame.add(productsListJLabel, BorderLayout.NORTH);
 		productsListJLabel.setFont(new Font("Dialog",Font.BOLD,20));
 		model = new DefaultListModel<String>();
 		modelChosen = new DefaultListModel<String>();
@@ -81,7 +81,7 @@ public class CreatePCUI extends JPanel{
 			public void actionPerformed(ActionEvent evt) {
 				System.out.println("[info]  : ------ Buy button clicked (CreatePCUI Customer) ------");
 				try {
-					ProductList createNewProductList = new ProductList(currentDesk.getComponents(), currentCustomer);
+					ProductList createNewProductList = new ProductList(currentLaptop.getComponents(), currentCustomer);
 				} 
 				catch (IOException e) {
 					// TODO Auto-generated catch block
@@ -95,7 +95,7 @@ public class CreatePCUI extends JPanel{
 		addBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent evt) {
-				System.out.println("[info]  : ------ Add button clicked (CreatePCUI Customer) ------");
+				System.out.println("[info]  : ------ Add button clicked (CreateLaptopUI Customer) ------");
 
 				
 				System.out.println(q);
@@ -125,7 +125,7 @@ public class CreatePCUI extends JPanel{
 					}
 					y++;
 				}
-				currentDesk.addProduct(productsInFile.get(y-1));
+				currentLaptop.addProduct(productsInFile.get(y-1));
 				q++;
 				populateArrayOfProducts();
 			}
@@ -135,9 +135,9 @@ public class CreatePCUI extends JPanel{
 		backBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent evt) {
-				System.out.println("[info]  : ------ Back button clicked (CreatePCUI Customer) ------");
+				System.out.println("[info]  : ------ Back button clicked (CreateLaptopUI Customer) ------");
 				if(chosenArrayMade){
-					currentDesk.getComponents().remove(currentDesk.getComponents().size() - 1);
+					currentLaptop.getComponents().remove(currentLaptop.getComponents().size() - 1);
 					if ( q > 8) {
 						m.add(addBtn);
 						m.add(listOfChoices);
