@@ -12,8 +12,9 @@ import DataLayer.DataControl;
 public class AddNewComment {
 	
 	public ArrayList<Product> getProducts(Customer c) throws IOException{
-		ArrayList<Product> allProducts = BusinessLayerDataControl.factoryDesignPatternSearch();
-		ArrayList<Order> allOrders = BusinessLayerDataControl.getAllOrdersFromFile();
+		BusinessLayerDataControl dataControl = new BusinessLayerDataControl();
+		ArrayList<Product> allProducts = dataControl.factoryDesignPatternSearch();
+		ArrayList<Order> allOrders = dataControl.getAllOrdersFromFile();
 		ArrayList<Product> myProductsID = new ArrayList<Product>();
 		ArrayList<Product> orderProducts = new ArrayList<Product>();
 		for(int i = 0; i < allOrders.size();i++){
@@ -48,8 +49,7 @@ public class AddNewComment {
 	}
 	
 	public void addComment(String text , int ID , String name) throws IOException{
-		BusinessLayerDataControl.writeNewCommentToFile(ID, text, name);
-		
+		BusinessLayerDataControl dataControl = new BusinessLayerDataControl();
+		dataControl.writeNewCommentToFile(ID, text, name);
 	}
-
 }

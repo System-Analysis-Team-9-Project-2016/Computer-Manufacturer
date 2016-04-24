@@ -35,7 +35,6 @@ public class CartUI extends JPanel{
 
 		DefaultListModel model;
 
-
 		JFrame cartUiFrame = new JFrame("Your Details - please review your details");
 		cartUiFrame.setLayout(new BorderLayout());
 		model = new DefaultListModel();
@@ -51,7 +50,6 @@ public class CartUI extends JPanel{
 			}
 		});
 		
-		
 		removeButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -63,7 +61,6 @@ public class CartUI extends JPanel{
 				}	          
 			}
 		});
-
 
 		cartUiFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -99,6 +96,5 @@ public class CartUI extends JPanel{
 		cartUiFrame.setResizable(false);
 		cartUiFrame.setLocationRelativeTo(null);
 		cartUiFrame.setVisible(true);
-
 	}
 }

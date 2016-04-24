@@ -22,7 +22,8 @@ public class OrderSummary {
 		int customerId = currentCustomer.getCustomerId();
 		String customerName = currentCustomer.getFirstName() + " " + currentCustomer.getSurname();
 		String orderProductIds = userOrder.getOrderProductIdsToString();
-		BusinessLayerDataControl.writeNewOrderToFile(orderId, customerId, customerName, orderProductIds);
+		BusinessLayerDataControl dataControl = new BusinessLayerDataControl();
+		dataControl.writeNewOrderToFile(orderId, customerId, customerName, orderProductIds);
 /*
 		// Reduce the stock amount of the products the customer is buying
 		BusinessLayerDataControl.reduceProductOrderStock(userOrder.getOrderProductIds());

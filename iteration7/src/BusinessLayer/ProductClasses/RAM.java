@@ -2,7 +2,6 @@ package BusinessLayer.ProductClasses;
 
 public class RAM extends Product {
 
-
     private String type;
     private String multiChannel;
     private double casLatency;

@@ -101,13 +101,10 @@ public class ProductListUI extends JFrame {
       	ProductListUiFrame.setVisible(true);
 	}
 	
-	
-	
 // ************************************************************************************************************************
 // ************ 	Customer ProductListUI
 // ************************************************************************************************************************
 
-	
 	private JList choices;
 	private ArrayList<Product> productsAddedToCart;
 	private DefaultListModel<String> model;
@@ -199,7 +196,8 @@ public class ProductListUI extends JFrame {
 				try {
 					GetCommentsUI getComment = new GetCommentsUI();
 					int selected = choices.getSelectedIndex();
-					productsAddedToCart = new ArrayList<Product>(BusinessLayerDataControl.factoryDesignPatternSearch());
+					BusinessLayerDataControl dataControl = new BusinessLayerDataControl();
+					productsAddedToCart = new ArrayList<Product>(dataControl.factoryDesignPatternSearch());
 					Product p = productsAddedToCart.get(selected);
 					getComment.display(p);
 				} catch (IOException e) {
@@ -250,8 +248,9 @@ public class ProductListUI extends JFrame {
 	private void displayList() throws IOException {
 		
 		int selected = choices.getSelectedIndex();
-		
-		productsAddedToCart = new ArrayList<Product>(BusinessLayerDataControl.factoryDesignPatternSearch());
+
+		BusinessLayerDataControl dataControl = new BusinessLayerDataControl();
+		productsAddedToCart = new ArrayList<Product>(dataControl.factoryDesignPatternSearch());
 		Product p = productsAddedToCart.get(selected);
 		pickedProducts.add(p);
 		for(int i = 0; i < pickedProducts.size(); i++)

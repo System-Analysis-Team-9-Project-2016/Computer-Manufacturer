@@ -40,8 +40,8 @@ public class GetCommentsUI {
 	    inputControls = new JPanel(new BorderLayout(5,5));
   		inputControls.add(labelPanel, BorderLayout.WEST);
 	  	
-    	
-    	ArrayList<String> comments = BusinessLayerDataControl.getComments(selectedProduct.getProductId());
+		BusinessLayerDataControl dataControl = new BusinessLayerDataControl();
+    	ArrayList<String> comments = dataControl.getComments(selectedProduct.getProductId());
 	  	label1 = new JLabel();
 	  	if(comments.size() == 0)
 	  		label1.setText("No Comments for " + selectedProduct.getProductName());
@@ -58,18 +58,13 @@ public class GetCommentsUI {
    		
    		JPanel m = new JPanel();
 		
-   
-   		
    		JPanel controls = new JPanel(new FlowLayout(FlowLayout.CENTER,5,2));
    		
-        
    		JPanel gui = new JPanel(new BorderLayout(10,10));
         gui.setBorder(new TitledBorder("Comments Discount"));
         gui.add(inputControls, BorderLayout.CENTER);
         gui.add(controls, BorderLayout.SOUTH);
         
-        
-		
 		gui.add(m, BorderLayout.WEST);
 		m.setFont(new Font("Courier",Font.BOLD,14));
 
@@ -79,7 +74,5 @@ public class GetCommentsUI {
         averageFrame.setLocationByPlatform(true);
         averageFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         averageFrame.setVisible(true);
-		
 	}
-
 }

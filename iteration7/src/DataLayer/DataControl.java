@@ -28,20 +28,20 @@ import BusinessLayer.ProductClasses.Speaker;
 import BusinessLayer.ProductClasses.Tablet;
 import BusinessLayer.ProductClasses.productFactoryDesign;
 
-public class DataControl {
+public class DataControl implements DatabaseInterface {
 	
-	public static final String customerFileName = "customerList.txt";
-	public static final String commentsFileName = "commentsList.txt";
-	public static final String adminFileName = "adminList.txt";
-	public static final String productFileName = "productList.txt";
-	public static final String ordersFileName = "ordersList.txt";
-	public static final String groupDiscountsFileName = "groupDiscountList.txt";
+	public  final String customerFileName = "customerList.txt";
+	public  final String commentsFileName = "commentsList.txt";
+	public  final String adminFileName = "adminList.txt";
+	public  final String productFileName = "productList.txt";
+	public  final String ordersFileName = "ordersList.txt";
+	public  final String groupDiscountsFileName = "groupDiscountList.txt";
 
 //########################################################################################################################################
 //	General Methods
 //########################################################################################################################################
 	
-	public static int checkNextAvailableId(String textFileName) throws FileNotFoundException {
+	public  int checkNextAvailableId(String textFileName) throws FileNotFoundException {
 		int nextAvailableId = 0;
 		
 		File searchTextFile = new File(textFileName);
@@ -61,7 +61,7 @@ public class DataControl {
 //	adminList.txt Methods
 //########################################################################################################################################
 	
-	public static String [] checkAdminLogIn(String email, String password) throws FileNotFoundException {
+	public  String [] checkAdminLogIn(String email, String password) throws FileNotFoundException {
 		String [] adminDetails = new String [5];
 		
 		File searchTextFile = new File(adminFileName);
@@ -85,7 +85,7 @@ public class DataControl {
 //	customerList.txt Methods
 //########################################################################################################################################
 	
-	public static String [] checkCustomerLogIn(String email, String password) throws FileNotFoundException {
+	public  String [] checkCustomerLogIn(String email, String password) throws FileNotFoundException {
 		String [] customerDetails = new String [7];
 		
 		File searchTextFile = new File(customerFileName);
@@ -105,7 +105,7 @@ public class DataControl {
 		return customerDetails;
 	}
 	
-	public static void addCustomerToTextFile(int id, String firstName, String surname, String address, String email, String password, String creditCardNumber) throws IOException {
+	public  void addCustomerToTextFile(int id, String firstName, String surname, String address, String email, String password, String creditCardNumber) throws IOException {
 		String lineToAppend = "\n" + id + "," + firstName + "," + surname + "," + address + "," + email + "," + password + "," + creditCardNumber;
 		try {
 		    Files.write(Paths.get(customerFileName), lineToAppend.getBytes(), StandardOpenOption.APPEND);
@@ -115,7 +115,7 @@ public class DataControl {
 		}
 	}
 	
-	public static void updateCustomerAddress(String newAddress, int customerId) throws IOException {
+	public  void updateCustomerAddress(String newAddress, int customerId) throws IOException {
 		File searchTextFile = new File(customerFileName);
 		Scanner lineIn = new Scanner(searchTextFile);
 		while (lineIn.hasNextLine()) {
@@ -128,7 +128,7 @@ public class DataControl {
 		lineIn.close();
 	}
 
-	public static void updateCustomerCreditCardNumber(String newCustomerCreditCard, int customerId) throws IOException {
+	public  void updateCustomerCreditCardNumber(String newCustomerCreditCard, int customerId) throws IOException {
 		File searchTextFile = new File(customerFileName);
 		Scanner lineIn = new Scanner(searchTextFile);
 		while (lineIn.hasNextLine()) {
@@ -145,7 +145,7 @@ public class DataControl {
 //	productList.txt Methods
 //########################################################################################################################################
 	
-	public static boolean isProductNotAlreadyPresent(String productName) throws FileNotFoundException {
+	public  boolean isProductNotAlreadyPresent(String productName) throws FileNotFoundException {
 		boolean isProductNotPresent = true;
 
 		File searchTextFile = new File(productFileName);
@@ -162,7 +162,7 @@ public class DataControl {
 		return isProductNotPresent;
 	}
 	
-	public static void writeNewProductToFile(String name, double cost, int stock, boolean isActive, boolean isDiscount, String details) throws FileNotFoundException {
+	public  void writeNewProductToFile(String name, double cost, int stock, boolean isActive, boolean isDiscount, String details) throws FileNotFoundException {
 		int nextAvailableProductId = checkNextAvailableId(productFileName);
 		String lineToAppend = "\n" + nextAvailableProductId + "," + name + "," + stock + "," + cost + "," + isActive + "," + isDiscount + details;
 		try {
@@ -173,7 +173,7 @@ public class DataControl {
 		}
 	}
 
-	public static void reduceProductOrderStock(int [] orderProductIds) throws FileNotFoundException {
+	public  void reduceProductOrderStock(int [] orderProductIds) throws FileNotFoundException {
 		File searchTextFile = new File(productFileName);
 		Scanner lineIn = new Scanner(searchTextFile);
 		for (int i = 0; i < orderProductIds.length; i++) {
@@ -188,7 +188,7 @@ public class DataControl {
 		lineIn.close();
 	}
 	
-	public static void rewriteProductFile(ArrayList<Product> products) throws IOException{
+	public  void rewriteProductFile(ArrayList<Product> products) throws IOException{
 		File file = new File(productFileName);
 		FileWriter writer = new FileWriter(file);
 		PrintWriter out = new PrintWriter(writer);
@@ -199,10 +199,9 @@ public class DataControl {
 			out.println(p.toString());
 		}
 		out.close();
-		
 	}
 	
-	public static ArrayList<Product> factoryDesignPatternSearch() throws FileNotFoundException {
+	public  ArrayList<Product> factoryDesignPatternSearch() throws FileNotFoundException {
 		File searchTextFile = new File(productFileName);
 		ArrayList<Product> allFileProducts = new ArrayList<Product>();
 		Scanner lineIn = new Scanner(searchTextFile); 
@@ -277,7 +276,7 @@ public class DataControl {
 		return allFileProducts;
 	}
 	
-	public static void writeNewCommentToFile(int customerId, String comment ,String customerName) throws FileNotFoundException {
+	public  void writeNewCommentToFile(int customerId, String comment ,String customerName) throws FileNotFoundException {
 		int nextAvailableProductId = checkNextAvailableId(commentsFileName);
 		String lineToAppend = "\n" + nextAvailableProductId + "," + customerId + "," + comment + "," + customerName;
 		try {
@@ -288,10 +287,9 @@ public class DataControl {
 		}
 	}
 	
-	public static ArrayList<String> getComments(int productID) throws IOException{
+	public  ArrayList<String> getComments(int productID) throws IOException{
 		
 		ArrayList<String> commentsInFile = new ArrayList<String>();
-		
 		File searchTextFile = new File(commentsFileName);
 		Scanner lineIn = new Scanner(searchTextFile);
 		String comment;
@@ -309,14 +307,13 @@ public class DataControl {
 		lineIn.close();
 		
 		return commentsInFile;
-		
 	}
 
 //########################################################################################################################################
 //ordersList.txt Methods
 //########################################################################################################################################
 
-	public static void writeNewOrderToFile(int orderId, int customerId, String customerName, String orderProductIds) throws FileNotFoundException {
+	public  void writeNewOrderToFile(int orderId, int customerId, String customerName, String orderProductIds) throws FileNotFoundException {
 		int nextAvailableProductId = checkNextAvailableId(ordersFileName);
 		String lineToAppend = "\n" + nextAvailableProductId + "," + orderId + "," + customerId + "," + customerName + "," + orderProductIds;
 		try {
@@ -327,7 +324,7 @@ public class DataControl {
 		}
 	}
 	
-	public static void writeNewDiscountToFile(ArrayList<Integer> added , double discount) throws FileNotFoundException {
+	public  void writeNewDiscountToFile(ArrayList<Integer> added , double discount) throws FileNotFoundException {
 		
 		int nextAvailableDiscountId = checkNextAvailableId(groupDiscountsFileName);
 		String IDs = "";
@@ -342,10 +339,9 @@ public class DataControl {
 		}
 	}
 	
-	public static ArrayList<GroupDiscount> getAllGroupDiscountsFromFile() throws FileNotFoundException {
+	public  ArrayList<GroupDiscount> getAllGroupDiscountsFromFile() throws FileNotFoundException {
 		
 		ArrayList<GroupDiscount> allDiscountsInFile = new ArrayList<GroupDiscount>();
-		
 		File searchTextFile = new File(groupDiscountsFileName);
 		Scanner lineIn = new Scanner(searchTextFile);
 		int prices;
@@ -368,11 +364,9 @@ public class DataControl {
 		return allDiscountsInFile;
 	}
 	
-	public static ArrayList<Order> getAllOrdersFromFile() throws IOException {
-		
+	public ArrayList<Order> getAllOrdersFromFile() throws IOException {
 		
 		ArrayList<Order> allOrdersInFile = new ArrayList<Order>();
-		
 		File searchTextFile = new File(ordersFileName);
 		Scanner lineIn = new Scanner(searchTextFile);
 		int prices;

@@ -19,7 +19,8 @@ public class OrderDetail {
 		for (int i = 0; i < orderProducts.size(); i++)
 			this.totalCost += orderProducts.get(i).getUnitCost();
 		
-		ArrayList<GroupDiscount> groupDiscounts = BusinessLayerDataControl.getAllGroupDiscountsFromFile();
+		BusinessLayerDataControl dataControl = new BusinessLayerDataControl();
+		ArrayList<GroupDiscount> groupDiscounts = dataControl.getAllGroupDiscountsFromFile();
 		double maxDiscount = 0;
 		GroupDiscount g;
 		for(int j = 0;j < groupDiscounts.size();j++){

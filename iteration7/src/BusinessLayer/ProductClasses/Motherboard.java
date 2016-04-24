@@ -2,7 +2,6 @@ package BusinessLayer.ProductClasses;
 
 public class Motherboard extends Product {
 
-
     private String cpuSocketType;
     private String series;
     private String formFactor;
@@ -15,7 +14,6 @@ public class Motherboard extends Product {
         this.formFactor = formFactor;
         this.memoryStandard = memoryStandard;
     }
-
 
     public String getCpuSocketType() {
         return cpuSocketType;

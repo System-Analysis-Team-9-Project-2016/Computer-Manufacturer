@@ -13,7 +13,8 @@ public class AddNewProduct {
 	public boolean validateProduct(String name) throws IOException{
 
 		boolean valid = true;
-		valid = BusinessLayerDataControl.isProductNotAlreadyPresent(name);
+		BusinessLayerDataControl dataControl = new BusinessLayerDataControl();
+		valid = dataControl.isProductNotAlreadyPresent(name);
 		//return valid; -> Overriding return boolean as we are allowing products with the same name
 		return true;
 	}
@@ -28,7 +29,8 @@ public class AddNewProduct {
 	}
 	
 	public void addProduct(String details) throws IOException{
-		BusinessLayerDataControl.writeNewProductToFile(name, cost, stock, true, false, details);
+		BusinessLayerDataControl dataControl = new BusinessLayerDataControl();
+		dataControl.writeNewProductToFile(name, cost, stock, true, false, details);
 	}
 	
 	

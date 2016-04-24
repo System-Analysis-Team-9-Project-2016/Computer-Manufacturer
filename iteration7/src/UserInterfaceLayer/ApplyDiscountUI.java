@@ -44,11 +44,11 @@ public class ApplyDiscountUI extends JFrame{
 		labelPanel.add(label1);
 		fieldPanel.add(text1);
 
-		productsInFile = BusinessLayerDataControl.factoryDesignPatternSearch();
+		BusinessLayerDataControl dataControl = new BusinessLayerDataControl();
+		productsInFile = dataControl.factoryDesignPatternSearch();
 
 		JPanel m = new JPanel();
 		model = new DefaultListModel<String>();
-
 
 		for(int i = 0; i < productsInFile.size(); i++){
 			Product someProduct = productsInFile.get(i);
@@ -82,13 +82,10 @@ public class ApplyDiscountUI extends JFrame{
 		JPanel controls = new JPanel(new FlowLayout(FlowLayout.CENTER,5,2));
 		controls.add(SUBMIT);
 
-
 		JPanel gui = new JPanel(new BorderLayout(10,10));
 		gui.setBorder(new TitledBorder("Edit Discount"));
 		gui.add(inputControls, BorderLayout.CENTER);
 		gui.add(controls, BorderLayout.SOUTH);
-
-
 
 		m.add(choices);
 		gui.add(m, BorderLayout.WEST);

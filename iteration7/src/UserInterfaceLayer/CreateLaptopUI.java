@@ -38,7 +38,7 @@ public class CreateLaptopUI extends JPanel{
 	JPanel bottomPanel = new JPanel();
 	JPanel m = new JPanel();
 	JPanel p = new JPanel();
-	JFrame CreateLaptopUiFrame = new JFrame("Create PC modal:");
+	JFrame CreateLaptopUiFrame = new JFrame("Create PC model:");
 	JLabel currentLabel = new JLabel("Add a component to the list");
 	private boolean chooseArrayMade = false;
 	private boolean chosenArrayMade = false;
@@ -51,7 +51,7 @@ public class CreateLaptopUI extends JPanel{
 		// ************ 	Start JFrame stuff
 		// ************************************************************************************************************************
 		
-		JFrame CreateLaptopUiFrame = new JFrame("Create Laptop modal:");
+		JFrame CreateLaptopUiFrame = new JFrame("Create Laptop model:");
 		CreateLaptopUiFrame.setBackground(new Color(0,100,200));
 		CreateLaptopUiFrame.setLayout(new BorderLayout(200,200));
 		JLabel productsListJLabel = new JLabel("Products");
@@ -62,7 +62,8 @@ public class CreateLaptopUI extends JPanel{
 
 		
 		try {
-			productsInFile = BusinessLayerDataControl.factoryDesignPatternSearch();
+			BusinessLayerDataControl dataControl = new BusinessLayerDataControl();
+			productsInFile = dataControl.factoryDesignPatternSearch();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -184,10 +185,6 @@ public class CreateLaptopUI extends JPanel{
 			case 2 : part = "GPU"; break;
 			case 3 : part = "RAM"; break;
 			case 4 : part = "MemoryDrives"; break;
-			case 5 : part = "Monitor"; break;
-			case 6 : part = "Keyboard"; break;
-			case 7 : part = "Mouse"; break;
-			case 8 : part = "Speaker"; break;
 			}
 			for(int i = 0; i < productsInFile.size(); i++){
 				Product someProduct = productsInFile.get(i);

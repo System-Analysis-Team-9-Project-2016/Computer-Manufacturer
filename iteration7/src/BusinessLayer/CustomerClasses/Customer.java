@@ -1,6 +1,5 @@
 package BusinessLayer.CustomerClasses;
 
-
 import java.util.ArrayList;
 
 public class Customer extends User {
@@ -48,14 +47,10 @@ public class Customer extends User {
 		customerOrders.add(orderId);
 	}
 
-
-
 	public int getCustomerId() {
 		return customerId;
 	}
-
-
-
+	
 	public void setCustomerId(int customerId) {
 		this.customerId = customerId;
 	}	

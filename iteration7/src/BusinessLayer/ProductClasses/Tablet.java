@@ -7,7 +7,6 @@ public class Tablet extends ComputerSystem {
     private boolean attachableKeyboard;
     private double weight;
 
-
     public Tablet(int productId, String productName, int stock, double unitCost, boolean isActive, boolean isProductDiscount, String OS, boolean stylus, int screenSize, int screenRez, boolean attachableKeyboard, double weight) {
         super(productId, productName, stock, unitCost, isActive, isProductDiscount, OS);
         this.stylus = stylus;

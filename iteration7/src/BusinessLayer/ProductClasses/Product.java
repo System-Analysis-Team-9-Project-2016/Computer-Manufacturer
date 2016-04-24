@@ -109,7 +109,6 @@ public class Product implements Component, Subject {
         return statusString;
     }
     
-
     /**
      * Get a String that describes this Product. Note that
      * this method overrides the toString method inherited
@@ -124,11 +123,10 @@ public class Product implements Component, Subject {
     public String getProductUIDetails(){
         return  this.productName + "  \u20ac" + this.unitCost + "  " + this.stock;
     }
+    
     public String toString(){
         return "" + this.productId + "," + this.productName +","  + this.stock + "," + this.unitCost + "," + this.isActive + "," 
                 + this.isProductDiscount;
-
-
     }
     
     @Override
@@ -150,6 +148,5 @@ public class Product implements Component, Subject {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-
     }
 }

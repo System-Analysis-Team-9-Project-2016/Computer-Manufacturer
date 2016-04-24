@@ -26,9 +26,10 @@ public class Register
 
         else {
           try {
-        	  int nextAvailableId = BusinessLayerDataControl.checkNextAvailableId("customerList.txt");
+      		  BusinessLayerDataControl dataControl = new BusinessLayerDataControl();
+        	  int nextAvailableId = dataControl.checkNextAvailableId("customerList.txt");
         	  
-        	  BusinessLayerDataControl.addCustomerToTextFile(nextAvailableId, firstName, surname, address, email, pass1, creditCardNumber);
+        	  dataControl.addCustomerToTextFile(nextAvailableId, firstName, surname, address, email, pass1, creditCardNumber);
    
              JOptionPane.showMessageDialog(null, "You have successfully registered. Please log in");
              LoginUI l = new LoginUI();

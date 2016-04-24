@@ -61,7 +61,8 @@ public class GroupDiscount {
 		String result = " This discount is for ";
 		Product p;
 		try {
-			ArrayList<Product> products = BusinessLayerDataControl.factoryDesignPatternSearch();
+			BusinessLayerDataControl dataControl = new BusinessLayerDataControl();
+			ArrayList<Product> products = dataControl.factoryDesignPatternSearch();
 			for(int i = 0; i < products.size();i++){
 				p = products.get(i);
 				for(int j = 0;j < productsIDInDiscount.size();j++){
@@ -77,6 +78,4 @@ public class GroupDiscount {
 		}
 		return "";
 	}
-
-	
 }

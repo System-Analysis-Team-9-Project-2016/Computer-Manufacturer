@@ -53,8 +53,6 @@ public class AddNewCommentUI {
     	inputControls.add(fieldPanel, BorderLayout.CENTER);
     	inputControls.add(addedPanel, BorderLayout.SOUTH);
 	  	
-    	
-    	
 	  	label1 = new JLabel();
    		label1.setText("Please enter your Comment");
    		text1 = new JTextField(15);
@@ -62,8 +60,6 @@ public class AddNewCommentUI {
    		labelPanel.add(label1);
    		fieldPanel.add(text1);
    		
-   		
-
         JFrame averageFrame = new JFrame("Comment Page");
    		
    		JPanel m = new JPanel();
@@ -99,8 +95,6 @@ public class AddNewCommentUI {
    
    		SUBMIT.setActionCommand("1");
    		
-   
-   		
 	    JPanel controls = new JPanel(new FlowLayout(FlowLayout.CENTER,5,2));
    		controls.add(SUBMIT);
    		
@@ -110,8 +104,6 @@ public class AddNewCommentUI {
         gui.add(inputControls, BorderLayout.CENTER);
         gui.add(controls, BorderLayout.SOUTH);
         
-        
-		
 		gui.add(m, BorderLayout.WEST);
 		m.setFont(new Font("Courier",Font.BOLD,14));
 
@@ -121,5 +113,4 @@ public class AddNewCommentUI {
         averageFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         averageFrame.setVisible(true);
 	}
-
 }

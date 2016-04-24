@@ -13,12 +13,14 @@ public class EditOrderDetails {
 
 		if (!newCustomerAddress.equalsIgnoreCase("")) {
 			currentCustomer.setCustomerAddress(newCustomerAddress);
-			BusinessLayerDataControl.updateCustomerAddress(newCustomerAddress, currentCustomer.getCustomerId());
+			BusinessLayerDataControl dataControl = new BusinessLayerDataControl();
+			dataControl.updateCustomerAddress(newCustomerAddress, currentCustomer.getCustomerId());
 		}
 		
 		if (!newCustomerCreditCard.equalsIgnoreCase("")) {
 			currentCustomer.setCreditCardNumber(newCustomerCreditCard);
-			BusinessLayerDataControl.updateCustomerCreditCardNumber(newCustomerCreditCard, currentCustomer.getCustomerId());
+			BusinessLayerDataControl dataControl = new BusinessLayerDataControl();
+			dataControl.updateCustomerCreditCardNumber(newCustomerCreditCard, currentCustomer.getCustomerId());
 		}
 		
 		//EditOrderDetailsUI createNewEditOrderDetails = new EditOrderDetailsUI(userOrder, currentCustomer);

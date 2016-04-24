@@ -16,16 +16,17 @@ public class Login {
 
 	public Login(String email, String password) throws IOException {
 		System.out.println("[debug] : ****** Entering Login Class ******");
-		
-	    String [] customerDetails = BusinessLayerDataControl.checkCustomerLogIn(email, password);
-	    String [] adminDetails = BusinessLayerDataControl.checkAdminLogIn(email, password);
+
+		BusinessLayerDataControl dataControl = new BusinessLayerDataControl();
+	    String [] customerDetails = dataControl.checkCustomerLogIn(email, password);
+	    String [] adminDetails = dataControl.checkAdminLogIn(email, password);
 	   
 	    if (!(customerDetails[6].equalsIgnoreCase("fail"))) {
 	    	// Customer(int id, String firstName, String surname, String email, String password, String creditCardNumber)
 	        Customer customer = new Customer(Integer.parseInt(customerDetails[0]),customerDetails[1],customerDetails[2],customerDetails[3],customerDetails[4], customerDetails[5], customerDetails[6]);
 	        @SuppressWarnings("unused")
 	        
-	        ArrayList<Product> productsInFile = BusinessLayerDataControl.factoryDesignPatternSearch();
+	        ArrayList<Product> productsInFile = dataControl.factoryDesignPatternSearch();
 	        
 			ProductListUI frame = new ProductListUI(customer, productsInFile);
 	    }

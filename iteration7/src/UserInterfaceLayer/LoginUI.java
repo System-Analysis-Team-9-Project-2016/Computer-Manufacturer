@@ -97,6 +97,4 @@ public class LoginUI extends JFrame implements ActionListener
           frame.setVisible(false);
         }
     }
-   		
-   		
 }

@@ -8,8 +8,8 @@ import DataLayer.DataControl;
 public class AddNewGroupDiscount {
 	
 	public void newGroupDiscount(ArrayList<Integer> added , double discount) throws FileNotFoundException{
-		BusinessLayerDataControl.writeNewDiscountToFile(added , discount);
-		
+		BusinessLayerDataControl dataControl = new BusinessLayerDataControl();
+		dataControl.writeNewDiscountToFile(added , discount);
 	}
 	
 	public boolean validateDiscount(ArrayList<Integer> added , String discount){

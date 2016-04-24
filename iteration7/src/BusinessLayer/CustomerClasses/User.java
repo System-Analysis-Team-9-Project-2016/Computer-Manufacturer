@@ -1,7 +1,5 @@
 package BusinessLayer.CustomerClasses;
 
-
-
 public class User {
 	
 	private String firstName;

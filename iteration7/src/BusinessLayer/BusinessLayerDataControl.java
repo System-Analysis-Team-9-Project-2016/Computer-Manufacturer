@@ -5,64 +5,80 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import BusinessLayer.OrderClasses.GroupDiscount;
+import BusinessLayer.OrderClasses.Order;
 import BusinessLayer.ProductClasses.Product;
 import DataLayer.DataControl;
+import DataLayer.DatabaseInterface;
 
-public class BusinessLayerDataControl extends DataControl {
+public class BusinessLayerDataControl implements DatabaseInterface {
 
-	public static int checkNextAvailableId(String filename) throws FileNotFoundException {
-		return DataControl.checkNextAvailableId(filename);
+	private DataControl dataControl = new DataControl();
+	
+	public int checkNextAvailableId(String filename) throws FileNotFoundException {
+		return dataControl.checkNextAvailableId(filename);
 	}
 	
-	public static String [] checkAdminLogIn(String email, String password) throws FileNotFoundException {
-		return DataControl.checkAdminLogIn(email, password);
+	public String [] checkAdminLogIn(String email, String password) throws FileNotFoundException {
+		return dataControl.checkAdminLogIn(email, password);
 	}
 	
-	public static String[] checkCustomerLogIn(String email, String password) throws FileNotFoundException {
-		return DataControl.checkCustomerLogIn(email, password);
+	public String[] checkCustomerLogIn(String email, String password) throws FileNotFoundException {
+		return dataControl.checkCustomerLogIn(email, password);
 	}
 	
-	public static void addCustomerToTextFile(int id, String firstName, String surname, String address, String email, String password, String creditCardNumber) throws IOException {
-		DataControl.addCustomerToTextFile(id, firstName, surname, address, email, password, creditCardNumber);
+	public void addCustomerToTextFile(int id, String firstName, String surname, String address, String email, String password, String creditCardNumber) throws IOException {
+		dataControl.addCustomerToTextFile(id, firstName, surname, address, email, password, creditCardNumber);
 	}
 	
-	public static void updateCustomerAddress(String newAddress, int customerId) throws IOException {
-		DataControl.updateCustomerAddress(newAddress, customerId);
+	public void updateCustomerAddress(String newAddress, int customerId) throws IOException {
+		dataControl.updateCustomerAddress(newAddress, customerId);
 	}
 	
-	public static void updateCustomerCreditCardNumber(String newCustomerCreditCard, int customerId) throws IOException {
-		DataControl.updateCustomerCreditCardNumber(newCustomerCreditCard, customerId);
+	public void updateCustomerCreditCardNumber(String newCustomerCreditCard, int customerId) throws IOException {
+		dataControl.updateCustomerCreditCardNumber(newCustomerCreditCard, customerId);
 	}
 	
-	public static boolean isProductNotAlreadyPresent(String productName) throws FileNotFoundException {
-		return DataControl.isProductNotAlreadyPresent(productName);
+	public boolean isProductNotAlreadyPresent(String productName) throws FileNotFoundException {
+		return dataControl.isProductNotAlreadyPresent(productName);
 	}
 	
-	public static void writeNewProductToFile(String name, double cost, int stock, boolean isActive, boolean isDiscount, String details) throws FileNotFoundException {
-		DataControl.writeNewProductToFile(name, cost, stock, isActive, isDiscount, details);
+	public void writeNewProductToFile(String name, double cost, int stock, boolean isActive, boolean isDiscount, String details) throws FileNotFoundException {
+		dataControl.writeNewProductToFile(name, cost, stock, isActive, isDiscount, details);
 	}
 	
-	public static void reduceProductOrderStock(int [] orderProductIds) throws FileNotFoundException {
-		DataControl.reduceProductOrderStock(orderProductIds);
+	public void reduceProductOrderStock(int [] orderProductIds) throws FileNotFoundException {
+		dataControl.reduceProductOrderStock(orderProductIds);
 	}
 	
-	public static void rewriteProductFile(ArrayList<Product> products) throws IOException {
-		DataControl.rewriteProductFile(products);
+	public void rewriteProductFile(ArrayList<Product> products) throws IOException {
+		dataControl.rewriteProductFile(products);
 	}
 	
-	public static ArrayList<Product> factoryDesignPatternSearch() throws FileNotFoundException {
-		return DataControl.factoryDesignPatternSearch();
+	public ArrayList<Product> factoryDesignPatternSearch() throws FileNotFoundException {
+		return dataControl.factoryDesignPatternSearch();
 	}
 	
-	public static void writeNewOrderToFile(int orderId, int customerId, String customerName, String orderProductIds) throws FileNotFoundException {
-		DataControl.writeNewOrderToFile(orderId, customerId, customerName, orderProductIds);
+	public void writeNewCommentToFile(int customerId, String comment ,String customerName) throws FileNotFoundException {
+		dataControl.writeNewCommentToFile(customerId, comment, customerName);
 	}
 	
-	public static void writeNewDiscountToFile(ArrayList<Integer> added , double discount) throws FileNotFoundException {
-		DataControl.writeNewDiscountToFile(added, discount);
+	public ArrayList<String> getComments(int productID) throws IOException {
+		return dataControl.getComments(productID);
 	}
 	
-	public static ArrayList<GroupDiscount> getAllGroupDiscountsFromFile() throws FileNotFoundException {
-		return DataControl.getAllGroupDiscountsFromFile();
+	public ArrayList<Order> getAllOrdersFromFile() throws IOException {
+		return dataControl.getAllOrdersFromFile();
+	}
+	
+	public void writeNewOrderToFile(int orderId, int customerId, String customerName, String orderProductIds) throws FileNotFoundException {
+		dataControl.writeNewOrderToFile(orderId, customerId, customerName, orderProductIds);
+	}
+	
+	public void writeNewDiscountToFile(ArrayList<Integer> added , double discount) throws FileNotFoundException {
+		dataControl.writeNewDiscountToFile(added, discount);
+	}
+	
+	public ArrayList<GroupDiscount> getAllGroupDiscountsFromFile() throws FileNotFoundException {
+		return dataControl.getAllGroupDiscountsFromFile();
 	}	
 }

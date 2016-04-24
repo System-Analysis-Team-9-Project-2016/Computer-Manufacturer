@@ -65,13 +65,13 @@ public class AddNewGroupDiscountUI {
 		label2.setText("Products in Discount = ");
 		addedPanel.add(label2);
 
-		productsInFile = BusinessLayerDataControl.factoryDesignPatternSearch();
+		BusinessLayerDataControl dataControl = new BusinessLayerDataControl();
+		productsInFile = dataControl.factoryDesignPatternSearch();
 
 		added = new ArrayList<Integer>();
 
 		JPanel m = new JPanel();
 		model = new DefaultListModel<String>();
-
 
 		for(int i = 0; i < productsInFile.size(); i++){
 			Product someProduct = productsInFile.get(i);
@@ -125,18 +125,14 @@ public class AddNewGroupDiscountUI {
 			}
 		});
 
-
 		JPanel controls = new JPanel(new FlowLayout(FlowLayout.CENTER,5,2));
 		controls.add(SUBMIT);
 		controls.add(Add);
-
 
 		JPanel gui = new JPanel(new BorderLayout(10,10));
 		gui.setBorder(new TitledBorder("Edit Group Discount"));
 		gui.add(inputControls, BorderLayout.CENTER);
 		gui.add(controls, BorderLayout.SOUTH);
-
-
 
 		m.add(choices);
 		gui.add(m, BorderLayout.WEST);

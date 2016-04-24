@@ -14,8 +14,9 @@ public class ProductList implements Observer {
 	public ProductList(ArrayList<Product> pickedProducts, Customer customer) throws IOException {
 		
 		// Order(int orderId, int customerId, String customerName, int shippingId, ArrayList<Product> orderProducts)
-		
-		int orderId = BusinessLayerDataControl.checkNextAvailableId("ordersList.txt");
+
+		BusinessLayerDataControl dataControl = new BusinessLayerDataControl();
+		int orderId = dataControl.checkNextAvailableId("ordersList.txt");
 		int customerId = customer.getCustomerId();
 		String customerName = customer.getFirstName() + customer.getSurname();
 		int shippingId = orderId;
@@ -31,14 +32,15 @@ public class ProductList implements Observer {
 	}		 
 	@Override
 	public void Update(Product p) throws IOException {
-		ArrayList<Product> x =BusinessLayerDataControl.factoryDesignPatternSearch();
+		BusinessLayerDataControl dataControl = new BusinessLayerDataControl();
+		ArrayList<Product> x =dataControl.factoryDesignPatternSearch();
 		for(int i =0;i < x.size();i++){
 			if(x.get(i).getProductId() == p.getProductId()){
 				x.remove(i);
 				x.add(i , p);
 			}
 		}
-		BusinessLayerDataControl.rewriteProductFile(x);
+		dataControl.rewriteProductFile(x);
 
 
 	}

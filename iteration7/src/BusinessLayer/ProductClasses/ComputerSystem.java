@@ -5,7 +5,6 @@ import java.util.ArrayList;
 public class ComputerSystem extends Product implements System{
 
     private String OS;
-
     private ArrayList<Product> components;
 
     public ComputerSystem(int productId, String productName, int stock, double unitCost, boolean isActive, boolean isProductDiscount, String OS) {
@@ -13,7 +12,6 @@ public class ComputerSystem extends Product implements System{
         this.OS = OS;
         components = new ArrayList<Product>();
     }
-
 
     public void addProduct(Product component) {
     	components.add(component);

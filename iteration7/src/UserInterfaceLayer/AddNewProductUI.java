@@ -31,7 +31,6 @@ public class AddNewProductUI {
 		
 	}
 	
-	
 	public void display() throws IOException{
 	  	
 	  	JPanel inputControls;
@@ -63,7 +62,6 @@ public class AddNewProductUI {
    		fieldPanel.add(text1);
    		fieldPanel.add(text2);
    		
-
 	    SUBMIT=new JButton("Submit");
 	    
 	    SUBMIT.addActionListener(new ActionListener(){
@@ -109,12 +107,10 @@ public class AddNewProductUI {
         averageFrameMain.setLocationByPlatform(true);
         averageFrameMain.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         averageFrameMain.setVisible(true);
-		
 	}
 	
 	public void displayAddCPU(final AddNewProduct a){
 	  	
-    	
     	label0 = new JLabel();
     	label0.setText("Enter CPU Series:");
 	  	label1 = new JLabel();
@@ -134,7 +130,6 @@ public class AddNewProductUI {
    		fieldPanel.add(text1);
    		fieldPanel.add(text2);
    		
-
 	    SUBMIT=new JButton("Submit");
 	    
 	    SUBMIT.addActionListener(new ActionListener(){
@@ -151,8 +146,6 @@ public class AddNewProductUI {
 	    		catch(IOException ex){
 	    			
 	    		}
-	    		
-	    		
 	    	}
 	    });
    
@@ -194,7 +187,6 @@ public class AddNewProductUI {
    		fieldPanel.add(text1);
    		fieldPanel.add(text2);
    		
-
 	    SUBMIT=new JButton("Submit");
 	    
 	    SUBMIT.addActionListener(new ActionListener(){
@@ -211,7 +203,6 @@ public class AddNewProductUI {
 	    		catch(IOException ex){
 	    			
 	    		}
-	    		
 	    	}
 	    });
    
@@ -230,7 +221,6 @@ public class AddNewProductUI {
         averageFrame.setLocationByPlatform(true);
         averageFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         averageFrame.setVisible(true);
-		
 	}
 	
 	public void displayAddRam(final AddNewProduct a){
@@ -253,7 +243,6 @@ public class AddNewProductUI {
    		fieldPanel.add(text1);
    		fieldPanel.add(text2);
    		
-
 	    SUBMIT=new JButton("Submit");
 	    
 	    SUBMIT.addActionListener(new ActionListener(){
@@ -270,7 +259,6 @@ public class AddNewProductUI {
 	    		catch(IOException ex){
 	    			
 	    		}
-	    		
 	    	}
 	    });
    
@@ -289,7 +277,6 @@ public class AddNewProductUI {
         averageFrame.setLocationByPlatform(true);
         averageFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         averageFrame.setVisible(true);
-		
 	}
 	
 	public void displayAddMotherboard(final AddNewProduct a){
@@ -317,7 +304,6 @@ public class AddNewProductUI {
    		fieldPanel.add(text2);
    		fieldPanel.add(text3);
    		
-
 	    SUBMIT=new JButton("Submit");
 	    
 	    SUBMIT.addActionListener(new ActionListener(){
@@ -335,7 +321,6 @@ public class AddNewProductUI {
 	    		catch(IOException ex){
 	    			
 	    		}
-	    		
 	    	}
 	    });
    
@@ -354,6 +339,5 @@ public class AddNewProductUI {
         averageFrame.setLocationByPlatform(true);
         averageFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         averageFrame.setVisible(true);
-		
 	}
 }

@@ -2,7 +2,6 @@ package BusinessLayer.ProductClasses;
 
 public class GPU extends Product {
 
-
     private String memory;
     private boolean virtualRealityReady = false;
     private int displayPorts = 1;
