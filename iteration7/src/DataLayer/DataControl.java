@@ -13,6 +13,7 @@ import java.util.Scanner;
 
 import BusinessLayer.OrderClasses.GroupDiscount;
 import BusinessLayer.OrderClasses.Order;
+import BusinessLayer.productFactoryDesign;
 import BusinessLayer.ProductClasses.CPU;
 import BusinessLayer.ProductClasses.Desktop;
 import BusinessLayer.ProductClasses.GPU;
@@ -26,7 +27,6 @@ import BusinessLayer.ProductClasses.Product;
 import BusinessLayer.ProductClasses.RAM;
 import BusinessLayer.ProductClasses.Speaker;
 import BusinessLayer.ProductClasses.Tablet;
-import BusinessLayer.ProductClasses.productFactoryDesign;
 
 public class DataControl implements DatabaseInterface {
 	
@@ -201,6 +201,59 @@ public class DataControl implements DatabaseInterface {
 		out.close();
 	}
 	
+	
+	
+	public  void writeNewCommentToFile(int customerId, String comment ,String customerName) throws FileNotFoundException {
+		int nextAvailableProductId = checkNextAvailableId(commentsFileName);
+		String lineToAppend = "\n" + nextAvailableProductId + "," + customerId + "," + comment + "," + customerName;
+		try {
+		    Files.write(Paths.get(commentsFileName), lineToAppend.getBytes(), StandardOpenOption.APPEND);
+		}
+		catch (IOException e) {
+		    //exception handling left as an exercise for the reader
+		}
+	}
+	
+	public  ArrayList<String> getComments(int productID) throws IOException{
+		
+		ArrayList<String> commentsInFile = new ArrayList<String>();
+		File searchTextFile = new File(commentsFileName);
+		Scanner lineIn = new Scanner(searchTextFile);
+		String comment;
+		while (lineIn.hasNextLine()) {
+			String aLineFromFile = lineIn.nextLine();
+			String [] splitLineFromFile = aLineFromFile.split(",");
+			if (splitLineFromFile.length > 0) {
+				if(Integer.parseInt(splitLineFromFile[1]) == productID){
+					comment = splitLineFromFile[2];
+					comment += "\n-" + splitLineFromFile[3];
+					commentsInFile.add(comment);
+				}
+			}
+		}
+		lineIn.close();
+		
+		return commentsInFile;
+	}
+	
+	public double getDiscount(int productID) throws IOException{
+		
+		File searchTextFile = new File(discountsFileName);
+		Scanner lineIn = new Scanner(searchTextFile);
+		while (lineIn.hasNextLine()) {
+			String aLineFromFile = lineIn.nextLine();
+			String [] splitLineFromFile = aLineFromFile.split(",");
+			if (splitLineFromFile.length > 0) {
+				if(Integer.parseInt(splitLineFromFile[0]) == productID){
+					return Double.parseDouble(splitLineFromFile[1]);
+				}
+			}
+		}
+		lineIn.close();
+		
+		return 0;
+	}
+	
 	public  ArrayList<Product> factoryDesignPatternSearch() throws FileNotFoundException {
 		File searchTextFile = new File(productFileName);
 		ArrayList<Product> allFileProducts = new ArrayList<Product>();
@@ -274,57 +327,6 @@ public class DataControl implements DatabaseInterface {
 		}
 		lineIn.close();
 		return allFileProducts;
-	}
-	
-	public  void writeNewCommentToFile(int customerId, String comment ,String customerName) throws FileNotFoundException {
-		int nextAvailableProductId = checkNextAvailableId(commentsFileName);
-		String lineToAppend = "\n" + nextAvailableProductId + "," + customerId + "," + comment + "," + customerName;
-		try {
-		    Files.write(Paths.get(commentsFileName), lineToAppend.getBytes(), StandardOpenOption.APPEND);
-		}
-		catch (IOException e) {
-		    //exception handling left as an exercise for the reader
-		}
-	}
-	
-	public  ArrayList<String> getComments(int productID) throws IOException{
-		
-		ArrayList<String> commentsInFile = new ArrayList<String>();
-		File searchTextFile = new File(commentsFileName);
-		Scanner lineIn = new Scanner(searchTextFile);
-		String comment;
-		while (lineIn.hasNextLine()) {
-			String aLineFromFile = lineIn.nextLine();
-			String [] splitLineFromFile = aLineFromFile.split(",");
-			if (splitLineFromFile.length > 0) {
-				if(Integer.parseInt(splitLineFromFile[1]) == productID){
-					comment = splitLineFromFile[2];
-					comment += "\n-" + splitLineFromFile[3];
-					commentsInFile.add(comment);
-				}
-			}
-		}
-		lineIn.close();
-		
-		return commentsInFile;
-	}
-	
-	public double getDiscount(int productID) throws IOException{
-		
-		File searchTextFile = new File(discountsFileName);
-		Scanner lineIn = new Scanner(searchTextFile);
-		while (lineIn.hasNextLine()) {
-			String aLineFromFile = lineIn.nextLine();
-			String [] splitLineFromFile = aLineFromFile.split(",");
-			if (splitLineFromFile.length > 0) {
-				if(Integer.parseInt(splitLineFromFile[0]) == productID){
-					return Double.parseDouble(splitLineFromFile[1]);
-				}
-			}
-		}
-		lineIn.close();
-		
-		return 0;
 	}
 	
 	public void addDiscount(int productID , double discount) throws IOException{
