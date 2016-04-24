@@ -1,4 +1,6 @@
-package BusinessLayer.ProductClasses;
+package BusinessLayer;
+
+import BusinessLayer.ProductClasses.*;
 
 public class productFactoryDesign {
 	
