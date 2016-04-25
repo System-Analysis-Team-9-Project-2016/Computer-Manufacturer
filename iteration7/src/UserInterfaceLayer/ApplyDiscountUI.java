@@ -38,7 +38,7 @@ public class ApplyDiscountUI extends JFrame{
 		final JFrame averageFrame = new JFrame("Discount Page");
 
 		label1 = new JLabel();
-		label1.setText("Please enter your discount (%)");
+		label1.setText("Please enter your discount");
 		text1 = new JTextField(15);
 
 		labelPanel.add(label1);

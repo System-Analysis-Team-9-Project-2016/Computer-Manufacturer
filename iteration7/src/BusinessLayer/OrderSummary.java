@@ -24,8 +24,9 @@ public class OrderSummary {
 		String orderProductIds = userOrder.getOrderProductIdsToString();
 		BusinessLayerDataControl dataControl = new BusinessLayerDataControl();
 		dataControl.writeNewOrderToFile(orderId, customerId, customerName, orderProductIds);
-		
+
 		// Reduce the stock amount of the products the customer is buying
+		dataControl.reduceProductOrderStock(userOrder.getOrderProductIds());
 		int[] orderProductIDs = userOrder.getOrderProductIds();
 		ArrayList<Product> myProducts = new ArrayList<Product>();
 		ArrayList<Product> allProducts = dataControl.factoryDesignPatternSearch();
@@ -43,6 +44,7 @@ public class OrderSummary {
 			myProducts.get(i).setStock(myProducts.get(i).getStock() - 1);
 			myProducts.get(i).notifyObservers();		
 		}
+
 		// Use Decorator Design pattern for printing receipt
 		Receipt headerReceipt = new ThankYouReceipt(new HeaderReceipt(new BasicReceipt()));
 		String postOrderDetails = headerReceipt.printReceipt();
