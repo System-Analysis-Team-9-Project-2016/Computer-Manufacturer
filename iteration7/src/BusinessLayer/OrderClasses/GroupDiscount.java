@@ -70,7 +70,7 @@ public class GroupDiscount {
 						result += p.getProductName() + " and ";
 				}
 			}
-			result += "the discount is " + (discount / 100) + "%";
+			result += "the discount is " + (discount) + "%";
 			return result;
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
