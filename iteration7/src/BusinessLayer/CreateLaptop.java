@@ -39,8 +39,14 @@ public class CreateLaptop {
 	}
 	
 	public ArrayList<Product> getProductsInFile() {
-		return currentLaptop.getComponents();
-		
+		try {
+			BusinessLayerDataControl dataControl = new BusinessLayerDataControl();
+			productsInFile = dataControl.factoryDesignPatternSearch();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return productsInFile;
 	}
 
 	public void buyButtonClicked() {
