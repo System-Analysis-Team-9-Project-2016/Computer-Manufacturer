@@ -67,7 +67,7 @@ public class GroupDiscount {
 				p = products.get(i);
 				for(int j = 0;j < productsIDInDiscount.size();j++){
 					if(productsIDInDiscount.get(j) == p.getProductId())
-						result += p.getProductName() + " and ";
+						result += p.getProductName() + "-" + p.getProductId() + " and ";
 				}
 			}
 			result += "the discount is " + (discount) + "%";
