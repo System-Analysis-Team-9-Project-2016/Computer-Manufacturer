@@ -197,7 +197,7 @@ public class ProductListUI extends JFrame {
 					GetCommentsUI getComment = new GetCommentsUI();
 					int selected = choices.getSelectedIndex();
 					
-					if(choices.getSelectedIndex() > 0){
+					if(choices.getSelectedIndex() >= 0){
 					BusinessLayerDataControl dataControl = new BusinessLayerDataControl();
 					productsAddedToCart = new ArrayList<Product>(dataControl.factoryDesignPatternSearch());
 					Product p = productsAddedToCart.get(selected);
@@ -210,6 +210,22 @@ public class ProductListUI extends JFrame {
 		    }
 		});
 		m.add(getComments);
+		
+		JButton getGroupDiscounts = new JButton("Look at Group Discounts");
+		getGroupDiscounts.addActionListener(new ActionListener() {
+		    @Override
+		    public void actionPerformed(ActionEvent evt) {
+		    	System.out.println("[info]  : ------ Get Discounts button clicked (ProductListUI Customer) ------");
+				try {
+					GetGroupDiscountsUI getDiscounts = new GetGroupDiscountsUI();
+					getDiscounts.display();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		    }
+		});
+		m.add(getGroupDiscounts);
 		
 		JPanel p = new JPanel();
 		

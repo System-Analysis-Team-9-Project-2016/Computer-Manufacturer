@@ -60,7 +60,7 @@ public class AddNewCommentUI {
    		labelPanel.add(label1);
    		fieldPanel.add(text1);
    		
-        JFrame averageFrame = new JFrame("Comment Page");
+        final JFrame averageFrame = new JFrame("Comment Page");
    		
    		JPanel m = new JPanel();
 		model = new DefaultListModel<String>();
@@ -81,6 +81,7 @@ public class AddNewCommentUI {
 	    	@Override
 	    	public void actionPerformed(ActionEvent e){
 				int selected = choices.getSelectedIndex();
+				if(selected >= 0){
 				AddNewComment a = new AddNewComment();
 				Product p = customerProduct.get(selected);
 				try {
@@ -89,6 +90,7 @@ public class AddNewCommentUI {
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
+				}
 				}
 	    	}
 	    });
