@@ -58,7 +58,6 @@ public class AddNewCommentUI {
    		text1 = new JTextField(15);
    		
    		labelPanel.add(label1);
-   		fieldPanel.add(text1);
    		
         final JFrame averageFrame = new JFrame("Comment Page");
    		
@@ -98,7 +97,12 @@ public class AddNewCommentUI {
    		SUBMIT.setActionCommand("1");
    		
 	    JPanel controls = new JPanel(new FlowLayout(FlowLayout.CENTER,5,2));
-   		controls.add(SUBMIT);
+	    if(customerProduct.size() > 0){
+	    	fieldPanel.add(text1);
+	    	controls.add(SUBMIT);
+	    }
+	    else
+	    	label1.setText("You cannot add a comments as you have bought no items");
    		
         
    		JPanel gui = new JPanel(new BorderLayout(10,10));
