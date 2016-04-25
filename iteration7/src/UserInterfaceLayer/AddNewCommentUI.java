@@ -59,7 +59,7 @@ public class AddNewCommentUI {
    		
    		labelPanel.add(label1);
    		
-        final JFrame averageFrame = new JFrame("Comment Page");
+   		final JFrame averageFrame = new JFrame("Comment Page");
    		
    		JPanel m = new JPanel();
 		model = new DefaultListModel<String>();
@@ -81,15 +81,16 @@ public class AddNewCommentUI {
 	    	public void actionPerformed(ActionEvent e){
 				int selected = choices.getSelectedIndex();
 				if(selected >= 0){
-				AddNewComment a = new AddNewComment();
-				Product p = customerProduct.get(selected);
-				try {
-					a.addComment(text1.getText(), p.getProductId() , c.getFirstName() + " " + c.getSurname());
-					averageFrame.setVisible(false);
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+					AddNewComment a = new AddNewComment();
+					Product p = customerProduct.get(selected);
+					try {
+						a.addComment(text1.getText(), p.getProductId() , c.getFirstName() + " " + c.getSurname());
+						averageFrame.setVisible(false);
+					} 
+					catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 				}
 	    	}
 	    });
@@ -98,11 +99,11 @@ public class AddNewCommentUI {
    		
 	    JPanel controls = new JPanel(new FlowLayout(FlowLayout.CENTER,5,2));
 	    if(customerProduct.size() > 0){
-	    	fieldPanel.add(text1);
-	    	controls.add(SUBMIT);
+	    	 fieldPanel.add(text1);
+	    	 controls.add(SUBMIT);
 	    }
 	    else
-	    	label1.setText("You cannot add a comments as you have bought no items");
+	    	 label1.setText("You cannot add a comments as you have bought no items");
    		
         
    		JPanel gui = new JPanel(new BorderLayout(10,10));

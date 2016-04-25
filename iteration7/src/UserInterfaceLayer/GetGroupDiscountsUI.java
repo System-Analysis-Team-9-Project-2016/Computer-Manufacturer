@@ -4,9 +4,12 @@ import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -52,8 +55,22 @@ public class GetGroupDiscountsUI {
    		labelPanel.add(label1);
    		
    		JPanel m = new JPanel();
+   		
+   		JFrame averageFrame = new JFrame("Group Discount Page");
+   		
+   		JButton okButton = new JButton("OK");
+		okButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent evt) {
+				System.out.println("[info]  : ------ OK button clicked (GetGroupDiscountsUI) ------");
+
+				averageFrame.setVisible(false);
+				averageFrame.dispose();
+			}
+		});
 		
    		JPanel controls = new JPanel(new FlowLayout(FlowLayout.CENTER,5,2));
+   		controls.add(okButton, BorderLayout.SOUTH);
    		
    		JPanel gui = new JPanel(new BorderLayout(10,10));
         gui.setBorder(new TitledBorder("Group Discounts"));
@@ -63,12 +80,10 @@ public class GetGroupDiscountsUI {
 		gui.add(m, BorderLayout.WEST);
 		m.setFont(new Font("Courier",Font.BOLD,14));
 
-        JFrame averageFrame = new JFrame("Group Discount Page");
         averageFrame.setContentPane(gui);
         averageFrame.pack();
         averageFrame.setLocationByPlatform(true);
         averageFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         averageFrame.setVisible(true);
 	}
-
 }

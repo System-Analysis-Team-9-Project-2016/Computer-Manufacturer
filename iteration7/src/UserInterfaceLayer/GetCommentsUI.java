@@ -57,9 +57,24 @@ public class GetCommentsUI {
    		labelPanel.add(label1);
    		
    		JPanel m = new JPanel();
+   		
+   		JFrame averageFrame = new JFrame("Comments Page");
+   		
+   		JButton okButton = new JButton("OK");
+		okButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent evt) {
+				System.out.println("[info]  : ------ OK button clicked (GetGroupDiscountsUI) ------");
+
+				averageFrame.setVisible(false);
+				averageFrame.dispose();
+			}
+		});
 		
    		JPanel controls = new JPanel(new FlowLayout(FlowLayout.CENTER,5,2));
+   		controls.add(okButton, BorderLayout.SOUTH);
    		
+		
    		JPanel gui = new JPanel(new BorderLayout(10,10));
         gui.setBorder(new TitledBorder("Comments Discount"));
         gui.add(inputControls, BorderLayout.CENTER);
@@ -68,7 +83,6 @@ public class GetCommentsUI {
 		gui.add(m, BorderLayout.WEST);
 		m.setFont(new Font("Courier",Font.BOLD,14));
 
-        JFrame averageFrame = new JFrame("Comments Page");
         averageFrame.setContentPane(gui);
         averageFrame.pack();
         averageFrame.setLocationByPlatform(true);

@@ -58,7 +58,7 @@ public class GroupDiscount {
 	
 	public String toString(){
 		
-		String result = " This discount is for ";
+		String result = " Get " + (discount) + "% off if you buy: ";
 		Product p;
 		try {
 			BusinessLayerDataControl dataControl = new BusinessLayerDataControl();
@@ -70,7 +70,7 @@ public class GroupDiscount {
 						result += p.getProductName() + "-" + p.getProductId() + " and ";
 				}
 			}
-			result += "the discount is " + (discount) + "%";
+			result = result.substring(0, result.length() - 4);
 			return result;
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block

@@ -21,7 +21,6 @@ public class ProductListUI extends JFrame {
 // ************************************************************************************************************************
 // ************ 	Admin ProductListUI
 // ************************************************************************************************************************
-
 	
 	public ProductListUI(final Admin admin) throws IOException {
 		System.out.println("[debug] : ****** Entering ProductListUI Class as Admin ******");
@@ -158,7 +157,8 @@ public class ProductListUI extends JFrame {
 		    	
 		    	try {
 					CreatePCUI createPCUI = new CreatePCUI(customer);
-				} catch (IOException e) {
+				} 
+		    	catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
@@ -174,7 +174,8 @@ public class ProductListUI extends JFrame {
 		    	
 		    	try {
 					CreateLaptopUI createLaptopUI = new CreateLaptopUI(customer);
-				} catch (IOException e) {
+				} 
+		    	catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
@@ -202,18 +203,19 @@ public class ProductListUI extends JFrame {
 		getComments.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent evt) {
-		    	System.out.println("[info]  : ------ Get Comments button clicked (ProductListUI Customer) ------");
+		    	System.out.println("[info]  : ------ Look Comments button clicked (ProductListUI Customer) ------");
 				try {
 					GetCommentsUI getComment = new GetCommentsUI();
 					int selected = choices.getSelectedIndex();
 					
 					if(choices.getSelectedIndex() >= 0){
-					BusinessLayerDataControl dataControl = new BusinessLayerDataControl();
-					productsAddedToCart = new ArrayList<Product>(dataControl.factoryDesignPatternSearch());
-					Product p = productsAddedToCart.get(selected);
-					getComment.display(p);
+						BusinessLayerDataControl dataControl = new BusinessLayerDataControl();
+						productsAddedToCart = new ArrayList<Product>(dataControl.factoryDesignPatternSearch());
+						Product p = productsAddedToCart.get(selected);
+						getComment.display(p);
 					}
-				} catch (IOException e) {
+				} 
+				catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
@@ -222,20 +224,21 @@ public class ProductListUI extends JFrame {
 		m.add(getComments);
 		
 		JButton getGroupDiscounts = new JButton("Look at Group Discounts");
-		getGroupDiscounts.addActionListener(new ActionListener() {
-		    @Override
-		    public void actionPerformed(ActionEvent evt) {
-		    	System.out.println("[info]  : ------ Get Discounts button clicked (ProductListUI Customer) ------");
-				try {
-					GetGroupDiscountsUI getDiscounts = new GetGroupDiscountsUI();
-					getDiscounts.display();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-		    }
-		});
-		m.add(getGroupDiscounts);
+		 getGroupDiscounts.addActionListener(new ActionListener() {
+			 @Override
+			 public void actionPerformed(ActionEvent evt) {
+				 System.out.println("[info]  : ------ Get Discounts button clicked (ProductListUI Customer) ------");
+				 try {
+					 GetGroupDiscountsUI getDiscounts = new GetGroupDiscountsUI();
+					 getDiscounts.display();
+				 } 
+				 catch (IOException e) {
+					 // TODO Auto-generated catch block
+					 e.printStackTrace();
+				 }
+			 }
+		 });
+		 m.add(getGroupDiscounts);
 		
 		JPanel p = new JPanel();
 		
