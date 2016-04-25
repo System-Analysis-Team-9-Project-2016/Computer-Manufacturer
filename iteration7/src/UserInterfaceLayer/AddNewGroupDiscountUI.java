@@ -52,10 +52,10 @@ public class AddNewGroupDiscountUI {
 		inputControls.add(fieldPanel, BorderLayout.CENTER);
 		inputControls.add(addedPanel, BorderLayout.SOUTH);
 
-		JFrame averageFrame = new JFrame("Group Discount Page");
+		final JFrame averageFrame = new JFrame("Group Discount Page");
 
 		label1 = new JLabel();
-		label1.setText("Please enter your discount");
+		label1.setText("Please enter your discount (%)");
 		text1 = new JTextField(15);
 
 		labelPanel.add(label1);
