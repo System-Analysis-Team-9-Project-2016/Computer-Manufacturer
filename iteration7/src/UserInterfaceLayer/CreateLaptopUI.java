@@ -33,7 +33,7 @@ public class CreateLaptopUI extends JPanel{
 	JPanel bottomPanel = new JPanel();
 	JPanel m = new JPanel();
 	JPanel p = new JPanel();
-	JFrame CreateLaptopUiFrame = new JFrame("Create Laptop modal:");
+	JFrame CreateLaptopUiFrame = new JFrame("Create Laptop model:");
 	JLabel currentLabel = new JLabel("Add a component to the list");
 	private boolean chooseArrayMade = false;
 	private boolean chosenArrayMade = false;
@@ -46,7 +46,7 @@ public class CreateLaptopUI extends JPanel{
 		// ************ 	Start JFrame stuff
 		// ************************************************************************************************************************
 		
-		JFrame CreateLaptopUiFrame = new JFrame("Create Laptop modal:");
+		JFrame CreateLaptopUiFrame = new JFrame("Create Laptop model:");
 		CreateLaptopUiFrame.setBackground(new Color(0,100,200));
 		CreateLaptopUiFrame.setLayout(new BorderLayout(200,200));
 		JLabel productsListJLabel = new JLabel("Products");
@@ -130,7 +130,7 @@ public class CreateLaptopUI extends JPanel{
 			case 1 : part = "CPU"; break;
 			case 2 : part = "GPU"; break;
 			case 3 : part = "RAM"; break;
-			case 4 : part = "MememoryDrives"; break;
+			case 4 : part = "MemoryDrives"; break;
 			}
 			for(int i = 0; i < viewController.getProductsInFile().size(); i++){
 				Product someProduct = viewController.getProductsInFile().get(i);

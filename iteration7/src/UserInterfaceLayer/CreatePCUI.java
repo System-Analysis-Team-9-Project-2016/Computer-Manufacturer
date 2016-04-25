@@ -37,7 +37,7 @@ public class CreatePCUI extends JPanel{
 	JPanel bottomPanel = new JPanel();
 	JPanel m = new JPanel();
 	JPanel p = new JPanel();
-	JFrame CreatePCUiFrame = new JFrame("Create PC modal:");
+	JFrame CreatePCUiFrame = new JFrame("Create PC model:");
 	JLabel currentLabel = new JLabel("Add a component to the list");
 	private boolean chooseArrayMade = false;
 	private boolean chosenArrayMade = false;
@@ -50,7 +50,7 @@ public class CreatePCUI extends JPanel{
 		// ************ 	Start JFrame stuff
 		// ************************************************************************************************************************
 		
-		JFrame CreatePCUiFrame = new JFrame("Create PC modal:");
+		JFrame CreatePCUiFrame = new JFrame("Create PC model:");
 		CreatePCUiFrame.setBackground(new Color(0,100,200));
 		CreatePCUiFrame.setLayout(new BorderLayout(200,200));
 		JLabel productsListJLabel = new JLabel("Products");
@@ -59,9 +59,6 @@ public class CreatePCUI extends JPanel{
 		model = new DefaultListModel<String>();
 		modelChosen = new DefaultListModel<String>();
 		viewController = new CreatePC(currentCustomer);
-		
-		
-		
 		
 		JButton addBtn = new JButton("Add");
 		JButton backBtn = new JButton("Back");
@@ -134,7 +131,7 @@ public class CreatePCUI extends JPanel{
 			case 1 : part = "CPU"; break;
 			case 2 : part = "GPU"; break;
 			case 3 : part = "RAM"; break;
-			case 4 : part = "MememoryDrives"; break;
+			case 4 : part = "MemoryDrives"; break;
 			case 5 : part = "Monitor"; break;
 			case 6 : part = "Keyboard"; break;
 			case 7 : part = "Mouse"; break;
