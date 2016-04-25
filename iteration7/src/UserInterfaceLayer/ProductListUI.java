@@ -156,7 +156,12 @@ public class ProductListUI extends JFrame {
 		    public void actionPerformed(ActionEvent evt) {
 		    	System.out.println("[info]  : ------ Create PC button clicked (ProductListUI Customer) ------");
 		    	
-		    	CreatePCUI createPCUI = new CreatePCUI(customer);
+		    	try {
+					CreatePCUI createPCUI = new CreatePCUI(customer);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 		    }
 		});
 		m.add(createPcB);
@@ -167,7 +172,12 @@ public class ProductListUI extends JFrame {
 		    public void actionPerformed(ActionEvent evt) {
 		    	System.out.println("[info]  : ------ Create PC button clicked (ProductListUI Customer) ------");
 		    	
-		    	CreateLaptopUI createLaptopUI = new CreateLaptopUI(customer);
+		    	try {
+					CreateLaptopUI createLaptopUI = new CreateLaptopUI(customer);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 		    }
 		});
 		m.add(createLaptopB);

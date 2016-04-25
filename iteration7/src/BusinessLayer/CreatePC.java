@@ -38,13 +38,7 @@ public class CreatePC {
 	}
 	
 	public ArrayList<Product> getProductsInFile() {
-		try {
-			productsInFile = BusinessLayerDataControl.factoryDesignPatternSearch();
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return productsInFile;
+		return currentDesk.getComponents();
 		
 	}
 
