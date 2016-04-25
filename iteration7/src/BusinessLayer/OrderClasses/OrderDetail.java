@@ -1,7 +1,9 @@
 package BusinessLayer.OrderClasses;
 
 import java.util.ArrayList;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.text.DecimalFormat;
 
 import BusinessLayer.BusinessLayerDataControl;
 import BusinessLayer.ProductClasses.Product;
@@ -12,29 +14,17 @@ public class OrderDetail {
 	private int orderId;
 	private ArrayList<Product> orderProducts;
 	private double totalCost;
+	private boolean isGroupDiscount;
+	private double maxDiscount;
 
 	OrderDetail (int orderId, ArrayList<Product> orderProducts) throws IOException {
 		this.orderId = orderId;
 		this.orderProducts = orderProducts;
+		this.isGroupDiscount = false;
 		for (int i = 0; i < orderProducts.size(); i++)
 			this.totalCost += orderProducts.get(i).getUnitCost();
 		
-		BusinessLayerDataControl dataControl = new BusinessLayerDataControl();
-		ArrayList<GroupDiscount> groupDiscounts = dataControl.getAllGroupDiscountsFromFile();
-		double maxDiscount = 0;
-		GroupDiscount g;
-		for(int j = 0;j < groupDiscounts.size();j++){
-			g = groupDiscounts.get(j);
-			if(g.areProductsValid(orderProducts)){
-				if(g.getDiscount() > maxDiscount)
-					maxDiscount = g.getDiscount();
-				//System.out.println("Found Discount");
-			}
-		 }
-		 totalCost = totalCost * (1 - (maxDiscount / 100));
-		 
-		// Add shipping cost
-		this.totalCost += 5.0;
+		
 	}
 
 	public int [] getOrderProductIds() {
@@ -71,10 +61,22 @@ public class OrderDetail {
 		for (int i = 0; i < orderProducts.size(); i++) {
 			returnString += "<br>Product ID:" + orderProducts.get(i).getProductId();
 			returnString += "<br>Product Name:" + orderProducts.get(i).getProductName();
-			returnString += "<br>Product Price:" + orderProducts.get(i).getUnitCost() + "<br>";
+			try {
+				if(orderProducts.get(i).getDiscount() == 0)
+					returnString += "<br>Product Price:" + orderProducts.get(i).getUnitCost() + "<br>";
+				else{
+					returnString += "<br>Discount Applied:" + orderProducts.get(i).getDiscount() + "%";
+					returnString += "<br>Product Price:" + new DecimalFormat("##.##").format(orderProducts.get(i).getUnitCost()) + "<br>";
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
+		
+		if(this.isGroupDiscount)
+			returnString += "<br>Group Discount of " + maxDiscount  + "% applied.<br>";
 
-		returnString += "<br>TotalCost: " + totalCost + "<br>";
+		returnString += "<br>TotalCost: " +  new DecimalFormat("##.##").format(totalCost) + "<br>";
 		return returnString;
 	}
 	
@@ -87,5 +89,29 @@ public class OrderDetail {
 		this.totalCost = 0.0;
 		for (int i = 0; i < orderProducts.size(); i++)
 			totalCost += orderProducts.get(i).getUnitCost();
+		BusinessLayerDataControl dataControl = new BusinessLayerDataControl();
+		ArrayList<GroupDiscount> groupDiscounts;
+		try {
+			groupDiscounts = dataControl.getAllGroupDiscountsFromFile();
+			maxDiscount = 0;
+			GroupDiscount g;
+			for(int j = 0;j < groupDiscounts.size();j++){
+				g = groupDiscounts.get(j);
+				if(g.areProductsValid(orderProducts)){
+					if(g.getDiscount() > maxDiscount)
+						maxDiscount = g.getDiscount();
+						this.isGroupDiscount = true;
+					//System.out.println("Found Discount");
+				}
+			 }
+			 totalCost = totalCost * (1 - (maxDiscount / 100));
+			 
+			// Add shipping cost
+			this.totalCost += 5.0;
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
+		
 }
