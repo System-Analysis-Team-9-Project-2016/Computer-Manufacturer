@@ -170,9 +170,11 @@ public class DataControl implements DatabaseInterface {
 		Scanner lineIn = new Scanner(searchTextFile);
 		while (lineIn.hasNextLine()) {
 			String aLineFromFile = lineIn.nextLine();
-			String [] splitLineFromFile = aLineFromFile.split(",");
-			if (productName.equals(splitLineFromFile[1])) {
-				isProductNotPresent = false;
+			if (aLineFromFile.length() > 10) {
+				String [] splitLineFromFile = aLineFromFile.split(",");
+				if (productName.equals(splitLineFromFile[1])) {
+					isProductNotPresent = false;
+				}
 			}
 		}
 		lineIn.close();	

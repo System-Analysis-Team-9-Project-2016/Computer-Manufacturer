@@ -114,6 +114,7 @@ public class RegisterUI extends JFrame implements ActionListener
    		
    		else if(action == 2) {
    			averageFrame.dispose();
+   			LoginUI createNewLogin = new LoginUI();
    		}
  	}
 }
