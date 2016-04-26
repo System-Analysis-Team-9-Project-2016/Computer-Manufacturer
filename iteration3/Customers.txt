@@ -1,6 +1,0 @@
-fff,fff,fff@gmail.com,fff,fff
-Cian,Prendergast,cianp94@gmail.com,cianisunreal,123abc
-s,s,s@gmail.com,s,s
-r,r,r@gmail.com,r,r
-v,v,v@gmail.com,v,v
-d,d,d@gmail.com,d,d

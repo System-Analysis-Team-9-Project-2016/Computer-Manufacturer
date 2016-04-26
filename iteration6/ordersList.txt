@@ -1,9 +1,0 @@
-1,1,1,Conor Duggan,101 102 103 
-2,2,1,Conor Duggan,101 102 
-3,3,1,Conor Duggan,102 
-4,4,1,Conor Duggan,101
-6,6,1,Conor Duggan,102 
-7,7,1,Conor Duggan,101 
-8,8,1,Conor Duggan,102 
-9,9,1,Conor Duggan,101 
-10,10,1,Conor Duggan,101 103 
