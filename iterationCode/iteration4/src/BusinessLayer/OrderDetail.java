@@ -1,0 +1,50 @@
+package BusinessLayer;
+
+import java.util.ArrayList;
+
+public class OrderDetail {
+	
+	private int orderId;
+	private ArrayList<Product> orderProducts;
+	private double totalCost;
+
+	OrderDetail (int orderId, ArrayList<Product> orderProducts) {
+		this.orderId = orderId;
+		this.orderProducts = orderProducts;
+		for (int i = 0; i < orderProducts.size(); i++)
+			totalCost += orderProducts.get(i).getUnitCost();
+	}
+
+	public int [] getOrderProductIds() {
+		int [] orderProductIds = new int [orderProducts.size()];
+		for (int i = 0; i < orderProducts.size(); i++) {
+			orderProductIds[i] = orderProducts.get(i).getProductId();
+		}
+		return orderProductIds; 
+	}
+	
+	public String [] getOrderProductNames() {
+		String [] orderProductNames = new String [orderProducts.size()];
+		for (int i = 0; i < orderProducts.size(); i++) {
+			orderProductNames[i] = orderProducts.get(i).getProductName();
+		}
+		return orderProductNames;
+	}
+
+	public double getTotalCost() {
+		return totalCost;
+	}
+
+	public String getOrderDetails() {
+		String returnString = "Order ID: " + orderId;
+		
+		for (int i = 0; i < orderProducts.size(); i++) {
+			returnString += "<br>Product ID:" + orderProducts.get(i).getProductId();
+			returnString += "<br>Product Name:" + orderProducts.get(i).getProductName();
+			returnString += "<br>Product Price:" + orderProducts.get(i).getUnitCost() + "<br>";
+		}
+
+		returnString += "<br>TotalCost: " + totalCost + "<br>";
+		return returnString;
+	}
+}
